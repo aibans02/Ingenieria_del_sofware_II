@@ -18,6 +18,6 @@ module.exports = {
       underscored: true,
     },
   },
-  jwtSecret: 'P4lc0$$$.Rx',
+  jwtSecret: 'InG3ri4$ofW4R3',
   jwtSession: { session: false },
 };
