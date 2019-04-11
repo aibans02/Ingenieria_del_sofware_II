@@ -1,26 +1,22 @@
 module.exports = (sequelize, DataType) => {
-  const Tasks = sequelize.define('Tasks', {
-    id: {
+  const Tasks = sequelize.define('ROL', {
+    ROL_ID: {
       type: DataType.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    PAPEL: {
       type: DataType.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
-    },
-    done: {
-      type: DataType.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
-    },
+    }
   }, {
+    tableName: 'ROL',
     classMethods: {
       associate: (models) => {
-        Tasks.belongsTo(models.Users);
+        //Tasks.belongsTo(models.Users);
       },
     },
   });

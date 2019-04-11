@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-  const Videojuego = sequelize.define('Videojuego', {
+  const Videojuego = sequelize.define('VIDEOJUEGO', {
     id: {
       type: DataType.INTEGER,
       primaryKey: true,
@@ -16,8 +16,8 @@ module.exports = (sequelize, DataType) => {
       type: DataType.INTEGER,
       allowNull: false,
       references: {
-        model: 'USUARIO', // 'persons' refers to table name
-        key: 'ID_USUARIO', // 'id' refers to column name in persons table
+        model: 'USUARIO', 
+        key: 'USUARIO_ID', 
      }
     },
     done: {
@@ -26,12 +26,12 @@ module.exports = (sequelize, DataType) => {
       defaultValue: false,
     },
   }, {
-    tableName: 'Videojuego',
+    tableName: 'VIDEOJUEGO',
     classMethods: {
       associate: (models) => {
-        Videojuego.belongsTo(models.Users);
+        //Videojuego.belongsTo(models.Users);
       },
-    },
+    }, 
   });
   return Videojuego;
 };
