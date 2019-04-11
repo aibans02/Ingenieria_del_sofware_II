@@ -3,7 +3,7 @@ import logger from './logger.js';
 module.exports = {
   database: 'empresa',
   username: 'root',
-  password: 'pssword',
+  password: 'sdasd',
   params: {
     host: "localhost",
     dialect: 'mysql',
