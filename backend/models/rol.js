@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataType) => {
-  const Tasks = sequelize.define('ROL', {
+  const Rol = sequelize.define('ROL', {
     ROL_ID: {
       type: DataType.INTEGER,
       primaryKey: true,
@@ -16,9 +16,9 @@ module.exports = (sequelize, DataType) => {
     tableName: 'ROL',
     classMethods: {
       associate: (models) => {
-        //Tasks.belongsTo(models.Users);
+        //Rol.belongsTo(models.Users);
       },
     },
   });
-  return Tasks;
+  return Rol;
 };

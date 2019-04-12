@@ -1,18 +1,11 @@
 module.exports = (sequelize, DataType) => {
   const Videojuego = sequelize.define('VIDEOJUEGO', {
-    id: {
+    VIDEOJUEGO_ID: {
       type: DataType.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataType.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
-    },
-    ID_USUARIO: {
+    USUARIO_ID: {
       type: DataType.INTEGER,
       allowNull: false,
       references: {
@@ -20,10 +13,19 @@ module.exports = (sequelize, DataType) => {
         key: 'USUARIO_ID', 
      }
     },
-    done: {
-      type: DataType.BOOLEAN,
+    NOMBRE_JUEGO: {
+      type: DataType.STRING,
       allowNull: false,
-      defaultValue: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    DESCRIPCION: {
+      type: DataType.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
     },
   }, {
     tableName: 'VIDEOJUEGO',

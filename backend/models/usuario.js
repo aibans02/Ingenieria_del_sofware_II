@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 
 module.exports = (sequelize, DataType) => {
-  const Users = sequelize.define('USUARIO', {
+  const Usuario = sequelize.define('USUARIO', {
     USUARIO_ID: {
       type: DataType.INTEGER,
       primaryKey: true,
@@ -10,9 +10,6 @@ module.exports = (sequelize, DataType) => {
     ROL_ID: {
       type: DataType.INTEGER,
       allowNull: false,
-      validate: {
-        notEmpty: true,
-      },
       references: {
         model: 'ROL', 
         key: 'ROL_ID',
@@ -57,12 +54,12 @@ module.exports = (sequelize, DataType) => {
     tableName: 'USUARIO',
     classMethods: {
       associate: models => {
-        //Users.hasMany(models.Tasks);
+        //Usuario.hasMany(models.Tasks);
       },
       isPassword: (encodedPassword, password) => {
         return bcrypt.compareSync(password, encodedPassword);
       },
     },
   });
-  return Users;
+  return Usuario;
 };

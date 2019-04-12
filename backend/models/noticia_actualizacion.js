@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataType) => {
-  const Foro = sequelize.define('FORO', {
-    FORO_ID: {
+  const NoticiaActualizacion = sequelize.define('NOTICIA_ACTUALIZACION', {
+    NOTICIA_ACTUALIZACION_ID: {
       type: DataType.INTEGER,
       primaryKey: true,
       autoIncrement: true,
@@ -11,8 +11,8 @@ module.exports = (sequelize, DataType) => {
       references: {
         model: 'USUARIO', 
         key: 'USUARIO_ID', 
-      }
-     },
+     }
+    },
     VIDEOJUEGO_ID: {
       type: DataType.INTEGER,
       allowNull: false,
@@ -36,12 +36,12 @@ module.exports = (sequelize, DataType) => {
       },
     }
   }, {
-    tableName: 'FORO',
+    tableName: 'NOTICIA_ACTUALIZACION',
     classMethods: {
       associate: (models) => {
-        //Foro.belongsTo(models.Users);
+        //NoticiaActualizacion.belongsTo(models.Users);
       },
     },
   });
-  return Foro;
+  return NoticiaActualizacion;
 };

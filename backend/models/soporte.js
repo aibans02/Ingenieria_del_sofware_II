@@ -1,28 +1,40 @@
 module.exports = (sequelize, DataType) => {
-  const Tasks = sequelize.define('Tasks', {
+  const Soporte = sequelize.define('SOPORTE', {
     id: {
       type: DataType.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    USUARIO_ID: {
+      type: DataType.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'USUARIO', 
+        key: 'USUARIO_ID', 
+      }
+     },
+    VIDEOJUEGO_ID: {
+      type: DataType.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'VIDEOJUEGO', 
+        key: 'VIDEOJUEGO_ID', 
+     }
+    },
+    DESCRIPCION_TEXTO: {
       type: DataType.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
       },
-    },
-    done: {
-      type: DataType.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
-    },
+    }
   }, {
+    tableName: 'SOPORTE',
     classMethods: {
       associate: (models) => {
-        //Tasks.belongsTo(models.Users);
+        //Soporte.belongsTo(models.Users);
       },
     },
   });
-  return Tasks;
+  return Soporte;
 };
