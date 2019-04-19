@@ -7,14 +7,6 @@ module.exports = (sequelize, DataType) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    ROL_ID: {
-      type: DataType.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'ROL', 
-        key: 'ROL_ID',
-     }
-    },
     NICK_USUARIO: {
       type: DataType.STRING,
       allowNull: false,
@@ -54,7 +46,24 @@ module.exports = (sequelize, DataType) => {
     tableName: 'USUARIO',
     classMethods: {
       associate: models => {
-        //Usuario.hasMany(models.Tasks);
+        Usuario.belongsTo(models.ROL, {
+          foreignKey: "ROL_ID"
+        }),
+        Usuario.hasMany(models.VIDEOJUEGO, {
+          foreignKey: "USUARIO_ID"
+        }),
+        Usuario.hasMany(models.NOTICIA_ACTUALIZACION, {
+          foreignKey: "USUARIO_ID"
+        }),
+        Usuario.hasMany(models.GUIA, {
+          foreignKey: "USUARIO_ID"
+        }),
+        Usuario.hasMany(models.FORO, {
+          foreignKey: "USUARIO_ID"
+        }),
+        Usuario.hasMany(models.SOPORTE, {
+          foreignKey: "USUARIO_ID"
+        })
       },
       isPassword: (encodedPassword, password) => {
         return bcrypt.compareSync(password, encodedPassword);

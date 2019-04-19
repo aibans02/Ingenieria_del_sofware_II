@@ -5,22 +5,6 @@ module.exports = (sequelize, DataType) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    USUARIO_ID: {
-      type: DataType.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'USUARIO', 
-        key: 'USUARIO_ID', 
-      }
-     },
-    VIDEOJUEGO_ID: {
-      type: DataType.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'VIDEOJUEGO', 
-        key: 'VIDEOJUEGO_ID', 
-     }
-    },
     TITULO_ENTRADA: {
       type: DataType.STRING,
       allowNull: false,
@@ -39,7 +23,16 @@ module.exports = (sequelize, DataType) => {
     tableName: 'FORO',
     classMethods: {
       associate: (models) => {
-        //Foro.belongsTo(models.Users);
+        Foro.belongsTo(models.USUARIO, {
+          foreignKey: "USUARIO_ID"
+        }),
+        Foro.belongsTo(models.VIDEOJUEGO, {
+          foreignKey: "VIDEOJUEGO_ID"
+        }),
+        Foro.hasMany(models.FORO, {
+          as: "SUBFORO",
+          foreignKey: "SUBFORO_ID"
+        })
       },
     },
   });

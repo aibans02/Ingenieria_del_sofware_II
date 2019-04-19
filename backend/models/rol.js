@@ -16,7 +16,9 @@ module.exports = (sequelize, DataType) => {
     tableName: 'ROL',
     classMethods: {
       associate: (models) => {
-        //Rol.belongsTo(models.Users);
+        Rol.hasMany(models.USUARIO, {
+          foreignKey: "USUARIO_ID"
+        });
       },
     },
   });
