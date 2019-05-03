@@ -44,6 +44,11 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +59,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ForumsComponent,
     GuidesComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,9 +95,15 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
