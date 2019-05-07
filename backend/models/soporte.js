@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataType) => {
   const Soporte = sequelize.define('SOPORTE', {
-    id: {
+    SOPORTE_ID: {
       type: DataType.INTEGER,
       primaryKey: true,
       autoIncrement: true,
