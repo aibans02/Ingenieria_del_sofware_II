@@ -13,8 +13,9 @@ module.exports = app => {
         .then(user => {
           if (user) {
             return done(null, {
-              id: user.id,
-              email: user.email,
+              id: user.USUARIO_ID,
+              email: user.EMAIL,
+              rol: user.ROL_ID
             });
           }
           return done(null, false);

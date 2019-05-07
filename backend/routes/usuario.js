@@ -1,5 +1,5 @@
 module.exports = app => {
-  const Users = app.db.models.Users;
+  const Users = app.db.models.USUARIO;
 
   app.route('/usuario')
     //.all(app.auth.authenticate())
@@ -24,11 +24,11 @@ module.exports = app => {
      */
     .get((req, res) => {
       Users.findById(req.user.id, {
-        attributes: ['id', 'name', 'email'],
+        attributes: ['USUARIO_ID', 'NICK_USUARIO', 'EMAIL', 'ROL_ID'],
       })
       .then(result => res.json(result))
       .catch(error => {
-        res.status(412).json({ msg: error.message });
+        res.status(412).json({ msg: error });
       });
     })
     /**
@@ -46,7 +46,7 @@ module.exports = app => {
       Users.destroy({ where: { id: req.user.id } })
         .then(result => res.sendStatus(204))
         .catch(error => {
-          res.status(412).json({ msg: error.message });
+          res.status(412).json({ msg: error });
         });
     })
 
@@ -85,7 +85,7 @@ module.exports = app => {
     Users.create(req.body)
       .then(result => res.json(result))
       .catch(error => {
-        res.status(412).json({ msg: error.message });
+        res.status(412).json({ msg: error });
       });
   });
 };

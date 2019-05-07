@@ -17,7 +17,7 @@ module.exports = (sequelize, DataType) => {
     classMethods: {
       associate: (models) => {
         Rol.hasMany(models.USUARIO, {
-          foreignKey: "USUARIO_ID"
+          foreignKey: "ROL_ID"
         });
       },
     },

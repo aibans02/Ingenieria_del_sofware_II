@@ -28,7 +28,10 @@ module.exports = app => {
       Users.findOne({ where: { email } })
         .then(user => {
           if (Users.isPassword(user.password, password)) {
-            const payload = { id: user.id };
+            const payload = { 
+              id: user.USUARIO_ID,
+              rol: user.ROL_ID 
+            };
             res.json({
               token: jwt.encode(payload, cfg.jwtSecret),
             });
