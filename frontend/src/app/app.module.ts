@@ -47,7 +47,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+
+import {LogInDialog} from './header/header.component'
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
     GuidesComponent,
     HeaderComponent,
     FooterComponent,
+    LogInDialog,
   ],
   imports: [
     BrowserModule,
@@ -102,7 +105,9 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
   ],
+  entryComponents: [LogInDialog],
   providers: [],
   bootstrap: [AppComponent],
 })
