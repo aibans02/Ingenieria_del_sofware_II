@@ -1,57 +1,61 @@
 module.exports = app => {
-    const Users = app.db.models.Users;
-  
-    app.route('/noticia')
-      //.all(app.auth.authenticate())
-      /**
-       * @api {get} /user Return the authenticated user's data
-       * @apiGroup User
-       * @apiHeader {String} Authorization Token of authenticated user
-       * @apiHeaderExample {json} Header
-       *    {"Authorization": "JWT xyz.abc.123.hgf"}
-       * @apiSuccess {Number} id User id
-       * @apiSuccess {String} name User name
-       * @apiSuccess {String} email User email
-       * @apiSuccessExample {json} Success
-       *    HTTP/1.1 200 OK
-       *    {
-       *      "id": 1,
-       *      "name": "John Connor",
-       *      "email": "john@connor.net"
-       *    }
-       * @apiErrorExample {json} Find error
-       *    HTTP/1.1 412 Precondition Failed
-       */
-      .get((req, res) => {
-        Users.findById(req.user.id, {
-          attributes: ['id', 'name', 'email'],
-        })
+  const noticia = app.db.models.NOTICIA;
+
+  app.route('/noticia')
+    //.all(app.auth.authenticate())
+    /**
+     * @api {get} /user Return the authenticated user's data
+     * @apiGroup User
+     * @apiHeader {String} Authorization Token of authenticated user
+     * @apiHeaderExample {json} Header
+     *    {"Authorization": "JWT xyz.abc.123.hgf"}
+     * @apiSuccess {Number} id User id
+     * @apiSuccess {String} name User name
+     * @apiSuccess {String} email User email
+     * @apiSuccessExample {json} Success
+     *    HTTP/1.1 200 OK
+     *    {
+     *      "id": 1,
+     *      "name": "John Connor",
+     *      "email": "john@connor.net"
+     *    }
+     * @apiErrorExample {json} Find error
+     *    HTTP/1.1 412 Precondition Failed
+     */
+    .get((req, res) => {
+      noticia.findById(req.body.NOTICIA_ACTUALIZACION_ID, {
+        attributes: ['TITULO_ENTRADA', 'DESCRIPCION_TEXTO', 'USUARIO_ID', 'USUARIO_ID', 'VIDEOJUEGO_ID'],
+      })
         .then(result => res.json(result))
         .catch(error => {
           res.status(412).json({ msg: error.message });
         });
-      })
-      /**
-       * @api {delete} /user Deletes an authenticated user
-       * @apiGroup User
-       * @apiHeader {String} Authorization Token of authenticated user
-       * @apiHeaderExample {json} Header
-       *    {"Authorization": "JWT xyz.abc.123.hgf"}
-       * @apiSuccessExample {json} Success
-       *    HTTP/1.1 204 No Content
-       * @apiErrorExample {json} Delete error
-       *    HTTP/1.1 412 Precondition Failed
-       */
-      .delete((req, res) => {
-        Users.destroy({ where: { id: req.user.id } })
+    })
+    /**
+     * @api {delete} /user Deletes an authenticated user
+     * @apiGroup User
+     * @apiHeader {String} Authorization Token of authenticated user
+     * @apiHeaderExample {json} Header
+     *    {"Authorization": "JWT xyz.abc.123.hgf"}
+     * @apiSuccessExample {json} Success
+     *    HTTP/1.1 204 No Content
+     * @apiErrorExample {json} Delete error
+     *    HTTP/1.1 412 Precondition Failed
+     */
+    .delete((req, res) => {
+      if (req.user.rol == 1 /* Aqui se pone el id del rol que sera superadmin */) {
+        noticia.destroy({ where: { id: req.body.NOTICIA_ACTUALIZACION_ID } })
           .then(result => res.sendStatus(204))
           .catch(error => {
             res.status(412).json({ msg: error.message });
           });
-      })
-  
+      } else {
+        res.status(401).json({ msg: "No está autorizado" })
+      }
+    })
+
     /**
-     * @api {post} /users Register a new user
+     * @api {post} /noticia Register a new user
      * @apiGroup User
      * @apiParam {String} name User name
      * @apiParam {String} email User email
@@ -82,10 +86,22 @@ module.exports = app => {
      *    HTTP/1.1 412 Precondition Failed
      */
     .post((req, res) => {
-      Users.create(req.body)
-        .then(result => res.json(result))
-        .catch(error => {
-          res.status(412).json({ msg: error.message });
-        });
+      if (req.user.rol == 1 /* Aqui se pone el id del rol que sera superadmin */) {
+        noticia.create(req.body)
+          .then(result => res.json(result))
+          .catch(error => {
+            res.status(412).json({ msg: error.message });
+          });
+      } else {
+        res.status(401).json({ msg: "No está autorizado" })
+      }
     });
-  };
+
+  app.route('/noticias')
+
+    .get((req, res) => {
+      noticia.findAll()
+        .then(result => res.json(result))
+        .catch(err => res.status(404).json(err))
+    });
+};

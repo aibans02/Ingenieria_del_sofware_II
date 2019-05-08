@@ -1,5 +1,5 @@
 module.exports = app => {
-    const Users = app.db.models.Users;
+    const foro = app.db.models.FORO;
   
     app.route('/foro')
       //.all(app.auth.authenticate())
@@ -23,8 +23,8 @@ module.exports = app => {
        *    HTTP/1.1 412 Precondition Failed
        */
       .get((req, res) => {
-        Users.findById(req.user.id, {
-          attributes: ['id', 'name', 'email'],
+        foro.findAll({
+          include: [{ model: foro, required: true}],
         })
         .then(result => res.json(result))
         .catch(error => {
@@ -43,7 +43,7 @@ module.exports = app => {
        *    HTTP/1.1 412 Precondition Failed
        */
       .delete((req, res) => {
-        Users.destroy({ where: { id: req.user.id } })
+        foro.destroy({ where: { id: req.user.id } })
           .then(result => res.sendStatus(204))
           .catch(error => {
             res.status(412).json({ msg: error.message });
@@ -51,7 +51,7 @@ module.exports = app => {
       })
   
     /**
-     * @api {post} /users Register a new user
+     * @api {post} /foro Register a new user
      * @apiGroup User
      * @apiParam {String} name User name
      * @apiParam {String} email User email
@@ -82,7 +82,7 @@ module.exports = app => {
      *    HTTP/1.1 412 Precondition Failed
      */
     .post((req, res) => {
-      Users.create(req.body)
+      foro.create(req.body)
         .then(result => res.json(result))
         .catch(error => {
           res.status(412).json({ msg: error.message });

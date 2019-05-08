@@ -9,6 +9,7 @@ module.exports = (sequelize, DataType) => {
     },
     NICK_USUARIO: {
       type: DataType.STRING,
+      unique: true,
       allowNull: false,
       validate: {
         notEmpty: true,

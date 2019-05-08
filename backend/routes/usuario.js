@@ -85,7 +85,7 @@ module.exports = app => {
     Users.create(req.body)
       .then(result => res.json(result))
       .catch(error => {
-        res.status(412).json({ msg: error });
+        res.status(412).json(error);
       });
   });
 };
