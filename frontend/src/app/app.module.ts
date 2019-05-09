@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LogInComponent } from './log-in/log-in.component';
 import { RegisterComponent } from './register/register.component';
 import { GameComponent } from './game/game.component';
 import { NewsUpdatesComponent } from './news-updates/news-updates.component';
@@ -54,7 +53,6 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 @NgModule({
   declarations: [
     AppComponent,
-    LogInComponent,
     RegisterComponent,
     GameComponent,
     NewsUpdatesComponent,
