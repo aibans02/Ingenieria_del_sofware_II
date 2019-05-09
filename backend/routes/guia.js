@@ -1,57 +1,46 @@
 module.exports = app => {
-    const Users = app.db.models.Users;
-  
-    app.route('/guia')
-      //.all(app.auth.authenticate())
-      /**
-       * @api {get} /user Return the authenticated user's data
-       * @apiGroup User
-       * @apiHeader {String} Authorization Token of authenticated user
-       * @apiHeaderExample {json} Header
-       *    {"Authorization": "JWT xyz.abc.123.hgf"}
-       * @apiSuccess {Number} id User id
-       * @apiSuccess {String} name User name
-       * @apiSuccess {String} email User email
-       * @apiSuccessExample {json} Success
-       *    HTTP/1.1 200 OK
-       *    {
-       *      "id": 1,
-       *      "name": "John Connor",
-       *      "email": "john@connor.net"
-       *    }
-       * @apiErrorExample {json} Find error
-       *    HTTP/1.1 412 Precondition Failed
-       */
-      .get((req, res) => {
-        Users.findById(req.user.id, {
-          attributes: ['id', 'name', 'email'],
-        })
-        .then(result => res.json(result))
-        .catch(error => {
-          res.status(412).json({ msg: error.message });
-        });
-      })
-      /**
-       * @api {delete} /user Deletes an authenticated user
-       * @apiGroup User
-       * @apiHeader {String} Authorization Token of authenticated user
-       * @apiHeaderExample {json} Header
-       *    {"Authorization": "JWT xyz.abc.123.hgf"}
-       * @apiSuccessExample {json} Success
-       *    HTTP/1.1 204 No Content
-       * @apiErrorExample {json} Delete error
-       *    HTTP/1.1 412 Precondition Failed
-       */
-      .delete((req, res) => {
-        Users.destroy({ where: { id: req.user.id } })
+  const Guia = app.db.models.GUIA;
+  const User = app.db.models.USUARIO;
+
+  app.route('/guia/auth')
+    .all(app.auth.authenticate())
+    /**
+     * @api {delete} /user Deletes an authenticated user
+     * @apiGroup User
+     * @apiHeader {String} Authorization Token of authenticated user
+     * @apiHeaderExample {json} Header
+     *    {"Authorization": "JWT xyz.abc.123.hgf"}
+     * @apiSuccessExample {json} Success
+     *    HTTP/1.1 204 No Content
+     * @apiErrorExample {json} Delete error
+     *    HTTP/1.1 412 Precondition Failed
+     */
+    .delete((req, res) => {
+      if (req.user.rol == 1 || req.user.rol == 2) {
+        Guia.destroy({ where: { GUIA_ID: req.body.GUIA_ID } })
           .then(result => res.sendStatus(204))
           .catch(error => {
-            res.status(412).json({ msg: error.message });
+            res.status(412).json({ err: error.message });
           });
-      })
-  
+      } else if (req.user.rol == 3) {
+        Guia.destroy({
+          where: {
+            GUIA_ID: req.body.GUIA_ID,
+            USUARIO_ID: req.user.id
+          }
+        })
+          .then(result => res.status(204))
+          .catch(error => {
+            res.status(412).json({ err: error.message });
+          });
+      } else {
+        res.status(401).json({ err: "No está autorizado" })
+      }
+
+    })
+
     /**
-     * @api {post} /users Register a new user
+     * @api {post} /Guia Register a new user
      * @apiGroup User
      * @apiParam {String} name User name
      * @apiParam {String} email User email
@@ -82,10 +71,52 @@ module.exports = app => {
      *    HTTP/1.1 412 Precondition Failed
      */
     .post((req, res) => {
-      Users.create(req.body)
+      Guia.create(req.body)
         .then(result => res.json(result))
         .catch(error => {
           res.status(412).json({ msg: error.message });
         });
     });
-  };
+
+  app.route('/guia')
+    /**
+      * @api {get} /user Return the authenticated user's data
+      * @apiGroup User
+      * @apiHeader {String} Authorization Token of authenticated user
+      * @apiHeaderExample {json} Header
+      *    {"Authorization": "JWT xyz.abc.123.hgf"}
+      * @apiSuccess {Number} id User id
+      * @apiSuccess {String} name User name
+      * @apiSuccess {String} email User email
+      * @apiSuccessExample {json} Success
+      *    HTTP/1.1 200 OK
+      *    {
+      *      "id": 1,
+      *      "name": "John Connor",
+      *      "email": "john@connor.net"
+      *    }
+      * @apiErrorExample {json} Find error
+      *    HTTP/1.1 412 Precondition Failed
+      */
+    .get((req, res) => {
+      Guia.findById(req.body.GUIA_ID, {
+        include: [{ model: User, attributes: ['NICK_USUARIO'] }],
+      })
+        .then(result => res.json(result))
+        .catch(error => {
+          res.status(412).json({ err: error.message });
+        });
+    });
+
+  app.route('/guias')
+    .get((req, res) => {
+      Guia.findAll({
+        where: { VIDEOJUEGO_ID: req.body.VIDEOJUEGO_ID },
+        include: [{ model: User, attributes: ['NICK_USUARIO'] }]
+      })
+        .then(result => res.json(result))
+        .catch(error => {
+          res.status(412).json({ err: error.message });
+        });
+    })
+};

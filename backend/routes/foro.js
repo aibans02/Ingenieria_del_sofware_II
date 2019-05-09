@@ -1,55 +1,42 @@
 module.exports = app => {
-    const foro = app.db.models.FORO;
-  
-    app.route('/foro')
-      //.all(app.auth.authenticate())
-      /**
-       * @api {get} /user Return the authenticated user's data
-       * @apiGroup User
-       * @apiHeader {String} Authorization Token of authenticated user
-       * @apiHeaderExample {json} Header
-       *    {"Authorization": "JWT xyz.abc.123.hgf"}
-       * @apiSuccess {Number} id User id
-       * @apiSuccess {String} name User name
-       * @apiSuccess {String} email User email
-       * @apiSuccessExample {json} Success
-       *    HTTP/1.1 200 OK
-       *    {
-       *      "id": 1,
-       *      "name": "John Connor",
-       *      "email": "john@connor.net"
-       *    }
-       * @apiErrorExample {json} Find error
-       *    HTTP/1.1 412 Precondition Failed
-       */
-      .get((req, res) => {
-        foro.findAll({
-          include: [{ model: foro, required: true}],
-        })
-        .then(result => res.json(result))
-        .catch(error => {
-          res.status(412).json({ msg: error.message });
-        });
-      })
-      /**
-       * @api {delete} /user Deletes an authenticated user
-       * @apiGroup User
-       * @apiHeader {String} Authorization Token of authenticated user
-       * @apiHeaderExample {json} Header
-       *    {"Authorization": "JWT xyz.abc.123.hgf"}
-       * @apiSuccessExample {json} Success
-       *    HTTP/1.1 204 No Content
-       * @apiErrorExample {json} Delete error
-       *    HTTP/1.1 412 Precondition Failed
-       */
-      .delete((req, res) => {
-        foro.destroy({ where: { id: req.user.id } })
+  const foro = app.db.models.FORO;
+
+  app.route('/foro/auth')
+    .all(app.auth.authenticate())
+    /**
+     * @api {delete} /user Deletes an authenticated user
+     * @apiGroup User
+     * @apiHeader {String} Authorization Token of authenticated user
+     * @apiHeaderExample {json} Header
+     *    {"Authorization": "JWT xyz.abc.123.hgf"}
+     * @apiSuccessExample {json} Success
+     *    HTTP/1.1 204 No Content
+     * @apiErrorExample {json} Delete error
+     *    HTTP/1.1 412 Precondition Failed
+     */
+    .delete((req, res) => {
+      if (req.user.rol == 1 || req.user.rol == 2) {
+        foro.destroy({ where: { FORO_ID: req.body.FORO_ID } })
           .then(result => res.sendStatus(204))
           .catch(error => {
-            res.status(412).json({ msg: error.message });
+            res.status(412).json({ err: error.message });
           });
-      })
-  
+      } else if (req.user.rol == 3) {
+        foro.destroy({
+          where: {
+            FORO_ID: req.body.FORO_ID,
+            USUARIO_ID: req.user.id
+          }
+        })
+          .then(result => res.sendStatus(204))
+          .catch(error => {
+            res.status(412).json({ err: error.message });
+          });
+      } else {
+        res.status(401).json({ err: "No está autorizado" })
+      }
+    })
+
     /**
      * @api {post} /foro Register a new user
      * @apiGroup User
@@ -85,7 +72,37 @@ module.exports = app => {
       foro.create(req.body)
         .then(result => res.json(result))
         .catch(error => {
-          res.status(412).json({ msg: error.message });
+          res.status(412).json({ err: error.message });
         });
     });
-  };
+
+  app.route('/foro')
+    /**
+    * @api {get} /user Return the authenticated user's data
+    * @apiGroup User
+    * @apiHeader {String} Authorization Token of authenticated user
+    * @apiHeaderExample {json} Header
+    *    {"Authorization": "JWT xyz.abc.123.hgf"}
+    * @apiSuccess {Number} id User id
+    * @apiSuccess {String} name User name
+    * @apiSuccess {String} email User email
+    * @apiSuccessExample {json} Success
+    *    HTTP/1.1 200 OK
+    *    {
+    *      "id": 1,
+    *      "name": "John Connor",
+    *      "email": "john@connor.net"
+    *    }
+    * @apiErrorExample {json} Find error
+    *    HTTP/1.1 412 Precondition Failed
+    */
+    .get((req, res) => {
+      foro.findAll({
+        include: [{ model: app.db.models.FORO, required: true }],
+      })
+        .then(result => res.json(result))
+        .catch(error => {
+          res.status(412).json({ err: error.message });
+        });
+    });
+};

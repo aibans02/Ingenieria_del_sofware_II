@@ -1,9 +1,9 @@
 module.exports = app => {
   const Videojuego = app.db.models.VIDEOJUEGO;
 
+
   app.route('/videojuego')
-    //.all(app.auth.authenticate())
-    /**
+  /**
      * @api {get} /user Return the authenticated user's data
      * @apiGroup User
      * @apiHeader {String} Authorization Token of authenticated user
@@ -23,12 +23,16 @@ module.exports = app => {
      *    HTTP/1.1 412 Precondition Failed
      */
     .get((req, res) => {
-      Videojuego.findById(req.user.id)
+      Videojuego.findById(req.body.VIDEOJUEGO_ID)
         .then(result => res.json(result))
         .catch(error => {
           res.status(412).json({ msg: error.message });
         });
-    })
+    });
+
+  app.route('/videojuego/auth')
+    .all(app.auth.authenticate())
+    
     /**
      * @api {delete} /user Deletes an authenticated user
      * @apiGroup User
@@ -42,13 +46,13 @@ module.exports = app => {
      */
     .delete((req, res) => {
       if (req.user.rol == 1 /* Aqui se pone el id del rol que sera superadmin */) {
-      Videojuego.destroy({ where: { VIDEOJUEGO_ID: /* req.user.id */id } })
-        .then(result => res.sendStatus(204))
-        .catch(error => {
-          res.status(412).json({ msg: error.message });
-        });
+        Videojuego.destroy({ where: { VIDEOJUEGO_ID: req.body.VIDEOJUEGO_ID } })
+          .then(result => res.sendStatus(204))
+          .catch(error => {
+            res.status(412).json({ msg: error.message });
+          });
       } else {
-        res.status(401).json({ msg: "No está autorizado" })
+        res.status(401).json({ err: "No está autorizado" })
       }
     })
 
@@ -91,7 +95,7 @@ module.exports = app => {
             res.status(412).json({ msg: error.message });
           });
       } else {
-        res.json({ msg: "No está autorizado" })
+        res.json({ err: "No está autorizado" })
       }
     });
 
@@ -120,7 +124,7 @@ module.exports = app => {
       Videojuego.findAll()
         .then(result => res.json(result))
         .catch(error => {
-          res.status(412).json({ msg: error.message });
+          res.status(412).json({ err: error.message });
         });
     })
 };

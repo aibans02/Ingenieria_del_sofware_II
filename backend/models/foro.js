@@ -13,7 +13,7 @@ module.exports = (sequelize, DataType) => {
       },
     },
     DESCRIPCION_TEXTO: {
-      type: DataType.STRING,
+      type: DataType.TEXT,
       allowNull: false,
       validate: {
         notEmpty: true,
@@ -30,8 +30,8 @@ module.exports = (sequelize, DataType) => {
           foreignKey: "VIDEOJUEGO_ID"
         }),
         Foro.hasMany(models.FORO, {
-          as: "SUBFORO",
-          foreignKey: "SUBFORO_ID"
+          foreignKey: "SUBFORO_ID",
+          onDelete: 'cascade'
         })
       },
     },
