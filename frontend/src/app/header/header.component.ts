@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { AutofillMonitor } from '@angular/cdk/text-field';
 
 @Component({
   selector: 'app-header',
@@ -13,12 +12,12 @@ export class HeaderComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LogInDialog, {
-      minWidth: '100px',
-      width: '50%',
+      minWidth: '300px',
+      width: '20%',
       maxWidth: '450px',
       minHeight: '350px',
-      height: 'auto',
-      maxHeight: '550px',
+      height: 'auto',/* 
+      maxHeight: '550px', */
     });
 
     dialogRef.afterClosed().subscribe(result => {
