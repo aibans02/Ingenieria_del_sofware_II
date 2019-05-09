@@ -16,8 +16,7 @@ export class HeaderComponent implements OnInit {
       width: '20%',
       maxWidth: '450px',
       minHeight: '350px',
-      height: 'auto',/* 
-      maxHeight: '550px', */
+      height: 'auto',
     });
 
     dialogRef.afterClosed().subscribe(result => {
