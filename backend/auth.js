@@ -2,7 +2,7 @@ import passport from 'passport';
 import { Strategy, ExtractJwt } from 'passport-jwt';
 
 module.exports = app => {
-  const Users = app.db.models.Users;
+  const Users = app.db.models.USUARIO;
   const cfg = app.libs.config;
   const params = {
     secretOrKey: cfg.jwtSecret,

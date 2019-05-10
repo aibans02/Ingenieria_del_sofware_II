@@ -1,36 +1,8 @@
 module.exports = app => {
-  const noticia = app.db.models.NOTICIA;
+  const noticia = app.db.models.NOTICIA_ACTUALIZACION;
 
-  app.route('/noticia')
-    //.all(app.auth.authenticate())
-    /**
-     * @api {get} /user Return the authenticated user's data
-     * @apiGroup User
-     * @apiHeader {String} Authorization Token of authenticated user
-     * @apiHeaderExample {json} Header
-     *    {"Authorization": "JWT xyz.abc.123.hgf"}
-     * @apiSuccess {Number} id User id
-     * @apiSuccess {String} name User name
-     * @apiSuccess {String} email User email
-     * @apiSuccessExample {json} Success
-     *    HTTP/1.1 200 OK
-     *    {
-     *      "id": 1,
-     *      "name": "John Connor",
-     *      "email": "john@connor.net"
-     *    }
-     * @apiErrorExample {json} Find error
-     *    HTTP/1.1 412 Precondition Failed
-     */
-    .get((req, res) => {
-      noticia.findById(req.body.NOTICIA_ACTUALIZACION_ID, {
-        attributes: ['TITULO_ENTRADA', 'DESCRIPCION_TEXTO', 'USUARIO_ID', 'USUARIO_ID', 'VIDEOJUEGO_ID'],
-      })
-        .then(result => res.json(result))
-        .catch(error => {
-          res.status(412).json({ msg: error.message });
-        });
-    })
+  app.route('/noticia/auth')
+    .all(app.auth.authenticate())
     /**
      * @api {delete} /user Deletes an authenticated user
      * @apiGroup User
@@ -43,8 +15,8 @@ module.exports = app => {
      *    HTTP/1.1 412 Precondition Failed
      */
     .delete((req, res) => {
-      if (req.user.rol == 1 /* Aqui se pone el id del rol que sera superadmin */) {
-        noticia.destroy({ where: { id: req.body.NOTICIA_ACTUALIZACION_ID } })
+      if (req.user.rol == 1 || req.user.rol == 2) {
+        noticia.destroy({ where: { NOTICIA_ACTUALIZACION_ID: req.body.NOTICIA_ACTUALIZACION_ID } })
           .then(result => res.sendStatus(204))
           .catch(error => {
             res.status(412).json({ msg: error.message });
@@ -86,7 +58,7 @@ module.exports = app => {
      *    HTTP/1.1 412 Precondition Failed
      */
     .post((req, res) => {
-      if (req.user.rol == 1 /* Aqui se pone el id del rol que sera superadmin */) {
+      if (req.user.rol == 1 || req.user.rol == 2) {
         noticia.create(req.body)
           .then(result => res.json(result))
           .catch(error => {
@@ -97,10 +69,58 @@ module.exports = app => {
       }
     });
 
-  app.route('/noticias')
-
+  app.route('/noticia')
+    /**
+        * @api {get} /user Return the authenticated user's data
+        * @apiGroup User
+        * @apiHeader {String} Authorization Token of authenticated user
+        * @apiHeaderExample {json} Header
+        *    {"Authorization": "JWT xyz.abc.123.hgf"}
+        * @apiSuccess {Number} id User id
+        * @apiSuccess {String} name User name
+        * @apiSuccess {String} email User email
+        * @apiSuccessExample {json} Success
+        *    HTTP/1.1 200 OK
+        *    {
+        *      "id": 1,
+        *      "name": "John Connor",
+        *      "email": "john@connor.net"
+        *    }
+        * @apiErrorExample {json} Find error
+        *    HTTP/1.1 412 Precondition Failed
+        */
     .get((req, res) => {
-      noticia.findAll()
+      noticia.findById(req.body.NOTICIA_ACTUALIZACION_ID)
+        .then(result => res.json(result))
+        .catch(error => {
+          res.status(412).json({ msg: error.message });
+        });
+    })
+
+  app.route('/noticias')
+    /**
+          * @api {get} /user Return the authenticated user's data
+          * @apiGroup User
+          * @apiHeader {String} Authorization Token of authenticated user
+          * @apiHeaderExample {json} Header
+          *    {"Authorization": "JWT xyz.abc.123.hgf"}
+          * @apiSuccess {Number} id User id
+          * @apiSuccess {String} name User name
+          * @apiSuccess {String} email User email
+          * @apiSuccessExample {json} Success
+          *    HTTP/1.1 200 OK
+          *    {
+          *      "id": 1,
+          *      "name": "John Connor",
+          *      "email": "john@connor.net"
+          *    }
+          * @apiErrorExample {json} Find error
+          *    HTTP/1.1 412 Precondition Failed
+          */
+    .get((req, res) => {
+      noticia.findAll({
+        where: {VIDEOJUEGO_ID: req.body.VIDEOJUEGO_ID}
+      })
         .then(result => res.json(result))
         .catch(err => res.status(404).json(err))
     });

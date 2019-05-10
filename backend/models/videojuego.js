@@ -13,7 +13,7 @@ module.exports = (sequelize, DataType) => {
       },
     },
     DESCRIPCION: {
-      type: DataType.STRING,
+      type: DataType.TEXT,
       allowNull: false,
       validate: {
         notEmpty: true,

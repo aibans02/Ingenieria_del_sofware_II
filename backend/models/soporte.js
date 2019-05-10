@@ -6,7 +6,7 @@ module.exports = (sequelize, DataType) => {
       autoIncrement: true,
     },
     DESCRIPCION_TEXTO: {
-      type: DataType.STRING,
+      type: DataType.TEXT,
       allowNull: false,
       validate: {
         notEmpty: true,
