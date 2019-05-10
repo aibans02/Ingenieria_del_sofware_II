@@ -1,19 +1,12 @@
-<mat-grid-list cols="12" rowHeight="50px">
-  <mat-grid-tile><button mat-icon-button color="accent">
-      <mat-icon>home</mat-icon>
-    </button></mat-grid-tile>
-  <mat-grid-tile><button mat-icon-button color="accent">
-      <mat-icon>home</mat-icon>
-    </button></mat-grid-tile>
-  <mat-grid-tile><button mat-icon-button color="accent">
-      <mat-icon>home</mat-icon>
-    </button></mat-grid-tile>
-  <mat-grid-tile><button mat-icon-button color="accent">
-      <mat-icon>home</mat-icon>
-    </button></mat-grid-tile>
-  <mat-grid-tile>
-    <button mat-icon-button color="accent" (click)="openDialog()">
+<div class="container" fxLayout>
+  <div fxFlex>
+    <button mat-icon-button color="accent">
+      <a routerLink="/index"><mat-icon>home</mat-icon></a>
+    </button>
+  </div>
+  <div fxFlex="20%" fxLayoutAlign="center">
+    <button mat-icon-button color="accent" (click)="openDialog()" >
       <mat-icon>account_circle</mat-icon>
     </button>
-  </mat-grid-tile>
-</mat-grid-list>
+  </div>
+</div>

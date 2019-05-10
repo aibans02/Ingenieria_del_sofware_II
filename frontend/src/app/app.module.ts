@@ -49,6 +49,7 @@ import {MatNativeDateModule} from '@angular/material';
 
 import {LogInDialog} from './header/header.component'
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     HeaderComponent,
     FooterComponent,
     LogInDialog,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
