@@ -1,12 +1,14 @@
 <div class="container" fxLayout>
   <div fxFlex>
-    <button mat-icon-button color="accent">
-      <a routerLink="/index"><mat-icon>home</mat-icon></a>
+    <button id="iHButton" mat-icon-button color="accent">
+      <a routerLink="/index"><img id="iHome" src="../../assets/img/favicon.png"></a>
     </button>
   </div>
   <div fxFlex="20%" fxLayoutAlign="center">
-    <button mat-icon-button color="accent" (click)="openDialog()" >
-      <mat-icon>account_circle</mat-icon>
-    </button>
+    <div fxLayout="column" fxLayoutAlign="center">
+      <button mat-icon-button color="accent" (click)="openDialog()" >
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
   </div>
 </div>
