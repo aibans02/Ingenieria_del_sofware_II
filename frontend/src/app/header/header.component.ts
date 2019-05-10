@@ -12,11 +12,7 @@ export class HeaderComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LogInDialog, {
-      minWidth: '300px',
-      width: '20%',
-      maxWidth: '450px',
-      minHeight: '350px',
-      height: 'auto',
+      width: '380px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
