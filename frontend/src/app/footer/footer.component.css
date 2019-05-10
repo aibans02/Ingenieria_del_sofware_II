@@ -1,0 +1,18 @@
+#footer {
+    border: 0px;
+    border-top: 10px;
+    border-style: solid;
+    border-color: lightgray;
+    padding-top: 30px;
+    width: 100%;
+}
+
+#grisFooter {
+    background-color: lightgray;
+    padding: 20px;
+}
+
+#designBy {
+    color:dimgray;
+    font-weight: bold;
+}
