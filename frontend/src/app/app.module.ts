@@ -10,6 +10,8 @@ import { ForumsComponent } from './forums/forums.component';
 import { GuidesComponent } from './guides/guides.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { IndexComponent } from './index/index.component';
+import { GameNavigatorComponent } from './game-navigator/game-navigator.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCheckboxModule} from '@angular/material';
@@ -49,7 +51,7 @@ import {MatNativeDateModule} from '@angular/material';
 
 import {LogInDialog} from './header/header.component'
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { IndexComponent } from './index/index.component';
+import { SupportComponent } from './support/support.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { IndexComponent } from './index/index.component';
     FooterComponent,
     LogInDialog,
     IndexComponent,
+    GameNavigatorComponent,
+    SupportComponent,
   ],
   imports: [
     BrowserModule,
