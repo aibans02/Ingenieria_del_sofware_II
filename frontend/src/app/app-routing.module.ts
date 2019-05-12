@@ -1,26 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GameComponent } from './game/game.component';
-import { IndexComponent } from './index/index.component';
-import { ForumsComponent } from './forums/forums.component';
-import { GuidesComponent } from './guides/guides.component';
-import { NewsUpdatesComponent } from './news-updates/news-updates.component';
-import { SupportComponent } from './support/support.component';
-import { GameNavigatorComponent } from './game-navigator/game-navigator.component';
+
+import { AdministrationComponent } from './administration/administration.component'
+import { AppIndexComponent } from './app-index/app-index.component';
+import { ConfigurationComponent } from './configuration/configuration.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/index', pathMatch: 'full'},
-  { path: 'index', component: IndexComponent },
-  { path: 'game', component: GameComponent },
-  { path: 'game-navigator', component: GameNavigatorComponent },
-  { path: 'suport', component: SupportComponent },
-  { path: 'news-updates', component: NewsUpdatesComponent },
-  { path: 'guides', component: GuidesComponent },
-  { path: 'forums', component: ForumsComponent },
+  { path: '', redirectTo: '/app-index', pathMatch: 'full' },
+  { path: 'administration', component: AdministrationComponent },
+  { path: 'app-index', component: AppIndexComponent },
+  { path: 'configuration', component: ConfigurationComponent },
+  
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { } 
+export class AppRoutingModule { }

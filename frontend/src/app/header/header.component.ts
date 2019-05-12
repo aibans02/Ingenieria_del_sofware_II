@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { LogInDialog } from './log-in.component'
+import { RegisterDialog } from './register.component'
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }
 
-  openDialog(): void {
+  openLogIn(): void {
     const dialogRef = this.dialog.open(LogInDialog, {
       width: '380px'
     });
@@ -20,21 +22,17 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  openRegister(): void {
+    const dialogRef = this.dialog.open(RegisterDialog, {
+      width: '450px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
-}
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'LogIn.html',
-})
-export class LogInDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<LogInDialog>) { }
-
-  onNoClick(): void {
-    this.dialogRef.close();
+  ngOnInit() {
   }
 
 }

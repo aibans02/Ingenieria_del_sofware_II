@@ -3,17 +3,21 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './register/register.component';
-import { GameComponent } from './game/game.component';
-import { NewsUpdatesComponent } from './news-updates/news-updates.component';
-import { ForumsComponent } from './forums/forums.component';
-import { GuidesComponent } from './guides/guides.component';
 import { HeaderComponent } from './header/header.component';
+import { AppIndexComponent } from './app-index/app-index.component';
+import { GameComponent } from './game/game.component';
+import { AdministrationComponent } from './administration/administration.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
 import { FooterComponent } from './footer/footer.component';
-import { IndexComponent } from './index/index.component';
-import { GameNavigatorComponent } from './game-navigator/game-navigator.component';
+import { LogInDialog } from './header/log-in.component';
+import { RegisterDialog } from './header/register.component';
+import { GameModule } from './game/game.module';
+import { PasswordRecoveryDialog } from './header/password-recovery.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 import {MatCheckboxModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
@@ -44,36 +48,35 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material';
-
-import {LogInDialog} from './header/header.component'
-import { FlexLayoutModule } from "@angular/flex-layout";
-import { SupportComponent } from './support/support.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import {MatTreeModule} from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent,
-    GameComponent,
-    NewsUpdatesComponent,
-    ForumsComponent,
-    GuidesComponent,
     HeaderComponent,
+    AppIndexComponent,
+    GameComponent,
+    AdministrationComponent,
+    ConfigurationComponent,
     FooterComponent,
     LogInDialog,
-    IndexComponent,
-    GameNavigatorComponent,
-    SupportComponent,
+    RegisterDialog,
+    PasswordRecoveryDialog,
   ],
   imports: [
-    BrowserModule,
+    MatTreeModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
-    MatCheckboxModule,
-    MatCheckboxModule,
+    BrowserModule,
+    FlexLayoutModule,
+    FormsModule,
+    GameModule,
+    HttpClientModule,
     MatButtonModule,
+    MatCheckboxModule,
     MatInputModule,
     MatAutocompleteModule,
     MatDatepickerModule,
@@ -102,17 +105,12 @@ import { SupportComponent } from './support/support.component';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    FlexLayoutModule,
+    ScrollingModule,
   ],
-  entryComponents: [LogInDialog],
+  entryComponents: [LogInDialog, RegisterDialog, PasswordRecoveryDialog, GameComponent],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, GameComponent]
 })
 export class AppModule { }

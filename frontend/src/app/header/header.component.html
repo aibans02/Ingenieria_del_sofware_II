@@ -1,12 +1,18 @@
+<div id="SepVer10"></div>
 <div class="container" fxLayout>
   <div fxFlex>
     <button id="iHButton" mat-icon-button color="accent">
-      <a routerLink="/index"><img id="iHome" src="../../assets/img/favicon.png"></a>
+      <a routerLink="/app-index"><img id="iHome" src="../../assets/img/logo.png"></a>
     </button>
   </div>
   <div fxFlex="20%" fxLayoutAlign="center">
     <div fxLayout="column" fxLayoutAlign="center">
-      <button mat-icon-button color="accent" (click)="openDialog()" >
+      <button mat-icon-button color="accent" (click)="openLogIn()" >
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center">
+      <button mat-icon-button color="accent" (click)="openRegister()" >
         <mat-icon>account_circle</mat-icon>
       </button>
     </div>

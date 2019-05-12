@@ -1,0 +1,27 @@
+#tree{
+    color: black;
+    text-decoration: none;
+
+}
+
+.navigatorPath{
+    height: 500px;
+}
+
+.gameNavigator{
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.leaf{
+    background-color: transparent;
+    color: black;
+}
+
+::-webkit-scrollbar { 
+    display: none;
+}
+

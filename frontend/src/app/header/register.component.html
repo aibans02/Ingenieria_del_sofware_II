@@ -1,0 +1,40 @@
+<div class="container" fxLayoutAlign="center">
+    <h5 mat-dialog-title>Introduce tus datos</h5>
+</div>
+<div id="SepVer15"></div>
+<div class="container" fxLayoutAlign="center">
+  <mat-form-field class="campoLogin" appearance="outline" style="width: 85%">
+    <mat-label>Introduzca su email</mat-label>
+    <input matInput placeholder="Introduzca su email" type="email" maxlength="80">
+  </mat-form-field>
+</div>
+<div id="SepVer10"></div>
+<div class="container" fxLayoutAlign="center">
+  <mat-form-field class="campoLogin" appearance="outline" style="width: 85%">
+    <mat-label>Introduzca un nombre de usuario</mat-label>
+    <input matInput placeholder="Introduzca un nombre de usuario" maxlength="20">
+  </mat-form-field>
+</div>
+<div id="SepVer10"></div>
+<div class="container" fxLayoutAlign="center">
+  <mat-form-field class="campoLogin" appearance="outline" style="width: 85%">
+    <mat-label>Introduzca una contraseña</mat-label>
+    <input matInput placeholder="Introduzca una contraseña" type="password" maxlength="20">
+  </mat-form-field>
+</div>
+<div id="SepVer10"></div>
+<div class="container" fxLayoutAlign="center">
+  <mat-form-field class="campoLogin" appearance="outline" style="width: 85%">
+    <mat-label>Repita la contraseña</mat-label>
+    <input matInput placeholder="Repita la contraseña" type="password" maxlength="20">
+  </mat-form-field>
+</div>
+<div id="SepVer10"></div>
+<div class="container" fxLayoutGap="10px">
+    <div fxFlex></div>
+    <div fxFlex="30%" fxLayoutAlign="end"><p><a id="logInRegister" href (click)="!!openLogIn()" mdDialogClose>Ya tengo una cuenta</a></p></div>
+</div>
+<div id="SepVer25"></div>
+<div class="container" fxLayoutAlign="center">
+    <button id="buttonLogReg" mat-raised-button matDialogClose>Resitrarse</button>
+</div>
