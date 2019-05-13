@@ -2,19 +2,155 @@
 <div class="container" fxLayout>
   <div fxFlex>
     <button id="iHButton" mat-icon-button color="accent">
-      <a routerLink="/app-index"><img id="iHome" src="../../assets/img/logo.png"></a>
+      <a routerLink=""><img id="iHome" src="../../assets/img/logo.png"></a>
     </button>
   </div>
   <div fxFlex="20%" fxLayoutAlign="center">
     <div fxLayout="column" fxLayoutAlign="center">
-      <button mat-icon-button color="accent" (click)="openLogIn()" >
-        <mat-icon>account_circle</mat-icon>
+      <p style="font-size: 12px;">Sin estar logueado</p>
+      <button mat-icon-button color="accent" [matMenuTriggerFor]="menuOut">
+        <mat-icon>
+          account_circle
+        </mat-icon>
       </button>
     </div>
     <div fxLayout="column" fxLayoutAlign="center">
-      <button mat-icon-button color="accent" (click)="openRegister()" >
-        <mat-icon>account_circle</mat-icon>
+      <p style="font-size: 12px;">Logueado como usuario normal</p>
+      <button mat-icon-button color="accent" [matMenuTriggerFor]="menuIn">
+        <mat-icon>
+          account_circle
+        </mat-icon>
+      </button>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center">
+      <p style="font-size: 12px;">Logueado como SU o Admin</p>
+      <button mat-icon-button color="accent" [matMenuTriggerFor]="menuInEsp">
+        <mat-icon>
+          account_circle
+        </mat-icon>
       </button>
     </div>
   </div>
 </div>
+
+<!-- Cuando esten configurados los registros de usuarios se configurará un solo menu 
+  y se cambiaran los hidden-div's segun si está registrado o no y que tipo de usuario sea -->
+
+<mat-menu #menuOut="matMenu">
+  <div>
+    <a routerLink="">
+      <button mat-menu-item>
+        <span>Pagina de inicio</span>
+      </button>
+    </a>
+  </div>
+  <div>
+    <button mat-menu-item (click)="openLogIn()">
+      <span>Iniciar Sesion</span>
+    </button>
+  </div>
+  <div>
+    <button mat-menu-item (click)="openRegister()">
+      <span>Registrarse</span>
+    </button>
+  </div>
+  <div hidden>
+    <a routerLink="/configuration">
+      <button mat-menu-item>
+        <span>Configuracion & Perfil</span>
+      </button>
+    </a>
+  </div>
+  <div hidden>
+    <button mat-menu-item>
+      <span>Administrador</span>
+    </button>
+  </div>
+  <div>
+    <a routerLink="">
+      <button mat-menu-item>
+        <span>Cerrar sesion</span>
+      </button>
+    </a>
+  </div>
+</mat-menu>
+
+<mat-menu #menuIn="matMenu">
+  <div>
+    <a routerLink="">
+      <button mat-menu-item>
+        <span>Pagina de inicio</span>
+      </button>
+    </a>
+  </div>
+  <div hidden>
+    <button mat-menu-item (click)="openLogIn()">
+      <span>Iniciar Sesion</span>
+    </button>
+  </div>
+  <div hidden>
+    <button mat-menu-item (click)="openRegister()">
+      <span>Registrarse</span>
+    </button>
+  </div>
+  <div>
+    <a routerLink="/configuration">
+      <button mat-menu-item>
+        <span>Configuracion & Perfil</span>
+      </button>
+    </a>
+  </div>
+  <div hidden>
+    <button mat-menu-item>
+      <span>Administrador</span>
+    </button>
+  </div>
+  <div>
+    <a routerLink="">
+      <button mat-menu-item>
+        <span>Cerrar sesion</span>
+      </button>
+    </a>
+  </div>
+</mat-menu>
+
+<mat-menu #menuInEsp="matMenu">
+  <div>
+    <a routerLink="">
+      <button mat-menu-item>
+        <span>Pagina de inicio</span>
+      </button>
+    </a>
+  </div>
+  <div hidden>
+    <button mat-menu-item (click)="openLogIn()">
+      <span>Iniciar Sesion</span>
+    </button>
+  </div>
+  <div hidden>
+    <button mat-menu-item (click)="openRegister()">
+      <span>Registrarse</span>
+    </button>
+  </div>
+  <div>
+    <a routerLink="/configuration">
+      <button mat-menu-item>
+        <span>Configuracion & Perfil</span>
+      </button>
+    </a>
+  </div>
+  <div>
+    <a routerLink="/administration">
+      <button mat-menu-item>
+        <span>Administrador</span>
+      </button>
+    </a>
+  </div>
+  <div>
+    <a routerLink="">
+      <button mat-menu-item>
+        <span>Cerrar sesion</span>
+      </button>
+    </a>
+  </div>
+</mat-menu>

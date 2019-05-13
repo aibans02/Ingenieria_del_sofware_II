@@ -111,7 +111,6 @@ const TREE_DATA: GameNode[] = [
   }, 
 ];
 
-/** Flat node with expandable and level information */
 interface FlatNode {
   expandable: boolean;
   name: string;
