@@ -1,13 +1,13 @@
-#iHome{
-    width: 50px;
-}
-
-#iHButton{
-    margin-left: 2%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
 #menu{
     text-decoration: none;
+}
+
+.logo{
+    width: 50px;
+    height: 50px;
+}
+
+.container{
+    background-color: rgb(1, 110, 160);
+    min-height: 70px;
 }

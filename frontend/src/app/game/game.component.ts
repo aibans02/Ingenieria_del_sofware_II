@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 
-interface GameNode {
+interface GameNode { 
   name: string;
   path: string;
   children?: GameNode[];
@@ -142,8 +142,11 @@ export class GameComponent {
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
+  showScrollbar:boolean;
+
   constructor() {
     this.dataSource.data = TREE_DATA;
+    this.showScrollbar = false;
   }
 
   hasChild = (_: number, node: FlatNode) => node.expandable;

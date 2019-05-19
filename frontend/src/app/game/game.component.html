@@ -1,26 +1,26 @@
 <div class="container" fxLayout>
-  <div class="navigatorPath" fxFlex="10%">
-
-      <cdk-virtual-scroll-viewport class="gameNavigator" itemSize="100">
-          <mat-tree class="leaf" [dataSource]="dataSource" [treeControl]="treeControl">
-              <mat-tree-node class="leaf" *matTreeNodeDef="let node" matTreeNodePadding>
-                <button mat-icon-button disabled></button>
-                <a id="tree" routerLink="/game/{{node.path}}">{{node.name}}</a>
-              </mat-tree-node>
-              <mat-tree-node class="leaf" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
-                <button mat-icon-button matTreeNodeToggle
-                        [attr.aria-label]="'toggle ' + node.name" (click)="tree.treeControl.collapseAll()">
-                  <mat-icon class="mat-icon-rtl-mirror">
-                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                  </mat-icon>
-                </button>
-                <a id="tree" routerLink="/{{node.path}}">{{node.name}}</a>
-              </mat-tree-node>
-            </mat-tree>
-      </cdk-virtual-scroll-viewport>
-      
-  </div>  
-  <div class="container" fxFlex fxLayoutAlign="center center">
-        <router-outlet></router-outlet>
+  <div [ngClass]="{'hiddenNavigatorPath': showScrollbar == false, 'visibleNavigatorPath': showScrollbar == true }" (mouseover)="showScrollbar=true" (mouseout)="showScrollbar=false">
+    
+    <cdk-virtual-scroll-viewport class="gameNavigator" itemSize="100">
+      <mat-tree class="leaf" [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node class="childLeaf" *matTreeNodeDef="let node" matTreeNodePadding>
+          <button mat-icon-button class="offButton"></button>
+          <a id="tree" routerLink="/game/{{node.path}}">{{node.name}}</a>
+        </mat-tree-node>
+        <mat-tree-node class="leaf" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+          <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name"
+            (click)="tree.treeControl.collapseAll()">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          <a id="tree" routerLink="/{{node.path}}">{{node.name}}</a>
+        </mat-tree-node>
+      </mat-tree>
+    </cdk-virtual-scroll-viewport>
+    
+  </div>
+  <div class="container" id="gameContent"fxFlex>
+    <router-outlet></router-outlet>
   </div>
 </div>

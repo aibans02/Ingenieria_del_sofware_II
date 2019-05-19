@@ -5,7 +5,7 @@ import { LogInDialog } from './log-in.component'
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
-    styleUrls: ['./header.component.css']
+    styleUrls: ['./register.component.css']
 })
 export class RegisterDialog implements OnInit {
 

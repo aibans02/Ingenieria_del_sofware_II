@@ -1,3 +1,13 @@
 * {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.header{
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.background{
+    background-image: url(../assets/img/background2.png);
+}
