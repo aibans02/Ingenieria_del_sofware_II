@@ -10,4 +10,9 @@
 
 .background{
     background-image: url(../assets/img/background2.png);
+    padding: 90px 0 50px;
+    min-height: 60%;
+}
+
+.bottom{
 }
