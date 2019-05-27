@@ -1,52 +1,51 @@
-<ngb-carousel *ngIf="images">
-  <ng-template ngbSlide>
-    <img [src]="images[0]" alt="Random first slide">
-    <div class="carousel-caption">
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+<section>
+  <div fxLayout="row">
+    <div fxFlex="20"></div>
+    <div fxFlex="60">
+
+      <ngb-carousel *ngIf="images">
+        <ng-template ngbSlide>
+          <img src="https://picsum.photos/900/500?random&t=0.10231651450449708" width=100% alt="Random first slide">
+          <div class="carousel-caption">
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <img src="https://picsum.photos/900/500?random&t=0.27510901741375293" width=100% alt="Random second slide">
+          <div class="carousel-caption">
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <img src="https://picsum.photos/900/500?random&t=0.17200618252598998" width=100% alt="Random third slide">
+          <div class="carousel-caption">
+            <h3>Third slide label</h3>
+            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+          </div>
+        </ng-template>
+      </ngb-carousel>
     </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <img [src]="images[1]" alt="Random second slide">
-    <div class="carousel-caption">
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <img [src]="images[2]" alt="Random third slide">
-    <div class="carousel-caption">
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </div>
-  </ng-template>
-</ngb-carousel>
-<div class="container" fxLayout>
-  <div fxFlex fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="130px">
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
+    <div fxFlex="20"></div>
   </div>
-  <div fxFlex fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="130px">
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
+</section>
+
+
+<!-- <div class="container" fxLayout>
+  <div fxFlex fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="130px">
+    <a *ngFor="let juego of juegos" routerLink="/game"><button mat-raised-button>{{juego.NOMBRE_JUEGO}}</button></a>
   </div>
-  <div fxFlex fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="130px">
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-    <a routerLink="/game"><button mat-raised-button>Juego</button></a>
-  </div>
-</div>
+</div> -->
+
+<section style="margin-top: 100px">
+  <mat-grid-list cols="3" rowHeight="3:1" gutterSize="20" (window:resize)="onResize($event)">
+    <mat-grid-tile *ngFor="let juego of juegos"><a routerLink="/game" style="text-decoration: none;">
+        <mat-card style="padding: 25px;">{{juego.NOMBRE_JUEGO}}</mat-card>
+      </a></mat-grid-tile>
+  </mat-grid-list>
+
+  <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap">
+    <div fxFlex.gt-xs="50%" fxFlex.gt-md="100" fxFlex.gt-lg="100" *ngFor="let juego of juegos">{{juego.NOMBRE_JUEGO}}</div>
+  </div> -->
+</section>
