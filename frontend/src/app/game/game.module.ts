@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 
 import { GameIndexComponent } from './game-index/game-index.component';
@@ -93,6 +94,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     MatNativeDateModule,
     ReactiveFormsModule,
     ScrollingModule,
+    NgbModule,
   ]
 })
 export class GameModule { }

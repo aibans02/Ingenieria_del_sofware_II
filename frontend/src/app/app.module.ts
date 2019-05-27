@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -108,6 +109,7 @@ import {MatTreeModule} from '@angular/material';
     MatNativeDateModule,
     ReactiveFormsModule,
     ScrollingModule,
+    NgbModule,
   ],
   entryComponents: [LogInDialog, RegisterDialog, PasswordRecoveryDialog, GameComponent],
   providers: [],
