@@ -8,21 +8,21 @@
   </div>
   <div fxFlex="20%" fxLayoutAlign="center">
     <div fxLayout="column" fxLayoutAlign="center">
-      <button mat-icon-button color="accent" [matMenuTriggerFor]="menuOut">
+      <button *ngIf="!token" mat-icon-button color="accent" [matMenuTriggerFor]="menuOut">
         <mat-icon>
           account_circle
         </mat-icon>
       </button>
     </div>
     <div fxLayout="column" fxLayoutAlign="center">
-      <button mat-icon-button color="accent" [matMenuTriggerFor]="menuIn">
+      <button *ngIf="token && !isAdmin()" mat-icon-button color="accent" [matMenuTriggerFor]="menuIn">
         <mat-icon>
           account_circle
         </mat-icon>
       </button>
     </div>
     <div fxLayout="column" fxLayoutAlign="center">
-      <button mat-icon-button color="accent" [matMenuTriggerFor]="menuInEsp">
+      <button *ngIf="token && isAdmin()" mat-icon-button color="accent" [matMenuTriggerFor]="menuInEsp">
         <mat-icon>
           account_circle
         </mat-icon>
@@ -32,17 +32,7 @@
 </div>
 
 
-<!-- Cuando esten configurados los registros de usuarios se configurará un solo menu 
-  y se cambiaran los hidden-div's segun si está registrado o no y que tipo de usuario sea -->
-
 <mat-menu class="menu" #menuOut="matMenu">
-  <div>
-    <a id="menu" routerLink="">
-      <button mat-menu-item>
-        <span>Pagina de inicio</span>
-      </button>
-    </a>
-  </div>
   <div>
     <button mat-menu-item (click)="openLogIn()">
       <span>Iniciar Sesion</span>
@@ -52,25 +42,6 @@
     <button mat-menu-item (click)="openRegister()">
       <span>Registrarse</span>
     </button>
-  </div>
-  <div hidden>
-    <a id="menu" routerLink="/configuration">
-      <button mat-menu-item>
-        <span>Configuracion & Perfil</span>
-      </button>
-    </a>
-  </div>
-  <div hidden>
-    <button mat-menu-item>
-      <span>Administrador</span>
-    </button>
-  </div>
-  <div>
-    <a id="menu" routerLink="">
-      <button mat-menu-item>
-        <span>Cerrar sesion</span>
-      </button>
-    </a>
   </div>
 </mat-menu>
 
@@ -82,16 +53,6 @@
       </button>
     </a>
   </div>
-  <div hidden>
-    <button mat-menu-item (click)="openLogIn()">
-      <span>Iniciar Sesion</span>
-    </button>
-  </div>
-  <div hidden>
-    <button mat-menu-item (click)="openRegister()">
-      <span>Registrarse</span>
-    </button>
-  </div>
   <div>
     <a id="menu" routerLink="/configuration">
       <button mat-menu-item>
@@ -99,14 +60,9 @@
       </button>
     </a>
   </div>
-  <div hidden>
-    <button mat-menu-item>
-      <span>Administrador</span>
-    </button>
-  </div>
   <div>
     <a id="menu" routerLink="">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="logOut()">
         <span>Cerrar sesion</span>
       </button>
     </a>
@@ -120,16 +76,6 @@
         <span>Pagina de inicio</span>
       </button>
     </a>
-  </div>
-  <div hidden>
-    <button mat-menu-item (click)="openLogIn()">
-      <span>Iniciar Sesion</span>
-    </button>
-  </div>
-  <div hidden>
-    <button mat-menu-item (click)="openRegister()">
-      <span>Registrarse</span>
-    </button>
   </div>
   <div>
     <a id="menu" routerLink="/configuration">
@@ -147,7 +93,7 @@
   </div>
   <div>
     <a id="menu" routerLink="">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="logOut()">
         <span>Cerrar sesion</span>
       </button>
     </a>

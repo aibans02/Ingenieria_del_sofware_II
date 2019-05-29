@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { LogInDialog } from './log-in.component'
-import { RegisterDialog } from './register.component'
+import { LogInDialog } from './log-in.component';
+import { RegisterDialog } from './register.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,37 @@ import { RegisterDialog } from './register.component'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  token = localStorage.getItem('token');
+
+  constructor(public dialog: MatDialog, private router: Router, ) { }
+
+  logOut() {
+    localStorage.removeItem('token');
+    this.token = localStorage.getItem('token');
+    this.router.navigate(["/app-index"]);
+  }
+
+  isAdmin() {
+    if (localStorage.getItem('token')) {
+      let result = false;
+
+      let aux = localStorage.getItem('token')
+      aux = aux.split(".")[1]
+      aux = JSON.parse(atob(aux));
+
+      switch (aux['rol']) {
+        case 1:
+        case 2:
+          result = true;
+          break;
+        case 3:
+          result = false;
+          break;
+      }
+      return result;
+    }
+  }
+
 
   openLogIn(): void {
     const dialogRef = this.dialog.open(LogInDialog, {
@@ -18,7 +49,8 @@ export class HeaderComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.token = localStorage.getItem('token');
+      this.router.navigate(["/app-index"]);
     });
   }
 
@@ -28,11 +60,13 @@ export class HeaderComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.token = localStorage.getItem('token');
+      this.router.navigate(["/app-index"]);
     });
   }
 
   ngOnInit() {
+
   }
 
 }

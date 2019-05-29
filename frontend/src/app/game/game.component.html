@@ -1,4 +1,4 @@
-<div class="container" fxLayout>
+<div class="container2" fxLayout>
   <div [ngClass]="{'hiddenNavigatorPath': showScrollbar == false, 'visibleNavigatorPath': showScrollbar == true }" (mouseover)="showScrollbar=true" (mouseout)="showScrollbar=false">
     
     <cdk-virtual-scroll-viewport class="gameNavigator" itemSize="100">
@@ -20,7 +20,7 @@
     </cdk-virtual-scroll-viewport>
     
   </div>
-  <div class="container" id="gameContent"fxFlex>
+  <div class="container2" id="gameContent"fxFlex>
     <router-outlet></router-outlet>
   </div>
 </div>

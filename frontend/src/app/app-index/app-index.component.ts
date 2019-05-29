@@ -21,7 +21,6 @@ export class AppIndexComponent implements OnInit {
     .toPromise()
     .then(response => {
       this.juegos = response.body;
-      console.log(this.images);
     })
     .catch(console.log);
 

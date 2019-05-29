@@ -1,27 +1,29 @@
-<div class="container" fxLayoutAlign="center">
+<div class="container2" fxLayoutAlign="center">
     <h5 mat-dialog-title>Introduce tus datos</h5>
 </div>
 <div id="SepVer15"></div>
-<div class="container" fxLayoutAlign="center">
-  <mat-form-field class="campoLogin" appearance="outline" style="width: 85%">
+<div class="container2" fxLayoutAlign="center">
+  <mat-form-field class="campoLogin" appearance="outline" style="width: 85%" >
     <mat-label>Email</mat-label>
-    <input matInput placeholder="Email" type="email" maxlength="80">
+    <input matInput placeholder="Email" type="email" maxlength="80" [formControl]="email">
+    <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
   </mat-form-field>
 </div>
 <div id="SepVer10"></div>
-<div class="container" fxLayoutAlign="center">
+<div class="container2" fxLayoutAlign="center">
   <mat-form-field class="campoLogin" appearance="outline" style="width: 85%">
     <mat-label>Contraseña</mat-label>
-    <input matInput placeholder="Contraseña" type="password" maxlength="20">
-    <mat-hint><a id="logInRegister" href (click)="!!openPasswordRecovery()">¿Has olvidado tu contraseña?</a></mat-hint>
+    <input matInput placeholder="Contraseña" type="password" maxlength="20" [formControl]="password">
+    <!-- <mat-hint><a id="logInRegister" href (click)="!!openPasswordRecovery()">¿Has olvidado tu contraseña?</a></mat-hint> -->
+    <mat-error *ngIf="password.invalid">Se require contraseña</mat-error>
   </mat-form-field>
 </div>
 <div id="SepVer20"></div>
-<div class="container" fxLayoutGap="10px">
-    <div fxFlex></div>
-    <div fxFlex="35%" fxLayoutAlign="end"><p id="logInRegister">¿Aun no tienes cuenta? <a id="logInRegister" href (click)="!!openRegister()">Registrate</a></p></div>
+<div class="container2" fxLayoutGap="5%">
+    <div fxFlexOffset="10%" fxFlex="50%"><a id="logInRegister" href (click)="!!openPasswordRecovery()">¿Has olvidado tu contraseña?</a></div>
+    <div fxFlex="50%"><a id="logInRegister" href (click)="!!openRegister()">¿Aun no tienes cuenta? Registrate</a></div>
 </div>
 <div id="SepVer15"></div>
-<div class="container" fxLayoutAlign="center">
-    <button id="buttonLogReg" mat-raised-button matDialogClose>Entrar</button>
+<div class="container2" fxLayoutAlign="center">
+    <button id="buttonLogReg" mat-raised-button [disabled]="email.invalid || password.invalid" (click)="logIn()">Entrar</button>
 </div>
