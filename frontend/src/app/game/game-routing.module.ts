@@ -9,8 +9,8 @@ import { SupportComponent } from './support/support.component';
 import { GameComponent } from './game.component';
 
 const routes: Routes = [
-  { path: 'game', component: GameComponent, children:[
-    { path: '', redirectTo: '/game/game-index', pathMatch: 'full' },
+  { path: ':id', component: GameComponent, children:[
+    { path: '', redirectTo: 'game-index', pathMatch: 'full' }, 
     { path: 'forums', component: ForumsComponent },
     { path: 'game-index', component: GameIndexComponent },
     { path: 'guides', component: GuidesComponent },
