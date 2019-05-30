@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   logOut() {
     localStorage.removeItem('token');
     this.token = localStorage.getItem('token');
-    this.router.navigate(["/app-index"]);
+    this.router.navigate(["/"]);
   }
 
   isAdmin() {
@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.token = localStorage.getItem('token');
-      this.router.navigate(["/app-index"]);
+      this.router.navigate(["/"]);
     });
   }
 
@@ -61,7 +61,7 @@ export class HeaderComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.token = localStorage.getItem('token');
-      this.router.navigate(["/app-index"]);
+      this.router.navigate(["/"]);
     });
   }
 
