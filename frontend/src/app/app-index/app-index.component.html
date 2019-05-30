@@ -40,8 +40,8 @@
 
 <section style="margin-top: 100px">
   <mat-grid-list cols="3" rowHeight="3:1" gutterSize="20" (window:resize)="onResize($event)">
-    <mat-grid-tile *ngFor="let juego of juegos"><a routerLink="/game" style="text-decoration: none;">
-        <mat-card style="padding: 25px;">{{juego.NOMBRE_JUEGO}}</mat-card>
+    <mat-grid-tile *ngFor="let juego of juegos"><a routerLink="/{{juego.VIDEOJUEGO_ID}}" style="text-decoration: none;">
+        <mat-card style="padding: 25px;">{{juego.VIDEOJUEGO_ID}}</mat-card>
       </a></mat-grid-tile>
   </mat-grid-list>
 
