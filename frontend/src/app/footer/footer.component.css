@@ -2,13 +2,14 @@
     border: 0px;
     border-top: 10px;
     border-style: solid;
-    border-color: lightgray;
+    border-color: rgb(1, 110, 160);
+    background-color:green;
     padding-top: 30px;
     width: 100%;
 }
 
 #grisFooter {
-    background-color: lightgray;
+    background-color: rgb(1, 110, 160);
     padding: 20px;
 }
 
