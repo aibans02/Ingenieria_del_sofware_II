@@ -38,31 +38,13 @@
   </div>
 </div> -->
 
-<section style="margin-top: 100px">
-  <mat-grid-list cols="3" rowHeight="3:1" gutterSize="20" (window:resize)="onResize($event)">
-    <mat-grid-tile *ngFor="let juego of juegos"><a routerLink="/{{juego.VIDEOJUEGO_ID}}" style="text-decoration: none;">
-        <mat-card style="padding: 25px;">{{juego.VIDEOJUEGO_ID}}</mat-card>
-      </a></mat-grid-tile>
-  </mat-grid-list>
-
   <ul id="grid-wrapper">
     <li class="ventana" *ngFor="let juego of juegos">
-      <div class="pieVentana">
-        <h1 class="titulo">{{juego.NOMBRE_JUEGO}}</h1>
-      </div>
-    </li>
-  </ul>
-
-  <ul id="grid-wrapper">
-    <li class="ventana">
-      <div class="pieVentana">
-        <h1 class="titulo">asdasdfgdsgrthg</h1>
-      </div>
-    </li>
-    <li class="ventana">
-      <div class="pieVentana">
-        <h1 class="titulo">asdasd fgdsgrthg</h1>
-      </div>
+      <a routerLink="/{{juego.VIDEOJUEGO_ID}}" style="text-decoration: none;">
+        <div class="pieVentana">
+          <h1 class="titulo">{{juego.NOMBRE_JUEGO}}</h1>
+        </div>
+      </a>
     </li>
   </ul>
 
