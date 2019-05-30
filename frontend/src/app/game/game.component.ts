@@ -9,7 +9,7 @@ interface GameNode {
   children?: GameNode[];
 }
 
-const TREE_DATA: GameNode[] = [];
+var TREE_DATA: GameNode[] = [];
 
 interface FlatNode {
   expandable: boolean;
@@ -46,7 +46,7 @@ export class GameComponent {
   showScrollbar:boolean;
 
   constructor(private httpClient: HttpClient) {
-
+    TREE_DATA=[];
     this.httpClient.get('http://localhost:3000/videojuegos', {
       observe: 'response'
     })
