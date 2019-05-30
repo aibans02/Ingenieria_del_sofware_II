@@ -98,9 +98,15 @@ module.exports = app => {
     */
     .get((req, res) => {
       foro.findAll({
-        include: [{ model: app.db.models.FORO, required: true }],
+        where: {
+          VIDEOJUEGO_ID: req.query.VIDEOJUEGO_ID,
+          SUBFORO_ID: null
+        },
+        include: [{ model: app.db.models.FORO }]
       })
-        .then(result => res.json(result))
+        .then(result => {
+          res.json(result)
+        })
         .catch(error => {
           res.status(412).json({ err: error.message });
         });

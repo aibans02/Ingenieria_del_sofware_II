@@ -22,8 +22,8 @@ module.exports = app => {
      * @apiErrorExample {json} Find error
      *    HTTP/1.1 412 Precondition Failed
      */
-    .get((req, res) => {
-      Videojuego.findById(req.body.VIDEOJUEGO_ID)
+    .get((req, res) => { 
+      Videojuego.findById(req.query.VIDEOJUEGO_ID)
         .then(result => res.json(result))
         .catch(error => {
           res.status(412).json({ msg: error.message });

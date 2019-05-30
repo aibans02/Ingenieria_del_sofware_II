@@ -46,7 +46,9 @@ export class GameComponent {
   showScrollbar:boolean;
 
   constructor(private httpClient: HttpClient) {
+    
     TREE_DATA=[];
+
     this.httpClient.get('http://localhost:3000/videojuegos', {
       observe: 'response'
     })
@@ -57,12 +59,12 @@ export class GameComponent {
       for (var [key, value] of Object.entries(res)) {
         let json = {
           name: value.NOMBRE_JUEGO,
-          path: 'game',
+          path: value.VIDEOJUEGO_ID,
           children: [
-            {name: 'Foro', path: 'forums'},
-            {name: 'Guias', path: 'guides'},
-            {name: 'Noticias - Actualizaciones', path: 'news-updates'},
-            {name: 'Soporte', path: 'support'},
+            {name: 'Foro', path: value.VIDEOJUEGO_ID+'/forums'},
+            {name: 'Guias', path: value.VIDEOJUEGO_ID+'/guides'},
+            {name: 'Noticias - Actualizaciones', path: value.VIDEOJUEGO_ID+'/news-updates'},
+            {name: 'Soporte', path: value.VIDEOJUEGO_ID+'/support'},
           ]
         }
         TREE_DATA.push(json)

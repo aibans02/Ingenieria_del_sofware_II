@@ -5,7 +5,7 @@
       <mat-tree class="leaf" [dataSource]="dataSource" [treeControl]="treeControl">
         <mat-tree-node class="childLeaf" *matTreeNodeDef="let node" matTreeNodePadding>
           <button mat-icon-button class="offButton"></button>
-          <a id="tree" routerLink="/game/{{node.path}}">{{node.name}}</a>
+          <a id="tree" routerLink="/{{node.path}}">{{node.name}}</a>
         </mat-tree-node>
         <mat-tree-node class="leaf" *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
           <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name"
