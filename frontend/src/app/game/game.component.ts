@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import {HttpClient} from  "@angular/common/http";
 
 interface GameNode { 
   name: string;
@@ -8,108 +9,7 @@ interface GameNode {
   children?: GameNode[];
 }
 
-const TREE_DATA: GameNode[] = [
-  {
-    name: 'Juego',
-    path: 'game',
-    children: [
-      {name: 'Foro', path: 'forums'},
-      {name: 'Guias', path: 'guides'},
-      {name: 'Noticias - Actualizaciones', path: 'news-updates'},
-      {name: 'Soporte', path: 'support'},
-    ]
-  }, {
-    name: 'Juego',
-    path: 'game',
-    children: [
-      {name: 'Foro', path: 'forums'},
-      {name: 'Guias', path: 'guides'},
-      {name: 'Noticias - Actualizaciones', path: 'news-updates'},
-      {name: 'Soporte', path: 'support'},
-    ]
-  }, {
-    name: 'Juego',
-    path: 'game',
-    children: [
-      {name: 'Foro', path: 'forums'},
-      {name: 'Guias', path: 'guides'},
-      {name: 'Noticias - Actualizaciones', path: 'news-updates'},
-      {name: 'Soporte', path: 'support'},
-    ]
-  }, {
-    name: 'Juego',
-    path: 'game',
-    children: [
-      {name: 'Foro', path: 'forums'},
-      {name: 'Guias', path: 'guides'},
-      {name: 'Noticias - Actualizaciones', path: 'news-updates'},
-      {name: 'Soporte', path: 'support'},
-    ]
-  }, {
-    name: 'Juego',
-    path: 'game',
-    children: [
-      {name: 'Foro', path: 'forums'},
-      {name: 'Guias', path: 'guides'},
-      {name: 'Noticias - Actualizaciones', path: 'news-updates'},
-      {name: 'Soporte', path: 'support'},
-    ]
-  }, {
-    name: 'Juego',
-    path: 'game',
-    children: [
-      {name: 'Foro', path: 'forums'},
-      {name: 'Guias', path: 'guides'},
-      {name: 'Noticias - Actualizaciones', path: 'news-updates'},
-      {name: 'Soporte', path: 'support'},
-    ]
-  }, {
-    name: 'Juego',
-    path: 'game',
-    children: [
-      {name: 'Foro', path: 'forums'},
-      {name: 'Guias', path: 'guides'},
-      {name: 'Noticias - Actualizaciones', path: 'news-updates'},
-      {name: 'Soporte', path: 'support'},
-    ]
-  }, {
-    name: 'Juego',
-    path: 'game',
-    children: [
-      {name: 'Foro', path: 'forums'},
-      {name: 'Guias', path: 'guides'},
-      {name: 'Noticias - Actualizaciones', path: 'news-updates'},
-      {name: 'Soporte', path: 'support'},
-    ]
-  }, {
-    name: 'Juego',
-    path: 'game',
-    children: [
-      {name: 'Foro', path: 'forums'},
-      {name: 'Guias', path: 'guides'},
-      {name: 'Noticias - Actualizaciones', path: 'news-updates'},
-      {name: 'Soporte', path: 'support'},
-    ]
-  }, {
-    name: 'Juego',
-    path: 'game',
-    children: [
-      {name: 'Foro', path: 'forums'},
-      {name: 'Guias', path: 'guides'},
-      {name: 'Noticias - Actualizaciones', path: 'news-updates'},
-      {name: 'Soporte', path: 'support'},
-    ]
-  }, {
-    name: 'Juego',
-    path: 'game',
-    children: [
-      {name: 'Foro', path: 'forums'},
-      {name: 'Guias', path: 'guides'},
-      {name: 'Noticias - Actualizaciones', path: 'news-updates'},
-      {name: 'Soporte', path: 'support'},
-    ]
-  }, 
-];
+const TREE_DATA: GameNode[] = [];
 
 interface FlatNode {
   expandable: boolean;
@@ -126,6 +26,7 @@ interface FlatNode {
 export class GameComponent {
 
   private transformer = (node: GameNode, level: number) => {
+    
     return {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
@@ -144,9 +45,34 @@ export class GameComponent {
 
   showScrollbar:boolean;
 
-  constructor() {
-    this.dataSource.data = TREE_DATA;
-    this.showScrollbar = false;
+  constructor(private httpClient: HttpClient) {
+
+    this.httpClient.get('http://localhost:3000/videojuegos', {
+      observe: 'response'
+    })
+    .toPromise()
+    .then(response => {
+      let res = response.body;
+     
+      for (var [key, value] of Object.entries(res)) {
+        let json = {
+          name: value.NOMBRE_JUEGO,
+          path: 'game',
+          children: [
+            {name: 'Foro', path: 'forums'},
+            {name: 'Guias', path: 'guides'},
+            {name: 'Noticias - Actualizaciones', path: 'news-updates'},
+            {name: 'Soporte', path: 'support'},
+          ]
+        }
+        TREE_DATA.push(json)
+      } 
+      this.dataSource.data = TREE_DATA;
+      this.showScrollbar = false;
+    })
+    .catch(console.log);
+
+    
   }
 
   hasChild = (_: number, node: FlatNode) => node.expandable;
