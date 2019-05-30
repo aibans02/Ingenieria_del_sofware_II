@@ -119,7 +119,7 @@ module.exports = app => {
           */
     .get((req, res) => {
       noticia.findAll({
-        where: {VIDEOJUEGO_ID: req.body.VIDEOJUEGO_ID}
+        where: {VIDEOJUEGO_ID: req.query.VIDEOJUEGO_ID}
       })
         .then(result => res.json(result))
         .catch(err => res.status(404).json(err))

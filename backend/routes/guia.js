@@ -111,7 +111,7 @@ module.exports = app => {
   app.route('/guias')
     .get((req, res) => {
       Guia.findAll({
-        where: { VIDEOJUEGO_ID: req.body.VIDEOJUEGO_ID },
+        where: { VIDEOJUEGO_ID: req.query.VIDEOJUEGO_ID },
         include: [{ model: User, attributes: ['NICK_USUARIO'] }]
       })
         .then(result => res.json(result))

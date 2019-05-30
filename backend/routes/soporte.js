@@ -26,7 +26,7 @@ module.exports = app => {
     .get((req, res) => {
       if (req.user.rol == 2) {
         Soporte.findAll({
-          where: { VIDEOJUEGO_ID: req.body.VIDEOJUEGO_ID },
+          where: { VIDEOJUEGO_ID: req.query.VIDEOJUEGO_ID },
           include: [{ model: User, attributes: ['NICK_USUARIO', 'EMAIL'] }]
         })
           .then(result => res.json(result))
@@ -36,7 +36,7 @@ module.exports = app => {
       } else if (req.user.rol == 3) {
         Soporte.findAll({
           where: {
-            VIDEOJUEGO_ID: req.body.VIDEOJUEGO_ID,
+            VIDEOJUEGO_ID: req.query.VIDEOJUEGO_ID,
             USUARIO_ID: req.user.id
           },
         })
