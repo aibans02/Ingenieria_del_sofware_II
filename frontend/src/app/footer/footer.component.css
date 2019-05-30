@@ -2,14 +2,14 @@
     border: 0px;
     border-top: 10px;
     border-style: solid;
-    border-color: rgb(1, 110, 160);
-    background-color:rgba(1, 110, 160, 0.781);
+    border-color: rgb(0, 79, 116);
+    background-color:rgba(1, 110, 160, 0.925);
     padding-top: 30px;
     width: 100%;
 }
 
 #grisFooter {
-    background-color: rgb(1, 110, 160);
+    background-color: rgb(0, 79, 116);
     padding: 20px;
 }
 
