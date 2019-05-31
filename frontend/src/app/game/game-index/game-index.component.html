@@ -1,5 +1,22 @@
 <div fxFlex fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="130px">
-  <img class="portada" src="../../../assets/img/onepiece.jpg">
+  <div fxFlex fxLayout="row" fxLayoutAlign="center center">
+    <mat-card fxFlexOffset="5" fxFlex="80" class="px-5"
+      style="box-shadow: 0px 0px 0px 0px transparent; background-color: transparent;">
+      <img class="px-5" mat-card-image src="../../../assets/img/onepiece.jpg" width="50%">
+      <mat-card-title class="mt-5">
+        <p class="display-4 text-center" style="color: black; font-weight: bold;">{{juego.NOMBRE_JUEGO}}</p>
+      </mat-card-title>
+      <mat-card-content class="my-5">
+        <p class="h4 text-center" style="color: black; font-weight: bold;">
+          {{juego.DESCRIPCION}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="text-center">
+        <ngb-rating max=5 class="h2" style="color: black; font-weight: bold;"></ngb-rating>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
   <ul id="grid-wrapper">
     <a routerLink="../forums" style="text-decoration: none;">
       <li class="ventana">
@@ -22,7 +39,7 @@
         </div>
       </li>
     </a>
-    <a routerLink="../support" style="text-decoration: none;">
+    <a *ngIf="token" routerLink="../support" style="text-decoration: none;">
       <li class="ventana">
         <div class="pieVentana">
           <h1 class="titulo">SOPORTE</h1>

@@ -11,6 +11,7 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 
 export class GameIndexComponent implements OnInit {
 
+  token = localStorage.getItem('token');
   id_juego: number;
   juego = {};
 
