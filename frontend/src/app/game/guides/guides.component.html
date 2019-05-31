@@ -1,1 +1,32 @@
-Guides page!!
+<div class="p-5">
+    <div class="container" fxLayout="column" fxLayoutGap="10px">
+        <div class="item item-4" fxFlex fxFlexOffset="50px" fxFlexOffset.xs="0">Item 4</div>
+        <div class="item item-5" fxFlex="200px">Item 5</div>
+        <p>
+            <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
+                [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                Toggle
+            </button>
+        </p>
+        <div id="collapseExample" [ngbCollapse]="isCollapsed">
+            <div class="card">
+                <div class="card-body">
+                    You can collapse this card by clicking Toggle
+                </div>
+            </div>
+        </div>
+        <p>
+            <button type="button" class="btn btn-outline-primary" (click)="isCollapsed2 = !isCollapsed2"
+                [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseExample2">
+                Toggle
+            </button>
+        </p>
+        <div id="collapseExample2" [ngbCollapse]="isCollapsed2">
+            <div class="card">
+                <div class="card-body">
+                    You can collapse this card by clicking Toggle
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

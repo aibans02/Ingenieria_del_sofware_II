@@ -1,7 +1,33 @@
 <div fxFlex fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="130px">
   <img class="portada" src="../../../assets/img/onepiece.jpg">
-  <a routerLink="../forums"><button mat-raised-button>Foro</button></a>
-  <a routerLink="../guides"><button mat-raised-button>Guias</button></a>
-  <a routerLink="../news-updates"><button mat-raised-button>Noticias - Actualizaciones</button></a>
-  <a routerLink="../support"><button mat-raised-button>Soporte</button></a>
+  <ul id="grid-wrapper">
+    <a routerLink="../forums" style="text-decoration: none;">
+      <li class="ventana">
+        <div class="pieVentana">
+          <h1 class="titulo">FORO</h1>
+        </div>
+      </li>
+    </a>
+    <a routerLink="../guides" style="text-decoration: none;">
+      <li class="ventana">
+        <div class="pieVentana">
+          <h1 class="titulo">GUIAS</h1>
+        </div>
+      </li>
+    </a>
+    <a routerLink="../news-updates" style="text-decoration: none;">
+      <li class="ventana">
+        <div class="pieVentana">
+          <h1 class="titulo">NOTICIAS & ACTUALIZACIONES</h1>
+        </div>
+      </li>
+    </a>
+    <a routerLink="../support" style="text-decoration: none;">
+      <li class="ventana">
+        <div class="pieVentana">
+          <h1 class="titulo">SOPORTE</h1>
+        </div>
+      </li>
+    </a>
+  </ul>
 </div>
