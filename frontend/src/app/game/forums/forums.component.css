@@ -1,5 +1,5 @@
 .ventana{
-    border-radius: 50px;
+    border-radius: 20px;
     width: 90%;
     background-color: rgba(0, 255, 213, 0.384);
     margin: 7% 10% 2%;
@@ -10,9 +10,9 @@
 }
 
 .ventana2{
-    border-radius: 40px;
+    border-radius: 20px;
     width: 80%;
-    background-color: rgba(0, 255, 213, 0.384);
+    background-color: rgba(64, 255, 223, 0.274);
     margin: 0 10% 2% 20%;
     padding: 0;
     box-shadow: 0 2px 10px black;
@@ -23,16 +23,17 @@
 .tituloVentana{
     background-color: rgba(0, 0, 0, 0.336);
     padding: 15px 0 8px;
+    text-transform: capitalize;
 }
 
 .contenidoVentana{
-    padding: 15px 15px 0 40px;
+    padding: 40px 25px 0 60px;
     text-align: justify;
     color: #000;
 }
 
 .contenidoVentana2{
-    padding: 15px 15px 15px 40px;
+    padding: 40px 25px 30px 60px;
     text-align: justify;
     color: #000;
 }
