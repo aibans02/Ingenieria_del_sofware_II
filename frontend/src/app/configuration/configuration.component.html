@@ -1,17 +1,21 @@
-<p>
-  configuration works!
-</p>
-<mat-card class="m-4">
-  <mat-card-header class="tituloVentana">
-    <div class="titulo">
-      <h1>asdasdasdasd</h1>
-    </div>
-  </mat-card-header>
-  <mat-card-content class="contenidoVentana">
-    <p>asdasdasd</p>
-  </mat-card-content>
-  <mat-card-actions class="px-5">
-    <p class="font-italic text-right" style="color: rgba(255, 255, 255, 0.719);">
-      asdasda</p>
-  </mat-card-actions>
-</mat-card>
+<div fxLayout="row">
+  <div fxFlex="40"></div>
+  <mat-card class="m-5" style="background-color: rgba(7, 0, 0, 0.603)" fxFlex="20">
+    <mat-card-title class="mb-5">
+      <p class="display-4 text-center" style="font-weight: bold;">Opciones</p>
+    </mat-card-title>
+    <mat-card-content class="align-center">
+      <p class="h3 mb-5 text-center">Cambiar datos</p>
+      <form style="width: 100%;">
+        <mat-form-field style="width: 100%;">
+          <input matInput placeholder="Favorite food" value="Sushi">
+        </mat-form-field>
+        <br>
+        <mat-form-field style="width: 100%;">
+          <textarea matInput placeholder="Leave a comment"></textarea>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+</div>

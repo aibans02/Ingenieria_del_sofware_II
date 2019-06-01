@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SupportComponent implements OnInit {
 
+  token = localStorage.getItem('token');
   id_juego: number;
   soporte = {}
 
