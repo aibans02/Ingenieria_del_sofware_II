@@ -1,4 +1,9 @@
 <div class="p-5">
+    <div fxLayout="row" fxLayoutAlign="end">
+        <button mat-fab type="button" class="btn btn-outline-primary" (click)="enviar()">
+            <i class="material-icons" *ngIf="!isCollapsed">add_circle_outline</i>
+        </button>
+    </div>
     <mat-card class="ventana" *ngFor="let guia of guias">
         <mat-card-header class="tituloVentana">
             <div class="titulo">

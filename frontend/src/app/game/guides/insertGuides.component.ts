@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 
 @Component({
@@ -9,12 +9,14 @@ import { MatDialog } from '@angular/material';
 })
 export class InsertGuidesDialog implements OnInit {
 
-    constructor(public dialog: MatDialog) { }
-
-    ngOnInit() {
+    constructor(private dialogRef: MatDialogRef<InsertGuidesDialog>) { 
+        dialogRef.disableClose = true;
     }
 
-    enviar() {
+    send() {
+        this.dialogRef.close();
+    }
 
+    ngOnInit() {
     }
 }

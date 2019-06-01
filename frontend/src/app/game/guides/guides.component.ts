@@ -20,7 +20,7 @@ export class GuidesComponent implements OnInit {
     return fecha;
   }
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient, private dialog: MatDialog) {
     
     this.id_juego = parseInt(this.route.parent.snapshot.paramMap.get("id"));
     
@@ -40,6 +40,12 @@ export class GuidesComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  enviar() {
+      const dialogRef = this.dialog.open(InsertGuidesDialog, {
+          width: '450px'
+      });
   }
 
 }

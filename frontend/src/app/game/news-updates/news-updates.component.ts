@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { InsertNewsUpdatesDialog } from './insertNews-updates.component';
 
 @Component({
@@ -20,7 +20,7 @@ export class NewsUpdatesComponent implements OnInit {
     return fecha;
   }
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient) { 
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient, private dialog: MatDialog) { 
     
     this.id_juego = parseInt(this.route.parent.snapshot.paramMap.get("id"));
     
@@ -40,6 +40,12 @@ export class NewsUpdatesComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  enviar() {
+      const dialogRef = this.dialog.open(InsertNewsUpdatesDialog, {
+          width: '450px'
+      });
   }
 
 }

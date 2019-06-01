@@ -14,8 +14,8 @@ export class ForumsComponent implements OnInit {
   id_juego: number;
   foro = {}
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
-
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient, private dialog: MatDialog) {
+    
     this.id_juego = parseInt(this.route.parent.snapshot.paramMap.get("id"));
     
     let params = new HttpParams();
@@ -34,6 +34,12 @@ export class ForumsComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  enviar() {
+      const dialogRef = this.dialog.open(InsertForoDialog, {
+          width: '450px'
+      });
   }
 
 }
