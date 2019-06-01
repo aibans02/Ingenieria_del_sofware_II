@@ -1,5 +1,6 @@
 module.exports = app => {
   const noticia = app.db.models.NOTICIA_ACTUALIZACION;
+  const User = app.db.models.USUARIO;
 
   app.route('/noticia/auth')
     .all(app.auth.authenticate())
@@ -119,7 +120,8 @@ module.exports = app => {
           */
     .get((req, res) => {
       noticia.findAll({
-        where: {VIDEOJUEGO_ID: req.query.VIDEOJUEGO_ID}
+        where: {VIDEOJUEGO_ID: req.query.VIDEOJUEGO_ID},
+        include: [{ model: User, attributes: ['NICK_USUARIO'] }]
       })
         .then(result => res.json(result))
         .catch(err => res.status(404).json(err))

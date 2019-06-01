@@ -14,6 +14,12 @@ export class NewsUpdatesComponent implements OnInit {
   id_juego: number;
   noticias = {}
 
+  formatearFecha(fecha){
+    fecha = fecha.substring(0,10)
+
+    return fecha;
+  }
+
   constructor(private route: ActivatedRoute, private httpClient: HttpClient) { 
     
     this.id_juego = parseInt(this.route.parent.snapshot.paramMap.get("id"));
@@ -28,7 +34,7 @@ export class NewsUpdatesComponent implements OnInit {
     .toPromise()
       .then(response => {
         this.noticias = response.body;
-        console.log(this.noticias)
+        console.log(response.body)
       })
       .catch(console.log);  
   }
