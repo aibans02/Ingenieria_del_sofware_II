@@ -1,49 +1,16 @@
 <div class="p-5">
-
-    <mat-card class="ventana">
+    <mat-card class="ventana" *ngFor="let guia of guias">
         <mat-card-header class="tituloVentana">
             <div class="titulo">
-                <h1>COMO CONSEGUIR UNA PENTA CON M.YI</h1>
+                <h1>{{guia.TITULO_ENTRADA}}</h1>
             </div>
         </mat-card-header>
         <mat-card-content class="contenidoVentana">
-            <p>
-                Suda de tu equipo y farmea todo lo que puedas, gankea solo si ves alguna linea facil de ganar mientras
-                esperas a tener uno o dos objetos,
-                despues busca otros jugadores enemigos aprieta la R y a continuación clica con el boton derecho sobre el
-                personaje que deseas exterminar.
-            </p>
+            <p>{{guia.DESCRIPCION_TEXTO}}</p>
         </mat-card-content>
+        <mat-card-actions class="px-5">
+            <p class="font-italic text-right" style="color: rgba(255, 255, 255, 0.719);">
+                {{guia.USUARIO.NICK_USUARIO}} - {{formatearFecha(guia.created_at)}}</p>
+        </mat-card-actions>
     </mat-card>
-    <mat-card class="ventana">
-        <mat-card-header class="tituloVentana">
-            <div class="titulo">
-                <h1>COMO CONSEGUIR UNA PENTA CON M.YI</h1>
-            </div>
-        </mat-card-header>
-        <mat-card-content class="contenidoVentana">
-            <p>
-                Suda de tu equipo y farmea todo lo que puedas, gankea solo si ves alguna linea facil de ganar mientras
-                esperas a tener uno o dos objetos,
-                despues busca otros jugadores enemigos aprieta la R y a continuación clica con el boton derecho sobre el
-                personaje que deseas exterminar.
-            </p>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="ventana">
-        <mat-card-header class="tituloVentana">
-            <div class="titulo">
-                <h1>COMO CONSEGUIR UNA PENTA CON M.YI</h1>
-            </div>
-        </mat-card-header>
-        <mat-card-content class="contenidoVentana">
-            <p>
-                Suda de tu equipo y farmea todo lo que puedas, gankea solo si ves alguna linea facil de ganar mientras
-                esperas a tener uno o dos objetos,
-                despues busca otros jugadores enemigos aprieta la R y a continuación clica con el boton derecho sobre el
-                personaje que deseas exterminar.
-            </p>
-        </mat-card-content>
-    </mat-card>
-
 </div>

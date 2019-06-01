@@ -12,6 +12,12 @@ export class GuidesComponent implements OnInit {
   id_juego: number;
   guias = {}
 
+  formatearFecha(fecha){
+    fecha = fecha.substring(0,10)
+
+    return fecha;
+  }
+
   constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
     
     this.id_juego = parseInt(this.route.parent.snapshot.paramMap.get("id"));
