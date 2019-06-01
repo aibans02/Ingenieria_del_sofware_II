@@ -6,7 +6,7 @@ module.exports = app => {
     const Foro = app.db.models.FORO;
     const Soporte = app.db.models.SOPORTE
   
-    app.route('/configuracion')
+    app.route('/administracion')
       .all(app.auth.authenticate())
       /**
        * @api {get} /user Return the authenticated user's data
