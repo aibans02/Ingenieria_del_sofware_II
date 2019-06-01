@@ -7,40 +7,45 @@ import { ForumsComponent } from './forums/forums.component';
 import { GuidesComponent } from './guides/guides.component';
 import { NewsUpdatesComponent } from './news-updates/news-updates.component';
 import { SupportComponent } from './support/support.component';
+import { InsertForoDialog } from './forums/insertForo.component';
+import { InsertGuidesDialog } from './guides/insertGuides.component';
+import { InsertNewsUpdatesDialog } from './news-updates/insertNews-updates.component';
 
 import { GameRoutingModule } from './game-routing.module';
-import { MatTreeModule, 
-  MatButtonModule, 
-  MatCheckboxModule, 
-  MatInputModule,  
-  MatAutocompleteModule,  
-  MatDatepickerModule,  
-  MatFormFieldModule,  
-  MatRadioModule,  
-  MatSelectModule,  
-  MatSliderModule,  
-  MatSlideToggleModule,  
-  MatMenuModule,  
-  MatSidenavModule,  
-  MatToolbarModule,  
-  MatListModule,  
-  MatGridListModule,  
-  MatCardModule,  
-  MatStepperModule,  
-  MatTabsModule,  
-  MatExpansionModule,  
-  MatButtonToggleModule,  
-  MatChipsModule,  
-  MatIconModule,  
-  MatProgressSpinnerModule,  
-  MatProgressBarModule,  
-  MatDialogModule,  
-  MatTooltipModule,  
-  MatSnackBarModule,  
-  MatTableModule,  
-  MatSortModule,  
-  MatPaginatorModule,  
-  MatNativeDateModule } from '@angular/material';
+import {
+  MatTreeModule,
+  MatButtonModule,
+  MatCheckboxModule,
+  MatInputModule,
+  MatAutocompleteModule,
+  MatDatepickerModule,
+  MatFormFieldModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatMenuModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatListModule,
+  MatGridListModule,
+  MatCardModule,
+  MatStepperModule,
+  MatTabsModule,
+  MatExpansionModule,
+  MatButtonToggleModule,
+  MatChipsModule,
+  MatIconModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
+  MatDialogModule,
+  MatTooltipModule,
+  MatSnackBarModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule,
+  MatNativeDateModule
+} from '@angular/material';
 import { AppRoutingModule } from '../app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,7 +55,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
-  declarations: [GameIndexComponent, ForumsComponent, GuidesComponent, NewsUpdatesComponent, SupportComponent],
+  declarations: [
+    GameIndexComponent, 
+    ForumsComponent, 
+    GuidesComponent, 
+    NewsUpdatesComponent, 
+    SupportComponent,
+    InsertForoDialog,
+    InsertGuidesDialog,
+    InsertNewsUpdatesDialog
+  ],
   imports: [
     CommonModule,
     GameRoutingModule,
@@ -95,6 +109,11 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     ReactiveFormsModule,
     ScrollingModule,
     NgbModule,
+  ],
+  entryComponents: [
+    InsertForoDialog,
+    InsertGuidesDialog,
+    InsertNewsUpdatesDialog
   ]
 })
 export class GameModule { }
