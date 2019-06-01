@@ -24,4 +24,8 @@ export class RegisterDialog implements OnInit {
 
     ngOnInit() {
     }
+
+    register() {
+        
+    }
 }

@@ -1,5 +1,5 @@
 <div class="container2" fxLayoutAlign="center">
-    <h5 mat-dialog-title>Introduce tus datos</h5>
+  <h5 mat-dialog-title>Introduce tus datos</h5>
 </div>
 <div id="SepVer15"></div>
 <div class="container2" fxLayoutAlign="center">
@@ -24,17 +24,19 @@
 </div>
 <div id="SepVer10"></div>
 <div class="container2" fxLayoutAlign="center">
-  <mat-form-field class="campoLogin" appearance="outline" style="width: 85%">
+  <mat-form-field class="campoLogin" appearance="outline" style="width: 85%" (keyup.enter)="register()">
     <mat-label>Repita la contraseña</mat-label>
     <input matInput placeholder="Repita la contraseña" type="password" maxlength="20">
   </mat-form-field>
 </div>
 <div id="SepVer10"></div>
 <div class="container2" fxLayoutGap="10px">
-    <div fxFlex></div>
-    <div fxFlex="30%" fxLayoutAlign="end"><p><a id="logInRegister" href (click)="!!openLogIn()" mdDialogClose>Ya tengo una cuenta</a></p></div>
+  <div fxFlex></div>
+  <div fxFlex="30%" fxLayoutAlign="end">
+    <p><a id="logInRegister" href (click)="!!openLogIn()" mdDialogClose>Ya tengo una cuenta</a></p>
+  </div>
 </div>
 <div id="SepVer25"></div>
 <div class="container2" fxLayoutAlign="center">
-    <button id="buttonLogReg" mat-raised-button matDialogClose>Resitrarse</button>
+  <button id="buttonLogReg" mat-raised-button matDialogClose (click)="register()">Resitrarse</button>
 </div>
