@@ -1,0 +1,13 @@
+#face{
+    font-size: 60px;
+}
+
+.ventana{
+    width: 50%;
+    background: rgba(0, 0, 0, 0.397);
+}
+
+.item{
+    height: 30px;
+    margin: 15px 25% 20px 1%;
+}

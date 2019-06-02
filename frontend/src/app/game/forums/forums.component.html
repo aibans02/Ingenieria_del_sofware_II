@@ -22,12 +22,18 @@
                         <p class="font-italic" id="user" style="color: rgba(255, 255, 255, 0.719);">
                             {{entrada.USUARIO.NICK_USUARIO}} - {{formatearFecha(entrada.created_at)}}</p>
                     </div>
-                    <div fxFlex="50%" fxLayoutAlign="end">
+                    <div fxFlex="40%" fxLayoutAlign="end">
                         <button mat-button type="button" class="btn btn-outline-primary"
                             (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
                             aria-controls="collapseExample">
                             <i class="material-icons" *ngIf="!isCollapsed">add</i>
                             <i class="material-icons" *ngIf="isCollapsed">remove</i>
+                        </button>
+                    </div>
+                    <div fxFlex="10%" fxLayoutAlign="end">
+                        <button mat-button type="button" class="btn btn-outline-primary"
+                            (click)="enviar()">
+                            <i class="material-icons">add_comment</i>
                         </button>
                     </div>
                 </div>
