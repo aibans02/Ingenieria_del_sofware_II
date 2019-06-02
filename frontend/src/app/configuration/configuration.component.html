@@ -4,15 +4,51 @@
 
 
     <mat-card class="ventana">
+      <div id="SepVer20"></div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <h4>CAMBIAR DATOS DE USUARIO</h4>
+      </div>
+      <div id="SepVer30"></div>
       <div fxLayout="row">
-        <mat-card-content fxLayout="column" fxFlex="80%">
-          <input matInput placeholder="Email" type="email" maxlength="80" [formControl]="email" class="item">
-          <input matInput placeholder="Email" type="email" maxlength="80" [formControl]="email" class="item">
-          <input matInput placeholder="Contraseña" type="password" maxlength="20" [formControl]="password" class="item">
+        <mat-card-content fxLayout="column" fxFlex="70%">
+          <div class="item"></div>
+          <mat-form-field class="item" appearance="outline">
+            <mat-label>Nombre de usuario</mat-label>
+            <input matInput placeholder="Nombre de usuario" maxlength="20">
+          </mat-form-field>
+          <div class="item"></div>
+          <mat-form-field class="item" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" maxlength="20">
+          </mat-form-field>
+          <mat-form-field class="item" appearance="outline">
+            <mat-label>Repita su email</mat-label>
+            <input matInput placeholder="Repita su email" maxlength="20">
+          </mat-form-field>
+          <div class="item"></div>
+          <mat-form-field class="item" appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput placeholder="Contraseña" maxlength="20">
+          </mat-form-field>
+          <mat-form-field class="item" appearance="outline">
+            <mat-label>Repita su contraseña</mat-label>
+            <input matInput placeholder="Repita su contraseña" maxlength="20">
+          </mat-form-field>
         </mat-card-content>
-        <mat-card-content fxLayout="column" fxFlex="20%">
-          <button id="buttonLogReg" mat-raised-button [disabled]="email1.invalid || email2.invalid" (click)="logIn()" class="item">
-            Cambiar
+        <mat-card-content fxLayout="column" fxLayoutAlign="start" fxFlex="30%">
+          <div class="item"></div>
+          <button id="buttonLogReg" mat-raised-button (click)="cambiar1()" class="item">
+            Cambiar nombre de usuario
+          </button>
+          <div class="item"></div>
+          <div class="item"></div>
+          <button id="buttonLogReg" mat-raised-button (click)="cambiar2()" class="item">
+            Cambiar email
+          </button>
+          <div class="item"></div>
+          <div class="item"></div>
+          <button id="buttonLogReg" mat-raised-button (click)="cambiar2()" class="item">
+            Cambiar contraseña
           </button>
         </mat-card-content>
       </div>

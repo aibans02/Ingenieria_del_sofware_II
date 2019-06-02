@@ -3,11 +3,12 @@
 }
 
 .ventana{
-    width: 50%;
+    width: 40%;
     background: rgba(0, 0, 0, 0.397);
 }
 
 .item{
-    height: 30px;
-    margin: 15px 25% 20px 1%;
+    height: 50px;
+    padding: 0;
+    margin: 15px 15% 20px 1%;
 }
