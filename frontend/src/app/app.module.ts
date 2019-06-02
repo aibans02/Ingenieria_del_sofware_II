@@ -15,6 +15,7 @@ import { RegisterDialog } from './header/register.component';
 import { GameModule } from './game/game.module';
 import { PasswordRecoveryDialog } from './header/password-recovery.component';
 import { DeleteDialog } from './administration/delete.component';
+import { InsertGameDialog } from './administration/insertGame.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from "@angular/flex-layout";
@@ -68,6 +69,7 @@ import {MatTreeModule} from '@angular/material';
     RegisterDialog,
     PasswordRecoveryDialog,
     DeleteDialog,
+    InsertGameDialog,
   ],
   imports: [
     MatTreeModule,
@@ -113,8 +115,18 @@ import {MatTreeModule} from '@angular/material';
     ScrollingModule,
     NgbModule,
   ],
-  entryComponents: [DeleteDialog, LogInDialog, RegisterDialog, PasswordRecoveryDialog, GameComponent],
+  entryComponents: [
+    DeleteDialog, 
+    LogInDialog, 
+    RegisterDialog, 
+    PasswordRecoveryDialog, 
+    GameComponent, 
+    InsertGameDialog
+  ],
   providers: [],
-  bootstrap: [AppComponent, GameComponent]
+  bootstrap: [
+    AppComponent, 
+    GameComponent
+  ]
 })
 export class AppModule { }

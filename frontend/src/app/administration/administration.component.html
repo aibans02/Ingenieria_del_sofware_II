@@ -20,19 +20,6 @@
 </mat-card>
 
 <div id="collapse1" [ngbCollapse]="!isCollapsed1">
-  <!--HACER QUE ESTE CARD SOLO SEA VISIBLE PARA SUPERUSUARIOS-->
-  <mat-card class="ventana3">
-    <mat-card-content class="contenidoVentana3">
-      <div fxFlex="5%" fxLayoutAlign="start center">
-        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="newSuperuser()">
-          <i class="material-icons" id="new">person_add</i>
-        </button>
-      </div>
-      <div fxFlex fxLayoutAlign="start center">
-        <p id="new"><strong>Añadir usuario</strong></p>
-      </div>
-    </mat-card-content>
-  </mat-card>
   <!--HACER QUE ESTA CARD SE REPITA POR CADA SUPERUSUARIO-->
   <mat-card class="ventana3" *ngFor="let superAdmin of usuariosSuper">
     <mat-card-content class="contenidoVentana3">
@@ -70,19 +57,6 @@
 </mat-card>
 
 <div id="collapse2" [ngbCollapse]="!isCollapsed2">
-  <!--HACER QUE ESTE CARD SOLO SEA VISIBLE PARA SUPERUSUARIOS-->
-  <mat-card class="ventana3">
-    <mat-card-content class="contenidoVentana3">
-      <div fxFlex="5%" fxLayoutAlign="start center">
-        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="newAdmin()">
-          <i class="material-icons" id="new">person_add</i>
-        </button>
-      </div>
-      <div fxFlex fxLayoutAlign="start center">
-        <p id="new"><strong>Añadir usuario</strong></p>
-      </div>
-    </mat-card-content>
-  </mat-card>
   <!--HACER QUE ESTA CARD SE REPITA POR CADA ADMINISTRADOR-->
   <mat-card class="ventana3" *ngFor="let admin of usuariosAdmin">
     <mat-card-content class="contenidoVentana3">
@@ -120,18 +94,6 @@
 </mat-card>
 
 <div id="collapse3" [ngbCollapse]="!isCollapsed3">
-  <mat-card class="ventana3">
-    <mat-card-content class="contenidoVentana3">
-      <div fxFlex="5%" fxLayoutAlign="start center">
-        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="newClient()">
-          <i class="material-icons" id="new">person_add</i>
-        </button>
-      </div>
-      <div fxFlex fxLayoutAlign="start center">
-        <p id="new"><strong>Añadir usuario</strong></p>
-      </div>
-    </mat-card-content>
-  </mat-card>
   <!--HACER QUE ESTA CARD SE REPITA POR CADA CLIENTE-->
   <mat-card class="ventana3" *ngFor="let user of usuariosNormal">
     <mat-card-content class="contenidoVentana3">
@@ -211,20 +173,6 @@
     </mat-card>
 
     <div id="collapse4" [ngbCollapse]="!isCollapsed4">
-      <mat-card class="ventana4">
-        <mat-card-content class="contenidoVentana4">
-          <div class="entrada4" fxLayout="row">
-            <div fxFlex="4%" fxLayoutAlign="start center">
-              <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="newForo()">
-                <i class="material-icons" id="new">add_comment</i>
-              </button>
-            </div>
-            <div fxFlex fxLayoutAlign="start center">
-              <p id="new"><strong>Añadir Publicacion</strong></p>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
       <!--HACER QUE ESTE DIV SE REPITA POR CADA FORO-->
       <div *ngFor="let foro of juego.FOROs">
         <mat-card class="ventana4">
@@ -282,20 +230,6 @@
         </mat-card>
 
         <div id="collapse777" [ngbCollapse]="!isCollapsed777">
-          <mat-card class="ventana5">
-            <mat-card-content class="contenidoVentana5">
-              <div class="entrada4" fxLayout="row">
-                <div fxFlex="4%" fxLayoutAlign="start center">
-                  <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="newSubforo()">
-                    <i class="material-icons" id="new">add_comment</i>
-                  </button>
-                </div>
-                <div fxFlex fxLayoutAlign="start center">
-                  <p id="new"><strong>Responder Publicacion</strong></p>
-                </div>
-              </div>
-            </mat-card-content>
-          </mat-card>
           <!--HACER QUE ESTA CARD SE REPITA POR CADA SUBFORO-->
           <mat-card class="ventana5" *ngFor="let subforo of foro.FOROs">
             <mat-card-content class="contenidoVentana5">
@@ -362,20 +296,6 @@
     </mat-card>
 
     <div id="collapse5" [ngbCollapse]="!isCollapsed5">
-      <mat-card class="ventana4">
-        <mat-card-content class="contenidoVentana4">
-          <div class="entrada4" fxLayout="row">
-            <div fxFlex="4%" fxLayoutAlign="start center">
-              <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="newGuide()">
-                <i class="material-icons" id="new">add_comment</i>
-              </button>
-            </div>
-            <div fxFlex fxLayoutAlign="start center">
-              <p id="new"><strong>Añadir Guia</strong></p>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
       <!--HACER QUE ESTA CARD SE REPITA POR CADA GUIA-->
       <mat-card class="ventana4" *ngFor="let guia of juego.GUIA">
         <mat-card-content class="contenidoVentana4">
@@ -440,20 +360,6 @@
     </mat-card>
 
     <div id="collapse6" [ngbCollapse]="!isCollapsed6">
-      <mat-card class="ventana4">
-        <mat-card-content class="contenidoVentana4">
-          <div class="entrada4" fxLayout="row">
-            <div fxFlex="4%" fxLayoutAlign="start center">
-              <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="newNewsUpdates()">
-                <i class="material-icons" id="new">add_comment</i>
-              </button>
-            </div>
-            <div fxFlex fxLayoutAlign="start center">
-              <p id="new"><strong>Añadir Noticia/Actucalizacion</strong></p>
-            </div>
-          </div>
-        </mat-card-content>
-      </mat-card>
       <!--HACER QUE ESTA CARD SE REPITA POR CADA NOTICIA/ACTUALIZACION-->
       <mat-card class="ventana4" *ngFor="let noticia of juego.NOTICIA_ACTUALIZACIONs">
         <mat-card-content class="contenidoVentana4">

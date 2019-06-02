@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DeleteDialog } from './delete.component';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { InsertGameDialog } from './insertGame.component';
 
 @Component({
   selector: 'app-administration',
@@ -177,11 +178,17 @@ export class AdministrationComponent implements OnInit {
   }
 
   newGame() {
-
+    const dialogRef = this.dialog.open(InsertGameDialog, {
+        width: '75%',
+        //data: { id_juego:  this.id_juego }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
   }
 
   newForo() {
-
+    
   }
 
   newSubforo() {
