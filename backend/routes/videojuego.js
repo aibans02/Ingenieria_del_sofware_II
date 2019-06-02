@@ -46,7 +46,7 @@ module.exports = app => {
      */
     .delete((req, res) => {
       if (req.user.rol == 1 /* Aqui se pone el id del rol que sera superadmin */) {
-        Videojuego.destroy({ where: { VIDEOJUEGO_ID: req.body.VIDEOJUEGO_ID } })
+        Videojuego.destroy({ where: { VIDEOJUEGO_ID: req.query.VIDEOJUEGO_ID } })
           .then(result => res.sendStatus(204))
           .catch(error => {
             res.status(412).json({ msg: error.message });

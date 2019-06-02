@@ -64,7 +64,7 @@ module.exports = app => {
      */
     .delete((req, res) => {
       if (req.user.rol == 2) {
-        Soporte.destroy({ where: { SOPORTE_ID: req.body.SOPORTE_ID } })
+        Soporte.destroy({ where: { SOPORTE_ID: req.query.SOPORTE_ID } })
           .then(result => res.sendStatus(204))
           .catch(error => {
             res.status(412).json({ err: error.message });

@@ -17,7 +17,7 @@ module.exports = app => {
      */
     .delete((req, res) => {
       if (req.user.rol == 1 || req.user.rol == 2) {
-        Guia.destroy({ where: { GUIA_ID: req.body.GUIA_ID } })
+        Guia.destroy({ where: { GUIA_ID: req.query.GUIA_ID } })
           .then(result => res.sendStatus(204))
           .catch(error => {
             res.status(412).json({ err: error.message });
@@ -25,7 +25,7 @@ module.exports = app => {
       } else if (req.user.rol == 3) {
         Guia.destroy({
           where: {
-            GUIA_ID: req.body.GUIA_ID,
+            GUIA_ID: req.query.GUIA_ID,
             USUARIO_ID: req.user.id
           }
         })
