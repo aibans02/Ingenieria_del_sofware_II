@@ -1,19 +1,25 @@
 <div fxLayout="row">
   <div fxFlex="40"></div>
   <mat-card class="m-5" style="background-color: rgba(7, 0, 0, 0.603)" fxFlex="20">
-    <mat-card-title class="mb-5">
-      <p class="display-4 text-center" style="font-weight: bold;">Opciones</p>
-    </mat-card-title>
     <mat-card-content class="align-center">
       <p class="h3 mb-5 text-center">Cambiar datos</p>
       <form style="width: 100%;">
         <mat-form-field style="width: 100%;">
-          <input matInput placeholder="Favorite food" value="Sushi">
+          <input matInput placeholder="Nick usuario"  [formControl]="nick">
         </mat-form-field>
         <br>
         <mat-form-field style="width: 100%;">
-          <textarea matInput placeholder="Leave a comment"></textarea>
+          <input matInput placeholder="Email"  [formControl]="email">
         </mat-form-field>
+        <br>
+        <mat-form-field style="width: 100%;">
+          <input matInput placeholder="Contraseña" type="password" [formControl]="password">
+        </mat-form-field>
+        <br>
+        <div fxLayoutAlign="center">
+          <button id="buttonLogReg" mat-raised-button [disabled]="email.invalid || password.invalid"
+            (click)="logIn()">Cambiar</button>
+        </div>
       </form>
     </mat-card-content>
 

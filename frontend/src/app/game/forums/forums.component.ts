@@ -14,10 +14,21 @@ export class ForumsComponent implements OnInit {
   id_juego: number;
   foro = {}
 
+  formatearFecha(fecha) {
+    fecha = fecha.substring(0, 10)
+
+    return fecha;
+  }
+
   constructor(private route: ActivatedRoute, private httpClient: HttpClient, private dialog: MatDialog) {
-    
+
     this.id_juego = parseInt(this.route.parent.snapshot.paramMap.get("id"));
+
     
+  }
+
+  ngOnInit() {
+    console.log("INSIDE ONINIT")
     let params = new HttpParams();
     params = params.append("VIDEOJUEGO_ID", this.id_juego.toString())
 
@@ -25,21 +36,21 @@ export class ForumsComponent implements OnInit {
       observe: 'response',
       params: params
     })
-    .toPromise()
+      .toPromise()
       .then(response => {
         this.foro = response.body;
-        console.log(this.foro)
       })
-      .catch(console.log);  
-   }
-
-  ngOnInit() {
+      .catch(console.log);
   }
 
   enviar() {
-      const dialogRef = this.dialog.open(InsertForoDialog, {
-          width: '75%'
-      });
+    const dialogRef = this.dialog.open(InsertForoDialog, {
+      width: '75%',
+      data: { id_juego:  this.id_juego }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
   }
 
 }

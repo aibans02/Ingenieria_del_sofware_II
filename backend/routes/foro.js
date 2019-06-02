@@ -102,7 +102,7 @@ module.exports = app => {
           VIDEOJUEGO_ID: req.query.VIDEOJUEGO_ID,
           SUBFORO_ID: null
         },
-        include: [{ model: app.db.models.FORO }]
+        include: [{ model: app.db.models.FORO, include: { model: app.db.models.USUARIO, attributes: ['NICK_USUARIO'] } }, { model: app.db.models.USUARIO, attributes: ['NICK_USUARIO'] }]
       })
         .then(result => {
           res.json(result)
