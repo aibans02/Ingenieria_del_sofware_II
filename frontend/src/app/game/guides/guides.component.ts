@@ -44,7 +44,7 @@ export class GuidesComponent implements OnInit {
 
   enviar() {
       const dialogRef = this.dialog.open(InsertGuidesDialog, {
-          width: '450px'
+          width: '75%'
       });
   }
 

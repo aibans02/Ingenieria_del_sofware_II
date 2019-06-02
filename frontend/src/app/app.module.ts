@@ -51,7 +51,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatNativeDateModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
-import { ScrollingModule } from '@angular/cdk/scrolling';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatTreeModule} from '@angular/material';
 
 @NgModule({
@@ -73,7 +73,7 @@ import {MatTreeModule} from '@angular/material';
     BrowserAnimationsModule,
     BrowserModule,
     FlexLayoutModule,
-    FormsModule,
+    FormsModule, 
     GameModule,
     HttpClientModule,
     MatButtonModule,

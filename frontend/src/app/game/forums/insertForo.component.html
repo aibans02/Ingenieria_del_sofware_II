@@ -1,6 +1,27 @@
-asdaasd
-asd
-asd
-asd
-asd
-<button mat-button type="button" class="btn btn-outline-primary" (click)="send()">sdf</button>
+<div fxLayout="row" fxLayoutAlign="end">
+    <button mat-mini-fab type="button" class="btn btn-outline-primary" (click)="close()">
+        <i class="material-icons" *ngIf="!isCollapsed">clear</i>
+    </button>
+</div>
+<div id="SepVer15"></div>
+<div class="container2" fxLayoutAlign="center">
+    <mat-form-field class="campo" appearance="outline">
+        <mat-label>Titulo de la entrada</mat-label>
+        <input matInput placeholder="Titulo de la entrada" type="text" maxlength="30">
+        <!--<mat-error *ngIf="email.invalid">hjk</mat-error>-->
+    </mat-form-field>
+</div>
+<div id="SepVer10"></div>
+<div class="container2" fxLayoutAlign="center">
+    <mat-form-field class="campo" appearance="outline" (keyup.enter)="logIn()">
+        <mat-label>Descripcion de la entrada</mat-label>
+        <textarea id="campo2" matInput matTextareaAutosize placeholder="Descripcion de la entrada" type="text" maxlength="800"></textarea>
+        <!--<mat-error *ngIf="password.invalid">Se require contraseña</mat-error>-->
+    </mat-form-field>
+</div>
+<div fxLayout="column">
+    <div fxLayout="row" fxFlex fxLayoutAlign="center">
+        <button id="buttonLogReg" mat-raised-button [disabled]="email.invalid || password.invalid"
+            (click)="send()">Publicar</button>
+    </div>
+</div>

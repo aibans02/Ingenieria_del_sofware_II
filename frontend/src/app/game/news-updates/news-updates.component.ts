@@ -44,7 +44,7 @@ export class NewsUpdatesComponent implements OnInit {
 
   enviar() {
       const dialogRef = this.dialog.open(InsertNewsUpdatesDialog, {
-          width: '450px'
+          width: '75%'
       });
   }
 

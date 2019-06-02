@@ -13,6 +13,10 @@ export class InsertNewsUpdatesDialog implements OnInit {
         dialogRef.disableClose = true;
     }
 
+    close() {
+        this.dialogRef.close();
+    }
+
     send() {
         this.dialogRef.close();
     }

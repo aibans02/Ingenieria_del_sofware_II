@@ -38,7 +38,7 @@ export class ForumsComponent implements OnInit {
 
   enviar() {
       const dialogRef = this.dialog.open(InsertForoDialog, {
-          width: '450px'
+          width: '75%'
       });
   }
 

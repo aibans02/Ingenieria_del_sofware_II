@@ -13,6 +13,10 @@ export class InsertForoDialog implements OnInit {
         dialogRef.disableClose = true;
     }
 
+    close() {
+        this.dialogRef.close();
+    }
+
     send() {
         this.dialogRef.close();
     }

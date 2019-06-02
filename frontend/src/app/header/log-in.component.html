@@ -1,8 +1,8 @@
-<div class="container2" fxLayoutAlign="center">
+<div fxLayoutAlign="center">
   <h5 mat-dialog-title>Introduce tus datos</h5>
 </div>
 <div id="SepVer15"></div>
-<div class="container2" fxLayoutAlign="center">
+<div fxLayoutAlign="center">
   <mat-form-field class="campoLogin" appearance="outline" style="width: 85%">
     <mat-label>Email</mat-label>
     <input matInput placeholder="Email" type="email" maxlength="80" [formControl]="email">
@@ -10,7 +10,7 @@
   </mat-form-field>
 </div>
 <div id="SepVer10"></div>
-<div class="container2" fxLayoutAlign="center">
+<div fxLayoutAlign="center">
   <mat-form-field class="campoLogin" appearance="outline" style="width: 85%" (keyup.enter)="logIn()">
     <mat-label>Contraseña</mat-label>
     <input matInput placeholder="Contraseña" type="password" maxlength="20" [formControl]="password">
@@ -19,13 +19,13 @@
   </mat-form-field>
 </div>
 <div id="SepVer20"></div>
-<div class="container2" fxLayoutGap="5%">
+<div fxLayoutGap="5%">
   <div fxFlexOffset="10%" fxFlex="50%"><a id="logInRegister" href (click)="!!openPasswordRecovery()">¿Has olvidado tu
       contraseña?</a></div>
   <div fxFlex="50%"><a id="logInRegister" href (click)="!!openRegister()">¿Aun no tienes cuenta? Registrate</a></div>
 </div>
 <div id="SepVer15"></div>
-<div class="container2" fxLayoutAlign="center">
+<div fxLayoutAlign="center">
   <button id="buttonLogReg" mat-raised-button [disabled]="email.invalid || password.invalid"
     (click)="logIn()">Entrar</button>
 </div>

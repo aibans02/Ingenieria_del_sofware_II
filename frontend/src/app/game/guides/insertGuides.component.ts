@@ -13,6 +13,10 @@ export class InsertGuidesDialog implements OnInit {
         dialogRef.disableClose = true;
     }
 
+    close() {
+        this.dialogRef.close();
+    }
+
     send() {
         this.dialogRef.close();
     }

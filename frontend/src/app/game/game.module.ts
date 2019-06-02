@@ -69,7 +69,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     CommonModule,
     GameRoutingModule,
     MatTreeModule,
-    AppRoutingModule,
+    AppRoutingModule, 
     BrowserAnimationsModule,
     BrowserModule,
     FlexLayoutModule,
