@@ -1,0 +1,468 @@
+<mat-card class="ventana">
+  <mat-card-content class="contenidoVentana">
+    <p>USUARIOS</p>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="ventana2" *ngIf="isSuperAdmin()">
+  <mat-card-content class="contenidoVentana2">
+    <div fxFlex="5%" fxLayoutAlign="start center">
+      <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="isCollapsed1 = !isCollapsed1"
+        [attr.aria-expanded]="!isCollapsed1" aria-controls="collapse1">
+        <i class="material-icons" *ngIf="!isCollapsed1">add</i>
+        <i class="material-icons" *ngIf="isCollapsed1">remove</i>
+      </button>
+    </div>
+    <div fxFlex fxLayoutAlign="start center">
+      <p>SUPERUSUARIOS</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div id="collapse1" [ngbCollapse]="!isCollapsed1">
+  <!--HACER QUE ESTA CARD SE REPITA POR CADA SUPERUSUARIO-->
+  <mat-card class="ventana3" *ngFor="let superAdmin of usuariosSuper">
+    <mat-card-content class="contenidoVentana3">
+      <div fxFlex="10%" fxLayoutAlign="start center">
+        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="superuserOptions(superAdmin.USUARIO_ID)">
+          <i class="material-icons">delete_forever</i>
+        </button>
+      </div>
+      <div fxFlex="30%" fxLayoutAlign="start center">
+        <p><strong>Nick: </strong>{{superAdmin.NICK_USUARIO}}</p>
+      </div>
+      <div fxFlex="30%" fxLayoutAlign="start center">
+        <p><strong>Email: </strong>{{superAdmin.EMAIL}}</p>
+      </div>
+      <div fxFlex="30%" fxLayoutAlign="start center">
+        <p><strong>Fecha de alta: </strong>{{formatearFecha(superAdmin.created_at)}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-card class="ventana2"  *ngIf="isSuperAdmin()">
+  <mat-card-content class="contenidoVentana2">
+    <div fxFlex="5%" fxLayoutAlign="start center">
+      <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="isCollapsed2 = !isCollapsed2"
+        [attr.aria-expanded]="!isCollapsed2" aria-controls="collapse2">
+        <i class="material-icons" *ngIf="!isCollapsed2">add</i>
+        <i class="material-icons" *ngIf="isCollapsed2">remove</i>
+      </button>
+    </div>
+    <div fxFlex fxLayoutAlign="start center">
+      <p>ADMINISTRADORES</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div id="collapse2" [ngbCollapse]="!isCollapsed2">
+  <!--HACER QUE ESTA CARD SE REPITA POR CADA ADMINISTRADOR-->
+  <mat-card class="ventana3" *ngFor="let admin of usuariosAdmin">
+    <mat-card-content class="contenidoVentana3">
+      <div fxFlex="10%" fxLayoutAlign="start center">
+        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="adminOptions(admin.USUARIO_ID)">
+          <i class="material-icons">delete_forever</i>
+        </button>
+      </div>
+      <div fxFlex="30%" fxLayoutAlign="start center">
+        <p><strong>Nick: </strong>{{admin.NICK_USUARIO}}</p>
+      </div>
+      <div fxFlex="30%" fxLayoutAlign="start center">
+        <p><strong>Email: </strong>{{admin.EMAIL}}</p>
+      </div>
+      <div fxFlex="30%" fxLayoutAlign="start center">
+        <p><strong>Fecha de alta: </strong>{{formatearFecha(admin.created_at)}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-card class="ventana2">
+  <mat-card-content class="contenidoVentana2">
+    <div fxFlex="5%" fxLayoutAlign="start center">
+      <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="isCollapsed3 = !isCollapsed3"
+        [attr.aria-expanded]="!isCollapsed3" aria-controls="collapse3">
+        <i class="material-icons" *ngIf="!isCollapsed3">add</i>
+        <i class="material-icons" *ngIf="isCollapsed3">remove</i>
+      </button>
+    </div>
+    <div fxFlex fxLayoutAlign="start center">
+      <p>CLIENTES</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div id="collapse3" [ngbCollapse]="!isCollapsed3">
+  <!--HACER QUE ESTA CARD SE REPITA POR CADA CLIENTE-->
+  <mat-card class="ventana3" *ngFor="let user of usuariosNormal">
+    <mat-card-content class="contenidoVentana3">
+      <div fxFlex="10%" fxLayoutAlign="start center">
+        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="clientOptions(user.USUARIO_ID)">
+          <i class="material-icons">delete_forever</i>
+        </button>
+      </div>
+      <div fxFlex="30%" fxLayoutAlign="start center">
+        <p><strong>Nick: </strong>{{user.NICK_USUARIO}}</p>
+      </div>
+      <div fxFlex="30%" fxLayoutAlign="start center">
+        <p><strong>Email: </strong>{{user.EMAIL}}</p>
+      </div>
+      <div fxFlex="30%" fxLayoutAlign="start center">
+        <p><strong>Fecha de alta: </strong>{{formatearFecha(user.created_at)}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-card class="ventana">
+  <mat-card-content class="contenidoVentana">
+    JUEGOS
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="ventana2">
+  <mat-card-content class="contenidoVentana2">
+    <div fxFlex="5%" fxLayoutAlign="start center">
+      <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="newGame()">
+        <i class="material-icons" id="new">fiber_new</i>
+      </button>
+    </div>
+    <div fxFlex fxLayoutAlign="start center">
+      <p id="new">Añadir Juego</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+<!--HACER QUE ESTE DIV SE REPITA POR CADA JUEGO-->
+<div *ngFor="let juego of juegos">
+  <mat-card class="ventana2">
+    <mat-card-content class="contenidoVentana2">
+      <div fxFlex="5%" fxLayoutAlign="start center">
+        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="isCollapsed666 = !isCollapsed666"
+          [attr.aria-expanded]="!isCollapsed666" aria-controls="collapse666">
+          <i class="material-icons" *ngIf="!isCollapsed666">add</i>
+          <i class="material-icons" *ngIf="isCollapsed666">remove</i>
+        </button>
+      </div>
+      <div fxFlex="5%" fxLayoutAlign="start center">
+        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="gameOptions(juego.VIDEOJUEGO_ID)">
+          <i class="material-icons">delete_forever</i>
+        </button>
+      </div>
+      <div fxFlex fxLayoutAlign="start center">
+        <p>{{juego.NOMBRE_JUEGO}}</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div id="collapse666" [ngbCollapse]="!isCollapsed666">
+
+    <mat-card class="ventana3">
+      <mat-card-content class="contenidoVentana3">
+        <div fxFlex="5%" fxLayoutAlign="start center">
+          <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="isCollapsed4 = !isCollapsed4"
+            [attr.aria-expanded]="!isCollapsed4" aria-controls="collapse4">
+            <i class="material-icons" *ngIf="!isCollapsed4">add</i>
+            <i class="material-icons" *ngIf="isCollapsed4">remove</i>
+          </button>
+        </div>
+        <div fxFlex fxLayoutAlign="start center">
+          <p>Foros</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div id="collapse4" [ngbCollapse]="!isCollapsed4">
+      <!--HACER QUE ESTE DIV SE REPITA POR CADA FORO-->
+      <div *ngFor="let foro of juego.FOROs">
+        <mat-card class="ventana4">
+          <mat-card-content class="contenidoVentana4">
+            <div class="entrada4" fxLayout="row">
+              <div fxFlex="4%" fxLayoutAlign="start center">
+                <button mat-icon-button type="button" class="btn btn-outline-primary"
+                  (click)="isCollapsed777 = !isCollapsed777" [attr.aria-expanded]="!isCollapsed777"
+                  aria-controls="collapse777">
+                  <i class="material-icons" *ngIf="!isCollapsed777">add</i>
+                  <i class="material-icons" *ngIf="isCollapsed777">remove</i>
+                </button>
+              </div>
+              <div fxFlex="4%" fxLayoutAlign="start center">
+                <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="foroOptions(foro.FORO_ID)">
+                  <i class="material-icons">delete_forever</i>
+                </button>
+              </div>
+              <div fxFlex="7%" fxLayoutAlign="end start">
+                <p><strong>Autor:</strong></p>
+              </div>
+              <div fxFlex="5%" fxLayoutAlign="end start"></div>
+              <div fxFlex="80%" fxLayoutAlign="start start">
+                <p>{{foro.USUARIO.NICK_USUARIO}}</p>
+              </div>
+            </div>
+            <div class="entrada4" fxLayout="row">
+              <div fxFlex="15%" fxLayoutAlign="end start">
+                <p><strong>Fecha:</strong></p>
+              </div>
+              <div fxFlex="5%" fxLayoutAlign="end start"></div>
+              <div fxFlex="80%" fxLayoutAlign="start start">
+                <p>{{formatearFecha(foro.created_at)}}</p>
+              </div>
+            </div>
+            <div class="entrada4" fxLayout="row">
+              <div fxFlex="15%" fxLayoutAlign="end start">
+                <p><strong>Titulo:</strong></p>
+              </div>
+              <div fxFlex="5%" fxLayoutAlign="end start"></div>
+              <div fxFlex="80%" fxLayoutAlign="start start">
+                <p>{{foro.TITULO_ENTRADA}}</p>
+              </div>
+            </div>
+            <div class="entrada4" fxLayout="row">
+              <div fxFlex="15%" fxLayoutAlign="end start">
+                <p><strong>Descripcion:</strong></p>
+              </div>
+              <div fxFlex="5%" fxLayoutAlign="end start"></div>
+              <div fxFlex="80%" fxLayoutAlign="start start">
+                <p>{{foro.DESCRIPCION_TEXTO}}</p>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <div id="collapse777" [ngbCollapse]="!isCollapsed777">
+          <!--HACER QUE ESTA CARD SE REPITA POR CADA SUBFORO-->
+          <mat-card class="ventana5" *ngFor="let subforo of foro.FOROs">
+            <mat-card-content class="contenidoVentana5">
+              <div class="entrada4" fxLayout="row">
+                <div fxFlex="8%" fxLayoutAlign="start center">
+                  <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="subForoOptions(subforo.FORO_ID)">
+                    <i class="material-icons">delete_forever</i>
+                  </button>
+                </div>
+                <div fxFlex="7%" fxLayoutAlign="end start">
+                  <p><strong>Autor:</strong></p>
+                </div>
+                <div fxFlex="5%" fxLayoutAlign="end start"></div>
+                <div fxFlex="80%" fxLayoutAlign="start start">
+                  <p>{{subforo.USUARIO.NICK_USUARIO}}</p>
+                </div>
+              </div>
+              <div class="entrada4" fxLayout="row">
+                <div fxFlex="15%" fxLayoutAlign="end start">
+                  <p><strong>Fecha:</strong></p>
+                </div>
+                <div fxFlex="5%" fxLayoutAlign="end start"></div>
+                <div fxFlex="80%" fxLayoutAlign="start start">
+                  <p>{{formatearFecha(subforo.created_at)}}</p>
+                </div>
+              </div>
+              <div class="entrada4" fxLayout="row">
+                <div fxFlex="15%" fxLayoutAlign="end start">
+                  <p><strong>Titulo:</strong></p>
+                </div>
+                <div fxFlex="5%" fxLayoutAlign="end start"></div>
+                <div fxFlex="80%" fxLayoutAlign="start start">
+                  <p>{{subforo.TITULO_ENTRADA}}</p>
+                </div>
+              </div>
+              <div class="entrada4" fxLayout="row">
+                <div fxFlex="15%" fxLayoutAlign="end start">
+                  <p><strong>Descripcion:</strong></p>
+                </div>
+                <div fxFlex="5%" fxLayoutAlign="end start"></div>
+                <div fxFlex="80%" fxLayoutAlign="start start">
+                  <p>{{subforo.DESCRIPCION_TEXTO}}</p>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+
+    <mat-card class="ventana3">
+      <mat-card-content class="contenidoVentana3">
+        <div fxFlex="5%" fxLayoutAlign="start center">
+          <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="isCollapsed5 = !isCollapsed5"
+            [attr.aria-expanded]="!isCollapsed5" aria-controls="collapse5">
+            <i class="material-icons" *ngIf="!isCollapsed5">add</i>
+            <i class="material-icons" *ngIf="isCollapsed5">remove</i>
+          </button>
+        </div>
+        <div fxFlex fxLayoutAlign="start center">
+          <p>Guias</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div id="collapse5" [ngbCollapse]="!isCollapsed5">
+      <!--HACER QUE ESTA CARD SE REPITA POR CADA GUIA-->
+      <mat-card class="ventana4" *ngFor="let guia of juego.GUIA">
+        <mat-card-content class="contenidoVentana4">
+          <div class="entrada4" fxLayout="row">
+            <div fxFlex="8%" fxLayoutAlign="start center">
+              <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="guidesOptions(guia.GUIA_ID)">
+                <i class="material-icons">delete_forever</i>
+              </button>
+            </div>
+            <div fxFlex="7%" fxLayoutAlign="end start">
+              <p><strong>Autor:</strong></p>
+            </div>
+            <div fxFlex="5%" fxLayoutAlign="end start"></div>
+            <div fxFlex="80%" fxLayoutAlign="start start">
+              <p>{{guia.USUARIO.NICK_USUARIO}}</p>
+            </div>
+          </div>
+          <div class="entrada4" fxLayout="row">
+            <div fxFlex="15%" fxLayoutAlign="end start">
+              <p><strong>Fecha:</strong></p>
+            </div>
+            <div fxFlex="5%" fxLayoutAlign="end start"></div>
+            <div fxFlex="80%" fxLayoutAlign="start start">
+              <p>{{formatearFecha(guia.created_at)}}</p>
+            </div>
+          </div>
+          <div class="entrada4" fxLayout="row">
+            <div fxFlex="15%" fxLayoutAlign="end start">
+              <p><strong>Titulo:</strong></p>
+            </div>
+            <div fxFlex="5%" fxLayoutAlign="end start"></div>
+            <div fxFlex="80%" fxLayoutAlign="start start">
+              <p>{{guia.TITULO_ENTRADA}}</p>
+            </div>
+          </div>
+          <div class="entrada4" fxLayout="row">
+            <div fxFlex="15%" fxLayoutAlign="end start">
+              <p><strong>Descripcion:</strong></p>
+            </div>
+            <div fxFlex="5%" fxLayoutAlign="end start"></div>
+            <div fxFlex="80%" fxLayoutAlign="start start">
+              <p>{{guia.DESCRIPCION_TEXTO}}</p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <mat-card class="ventana3">
+      <mat-card-content class="contenidoVentana3">
+        <div fxFlex="5%" fxLayoutAlign="start center">
+          <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="isCollapsed6 = !isCollapsed6"
+            [attr.aria-expanded]="!isCollapsed6" aria-controls="collapse6">
+            <i class="material-icons" *ngIf="!isCollapsed6">add</i>
+            <i class="material-icons" *ngIf="isCollapsed6">remove</i>
+          </button>
+        </div>
+        <div fxFlex fxLayoutAlign="start center">
+          <p>Noticias & Actualizaciones</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div id="collapse6" [ngbCollapse]="!isCollapsed6">
+      <!--HACER QUE ESTA CARD SE REPITA POR CADA NOTICIA/ACTUALIZACION-->
+      <mat-card class="ventana4" *ngFor="let noticia of juego.NOTICIA_ACTUALIZACIONs">
+        <mat-card-content class="contenidoVentana4">
+          <div class="entrada4" fxLayout="row">
+            <div fxFlex="8%" fxLayoutAlign="start center">
+              <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="newsUpdatesOptions(noticia.NOTICIA_ACTUALIZACION_ID)">
+                <i class="material-icons">delete_forever</i>
+              </button>
+            </div>
+            <div fxFlex="7%" fxLayoutAlign="end start">
+              <p><strong>Autor:</strong></p>
+            </div>
+            <div fxFlex="5%" fxLayoutAlign="end start"></div>
+            <div fxFlex="80%" fxLayoutAlign="start start">
+              <p>{{noticia.USUARIO.NICK_USUARIO}}</p>
+            </div>
+          </div>
+          <div class="entrada4" fxLayout="row">
+            <div fxFlex="15%" fxLayoutAlign="end start">
+              <p><strong>Fecha:</strong></p>
+            </div>
+            <div fxFlex="5%" fxLayoutAlign="end start"></div>
+            <div fxFlex="80%" fxLayoutAlign="start start">
+              <p>{{formatearFecha(noticia.created_at)}}</p>
+            </div>
+          </div>
+          <div class="entrada4" fxLayout="row">
+            <div fxFlex="15%" fxLayoutAlign="end start">
+              <p><strong>Titulo:</strong></p>
+            </div>
+            <div fxFlex="5%" fxLayoutAlign="end start"></div>
+            <div fxFlex="80%" fxLayoutAlign="start start">
+              <p>{{noticia.TITULO_ENTRADA}}</p>
+            </div>
+          </div>
+          <div class="entrada4" fxLayout="row">
+            <div fxFlex="15%" fxLayoutAlign="end start">
+              <p><strong>Descripcion:</strong></p>
+            </div>
+            <div fxFlex="5%" fxLayoutAlign="end start"></div>
+            <div fxFlex="80%" fxLayoutAlign="start start">
+              <p>{{noticia.DESCRIPCION_TEXTO}}</p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <mat-card class="ventana3">
+      <mat-card-content class="contenidoVentana3">
+        <div fxFlex="5%" fxLayoutAlign="start center">
+          <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="isCollapsed7 = !isCollapsed7"
+            [attr.aria-expanded]="!isCollapsed7" aria-controls="collapse7">
+            <i class="material-icons" *ngIf="!isCollapsed7">add</i>
+            <i class="material-icons" *ngIf="isCollapsed7">remove</i>
+          </button>
+        </div>
+        <div fxFlex fxLayoutAlign="start center">
+          <p>Soporte (tickets)</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <div id="collapse7" [ngbCollapse]="!isCollapsed7">
+      <!--HACER QUE ESTA CARD SE REPITA POR CADA HILO DE MENSAJES-->
+      <mat-card class="ventana4" *ngFor="let soporte of juego.SOPORTEs">
+        <mat-card-content class="contenidoVentana4">
+          <div class="entrada4" fxLayout="row">
+            <div fxFlex="8%" fxLayoutAlign="start center">
+              <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="supportOptions(soporte.SOPORTE_ID)">
+                <i class="material-icons">delete_forever</i>
+              </button>
+            </div>
+            <div fxFlex="7%" fxLayoutAlign="end start">
+              <p><strong>Autor:</strong></p>
+            </div>
+            <div fxFlex="5%" fxLayoutAlign="end start"></div>
+            <div fxFlex="80%" fxLayoutAlign="start start">
+              <p>{{soporte.USUARIO.NICK_USUARIO}}</p>
+            </div>
+          </div>
+          <div class="entrada4" fxLayout="row">
+            <div fxFlex="15%" fxLayoutAlign="end start">
+              <p><strong>Fecha:</strong></p>
+            </div>
+            <div fxFlex="5%" fxLayoutAlign="end start"></div>
+            <div fxFlex="80%" fxLayoutAlign="start start">
+              <p>{{formatearFecha(soporte.created_at)}}</p>
+            </div>
+          </div>
+          <div class="entrada4" fxLayout="row">
+            <div fxFlex="15%" fxLayoutAlign="end start">
+              <p><strong>Descripcion:</strong></p>
+            </div>
+            <div fxFlex="5%" fxLayoutAlign="end start"></div>
+            <div fxFlex="80%" fxLayoutAlign="start start">
+              <p>{{soporte.DESCRIPCION_TEXTO}}</p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+  </div>
+
+</div>

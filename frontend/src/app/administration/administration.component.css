@@ -1,0 +1,101 @@
+.ventana{
+    border-radius: 0;
+    width: 100%;
+    background-color: rgba(56, 56, 56, 0.90);
+    box-shadow: 0;
+    margin: 0;
+    padding: 30px 3%;
+    overflow: hidden;
+    text-align: left;
+}
+
+.contenidoVentana{
+    text-align: left;
+    font-size: 40px;
+    color: rgb(255, 255, 255);
+}
+
+.ventana2{
+    border-radius: 0;
+    width: 95%;
+    background-color: rgba(56, 56, 56, 0.80);
+    box-shadow: 0;
+    margin: 0 0 0 5%;
+    padding: 30px 3%;
+    overflow: hidden;
+    text-align: left;
+}
+
+.contenidoVentana2{
+    text-align: left;
+    font-size: 30px;
+    color: rgb(235, 235, 235);
+}
+
+.ventana3{
+    border-radius: 0;
+    width: 90%;
+    background-color: rgba(56, 56, 56, 0.70);
+    box-shadow: 0;
+    margin: 0 0 0 10%;
+    padding: 30px 3%;
+    overflow: hidden;
+    text-align: left;
+}
+
+.contenidoVentana3{
+    text-align: left;
+    font-size: 20px;
+    color: rgb(215, 215, 215);
+}
+
+.ventana4{
+    border-radius: 0;
+    width: 85%;
+    background-color: rgba(56, 56, 56, 0.60);
+    box-shadow: 0;
+    margin: 0 0 0 15%;
+    padding: 30px 3%;
+    overflow: hidden;
+    text-align: left;
+}
+
+.contenidoVentana4{
+    text-align: left;
+    font-size: 16px;
+    color: rgb(195, 195, 195);
+}
+
+.entrada4{
+    min-height: 45px;
+}
+
+.ventana5{
+    border-radius: 0;
+    width: 80%;
+    background-color: rgba(56, 56, 56, 0.50);
+    box-shadow: 0;
+    margin: 0 0 0 20%;
+    padding: 30px 3%;
+    overflow: hidden;
+    text-align: left;
+}
+
+.contenidoVentana5{
+    text-align: left;
+    font-size: 15px;
+    color: rgb(175, 175, 175);
+}
+
+.botones{
+    padding: 0 50px 5px;
+}
+
+p{
+    margin: 0;
+    padding: 0;
+}
+
+#new{
+    color: rgb(84, 225, 250);
+}

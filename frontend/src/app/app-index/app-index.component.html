@@ -1,0 +1,56 @@
+<section>
+  <div fxLayout="row">
+    <div fxFlex="20"></div>
+    <div fxFlex="60">
+
+      <ngb-carousel *ngIf="images">
+        <ng-template ngbSlide>
+          <img src="https://picsum.photos/900/500?random&t=0.10231651450449708" width=100% alt="Random first slide">
+          <div class="carousel-caption">
+            <h3>League of Legends</h3>
+            <p>El MOBA del momento</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <img src="https://picsum.photos/900/500?random&t=0.27510901741375293" width=100% alt="Random second slide">
+          <div class="carousel-caption">
+            <h3>YU-GI-OH Duel Links</h3>
+            <p>Lucha por convertirte en el Rey de los Juegos</p>
+          </div>
+        </ng-template>
+        <ng-template ngbSlide>
+          <img src="https://picsum.photos/900/500?random&t=0.17200618252598998" width=100% alt="Random third slide">
+          <div class="carousel-caption">
+            <h3>PRÓXIMAMENTE</h3>
+            <p>Un nuevo juego está por llegar</p>
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+    <div fxFlex="20"></div>
+  </div>
+</section>
+
+
+<!-- <div class="container" fxLayout>
+  <div fxFlex fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="130px">
+    <a *ngFor="let juego of juegos" routerLink="/game"><button mat-raised-button>{{juego.NOMBRE_JUEGO}}</button></a>
+  </div>
+</div> -->
+
+<section style="margin-top: 100px">
+
+  <ul id="grid-wrapper">
+    <li class="ventana" *ngFor="let juego of juegos">
+      <a routerLink="/{{juego.VIDEOJUEGO_ID}}" style="text-decoration: none;">
+        <div class="pieVentana">
+          <h1 class="titulo">{{juego.NOMBRE_JUEGO}}</h1>
+        </div>
+      </a>
+    </li>
+  </ul>
+
+  <!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap">
+    <div fxFlex.gt-xs="50%" fxFlex.gt-md="100" fxFlex.gt-lg="100" *ngFor="let juego of juegos">{{juego.NOMBRE_JUEGO}}</div>
+  </div> -->
+</section>

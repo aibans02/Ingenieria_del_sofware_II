@@ -1,0 +1,38 @@
+#grid-wrapper{
+    width: 100%;
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+
+.ventana{
+    position: relative;
+    display: inline-block;
+    width: 399px;
+    height: 430px;
+    background-image: url(../../assets/img/ventana.png);
+    margin: 30px 5%;
+    border-radius: 2px;
+    box-shadow: 0 2px 10px black;
+    overflow: hidden;
+    text-align: center;
+}
+
+.pieVentana{
+    border-radius: 17px;
+    width: auto;
+    height: auto;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.74);
+}
+
+.titulo{
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-size: 26px;
+    font-family: monospace;
+    padding: 8px 15px 0;
+}

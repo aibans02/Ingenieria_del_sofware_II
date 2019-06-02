@@ -1,0 +1,9 @@
+.campo{
+    width: 90%;
+}
+
+#campo2{
+    min-height: 200px;
+    max-height: 500px;
+    display: block;
+}

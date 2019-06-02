@@ -1,0 +1,83 @@
+<div *ngIf="token">
+
+  <div fxLayout="row" fxFlex fxLayoutAlign="center center">
+
+
+    <mat-card class="ventana">
+      
+      <div id="SepVer20"></div>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <h4>CAMBIAR DATOS DE USUARIO</h4>
+      </div>
+
+      <div id="SepVer30"></div>
+
+      <div fxLayout="row">
+        <mat-card-content fxLayout="column" fxFlex="70%">
+          <mat-form-field class="item" appearance="outline">
+            <mat-label>Nombre de usuario</mat-label>
+            <input matInput placeholder="Nombre de usuario" maxlength="20" [formControl]="nick">
+          </mat-form-field>
+          <div class="item"></div>
+          <mat-form-field class="item" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" maxlength="20" [formControl]="email">
+          </mat-form-field>
+          <div class="item"></div>
+          <mat-form-field class="item" appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput placeholder="Contraseña" maxlength="20" [formControl]="password">
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-content fxLayout="column" fxLayoutAlign="start" fxFlex="30%">
+          <button id="buttonLogReg" mat-raised-button (click)="cambiarNombre()" class="item" [disabled]="nick.invalid">
+            Cambiar nombre de usuario
+          </button>
+          <div class="item"></div>
+          <button id="buttonLogReg" mat-raised-button (click)="cambiarEmail()" class="item" [disabled]="email.invalid">
+            Cambiar email
+          </button>
+          <div class="item"></div>
+          <button id="buttonLogReg" mat-raised-button (click)="cambiarPassword()" class="item" [disabled]="password.invalid">
+            Cambiar contraseña
+          </button>
+        </mat-card-content>
+      </div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <h4>ELIMINAR CUENTA</h4>
+      </div>
+      <div id="SepVer30"></div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+          <button id="buttonLogReg" mat-raised-button (click)="eliminar()">
+            Eliminar cuenta
+          </button>
+      </div>
+      <div class="item"></div>
+    </mat-card>
+
+  </div>
+
+</div>
+
+
+<div fxLayout="column" fxLayoutAlign="center center" fxFlex *ngIf="!token">
+
+  <div id="SepVer60"></div>
+  <div fxLayout="row" FxLayoutAlign="center center" fxFlex="100%">
+    <h2>UPS!! PARECE QUE ALGUIEN QUIERE PASARSE DE LISTO</h2>
+  </div>
+  <div fxLayout="row" FxLayoutAlign="center center" fxFlex="100%">
+    <h2><i id="face" class="material-icons">sentiment_very_dissatisfied</i></h2>
+  </div>
+  <div id="SepVer60"></div>
+  <div fxLayout="row" FxLayoutAlign="center center" fxFlex="100%">
+    <h2>¡ LOGUEATE PARA ACCEDER A ESTA VISTA !</h2>
+  </div>
+  <div fxLayout="row" FxLayoutAlign="center center" fxFlex="100%">
+    <h2><i id="face" class="material-icons">sentiment_very_satisfied</i></h2>
+  </div>
+
+</div>

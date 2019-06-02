@@ -1,0 +1,101 @@
+<div fxLayout style=" background-color: rgb(1, 110, 160); min-height: 70px;">
+  <div fxFlex>
+    <div fxFlex fxLayout="column" fxLayoutAlign="center" fxFlexOffset="50px">
+      <button class="logo" mat-icon-button>
+        <a routerLink=""><img class="logo" src="../../assets/img/logo.png"></a>
+      </button>
+    </div>
+  </div>
+  <div fxFlex="20%" fxLayoutAlign="center">
+    <div fxLayout="column" fxLayoutAlign="center">
+      <button *ngIf="!token" mat-icon-button color="accent" [matMenuTriggerFor]="menuOut">
+        <mat-icon>
+          account_circle
+        </mat-icon>
+      </button>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center">
+      <button *ngIf="token && !isAdmin()" mat-icon-button color="accent" [matMenuTriggerFor]="menuIn">
+        <mat-icon>
+          account_circle
+        </mat-icon>
+      </button>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center">
+      <button *ngIf="token && isAdmin()" mat-icon-button color="accent" [matMenuTriggerFor]="menuInEsp">
+        <mat-icon>
+          account_circle
+        </mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<mat-menu class="menu" #menuOut="matMenu">
+  <div>
+    <button mat-menu-item (click)="openLogIn()">
+      <span>Iniciar Sesion</span>
+    </button>
+  </div>
+  <div>
+    <button mat-menu-item (click)="openRegister()">
+      <span>Registrarse</span>
+    </button>
+  </div>
+</mat-menu>
+
+<mat-menu #menuIn="matMenu">
+  <div>
+    <a id="menu" routerLink="">
+      <button mat-menu-item>
+        <span>Pagina de inicio</span>
+      </button>
+    </a>
+  </div>
+  <div>
+    <a id="menu" routerLink="/configuration">
+      <button mat-menu-item>
+        <span>Perfil</span>
+      </button>
+    </a>
+  </div>
+  <div>
+    <a id="menu" routerLink="">
+      <button mat-menu-item (click)="logOut()">
+        <span>Cerrar sesion</span>
+      </button>
+    </a>
+  </div>
+</mat-menu>
+
+<mat-menu #menuInEsp="matMenu">
+  <div>
+    <a id="menu" routerLink="">
+      <button mat-menu-item>
+        <span>Pagina de inicio</span>
+      </button>
+    </a>
+  </div>
+  <div>
+    <a id="menu" routerLink="/configuration">
+      <button mat-menu-item>
+        <span>Perfil</span>
+      </button>
+    </a>
+  </div>
+  <div>
+    <a id="menu" routerLink="/administration">
+      <button mat-menu-item>
+        <span>Administrador</span>
+      </button>
+    </a>
+  </div>
+  <div>
+    <a id="menu" routerLink="">
+      <button mat-menu-item (click)="logOut()">
+        <span>Cerrar sesion</span>
+      </button>
+    </a>
+  </div>
+</mat-menu>

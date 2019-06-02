@@ -1,0 +1,43 @@
+.ventana{
+    border-radius: 20px;
+    width: 90%;
+    background-color: rgba(202, 0, 0, 0.664);
+    margin: 7% 10% 2%;
+    padding: 0;
+    box-shadow: 0 2px 10px black;
+    overflow: hidden;
+    text-align: left;
+}
+
+.tituloVentana{
+    background-color: rgba(0, 0, 0, 0.336);
+    padding: 15px 0 8px;
+    text-transform: capitalize;
+}
+
+.contenidoVentana{
+    padding: 40px 25px 30px 60px;
+    text-align: justify;
+    color: rgb(255, 255, 255);
+}
+
+.botonesVentana{
+    padding: 0 50px 5px;
+    text-align: end;
+}
+
+.titulo{
+    position: relative;
+    text-align: left;
+    color: #fff;
+    font-size: 26px;
+    font-family: monospace;
+}
+
+h1{
+    font-size: 26px;
+}
+
+#add{
+    padding-left: 10px;
+}

@@ -1,0 +1,82 @@
+.portada{
+    display: block;
+    max-width: 80%;
+}
+
+#grid-wrapper{
+    width: 100%;
+    margin: 0 auto 20px auto;
+    text-align: center;
+}
+
+.ventana1{
+    border-radius: 50px;
+    position: relative;
+    display: inline-block;
+    width: 320px;
+    height: 320px;
+    background-image: url(../../../assets/img/forums.png);
+    margin: 7% 10%;
+    box-shadow: 0 2px 10px black;
+    overflow: hidden;
+    text-align: center;
+}
+
+.ventana2{
+    border-radius: 50px;
+    position: relative;
+    display: inline-block;
+    width: 320px;
+    height: 320px;
+    background-image: url(../../../assets/img/guides.png);
+    margin: 7% 10%;
+    box-shadow: 0 2px 10px black;
+    overflow: hidden;
+    text-align: center;
+}
+
+.ventana3{
+    border-radius: 50px;
+    position: relative;
+    display: inline-block;
+    width: 320px;
+    height: 320px;
+    background-image: url(../../../assets/img/news&updates.png);
+    margin: 7% 10%;
+    box-shadow: 0 2px 10px black;
+    overflow: hidden;
+    text-align: center;
+}
+
+.ventana4{
+    border-radius: 50px;
+    position: relative;
+    display: inline-block;
+    width: 320px;
+    height: 320px;
+    background-image: url(../../../assets/img/support.png);
+    margin: 7% 10%;
+    box-shadow: 0 2px 10px black;
+    overflow: hidden;
+    text-align: center;
+}
+
+.pieVentana{
+    border-radius: 17px;
+    width: auto;
+    height: auto;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.74);
+}
+
+.titulo{
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    font-size: 26px;
+    font-family: monospace;
+    padding: 8px 15px 0;
+}

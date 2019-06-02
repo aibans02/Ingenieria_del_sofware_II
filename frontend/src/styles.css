@@ -1,0 +1,68 @@
+@import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+body{
+    margin: 0;
+    height: 100%;
+}
+
+.app{
+    height: auto;
+}
+
+#SepVer65{
+    margin: 65px 0;
+}
+
+#SepVer60{
+    margin: 60px 0;
+}
+
+#SepVer55{
+    margin: 55px 0;
+}
+
+#SepVer50{
+    margin: 50px 0;
+}
+
+#SepVer45{
+    margin: 45px 0;
+}
+
+#SepVer40{
+    margin: 40px 0;
+}
+
+#SepVer35{
+    margin: 35px 0;
+}
+
+#SepVer30{
+    margin: 30px 0;
+}
+
+#SepVer25{
+    margin: 25px 0;
+}
+
+#SepVer20{
+    margin: 20px 0;
+}
+
+#SepVer15{
+    margin: 15px 0;
+}
+
+#SepVer10{
+    margin: 10px 0;
+}
+
+#logInRegister{
+    color: rgb(155, 155, 155);
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#buttonLogReg{
+    background-color: #FF2359;
+}

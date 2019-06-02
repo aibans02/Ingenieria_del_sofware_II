@@ -1,0 +1,61 @@
+#face{
+    font-size: 60px;
+}
+
+.campo{
+    width: 80%;
+    height: 300px;
+    padding: 10px 5%;
+}
+
+#campo2{
+    min-height: 250px;
+    max-height: 250px;
+    display: block;
+}
+
+.ventana{
+    border-radius: 20px;
+    width: 90%;
+    background-color: rgba(0, 225, 255, 0.384);
+    margin: 7% 10% 2%;
+    padding: 0;
+    box-shadow: 0 2px 10px black;
+    overflow: hidden;
+    text-align: left;
+}
+
+.contenidoVentana{
+    padding: 40px 25px 30px 60px;
+    text-align: justify;
+    color: #000;
+}
+
+.botonesVentana{
+    padding: 0 50px 5px;
+    text-align: end;
+}
+
+.titulo{
+    position: relative;
+    text-align: left;
+    color: #fff;
+    font-size: 26px;
+    font-family: monospace;
+}
+
+.botonSend{
+    padding: 20px 0 60px;
+}
+
+#sendB{
+    min-width: 180px;
+}
+
+h1{
+    font-size: 26px;
+}
+
+#add{
+    padding-left: 10px;
+}
