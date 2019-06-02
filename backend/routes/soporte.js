@@ -39,6 +39,7 @@ module.exports = app => {
             VIDEOJUEGO_ID: req.query.VIDEOJUEGO_ID,
             USUARIO_ID: req.user.id
           },
+          include: [{ model: User, attributes: ['NICK_USUARIO', 'EMAIL'] }]
         })
           .then(result => res.json(result))
           .catch(error => {
