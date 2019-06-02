@@ -17,7 +17,7 @@ module.exports = app => {
      */
     .delete((req, res) => {
       if (req.user.rol == 1 || req.user.rol == 2) {
-        noticia.destroy({ where: { NOTICIA_ACTUALIZACION_ID: req.body.NOTICIA_ACTUALIZACION_ID } })
+        noticia.destroy({ where: { NOTICIA_ACTUALIZACION_ID: req.query.NOTICIA_ACTUALIZACION_ID } })
           .then(result => res.sendStatus(204))
           .catch(error => {
             res.status(412).json({ msg: error.message });

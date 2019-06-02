@@ -38,6 +38,7 @@ export class NewsUpdatesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.noticias = {}
     let params = new HttpParams();
     params = params.append("VIDEOJUEGO_ID", this.id_juego.toString())
 

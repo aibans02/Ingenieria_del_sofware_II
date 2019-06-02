@@ -15,8 +15,9 @@ module.exports = app => {
      *    HTTP/1.1 412 Precondition Failed
      */
     .delete((req, res) => {
+      console.log(req.query.FORO_ID)
       if (req.user.rol == 1 || req.user.rol == 2) {
-        foro.destroy({ where: { FORO_ID: req.body.FORO_ID } })
+        foro.destroy({ where: { FORO_ID: req.query.FORO_ID } })
           .then(result => res.sendStatus(204))
           .catch(error => {
             res.status(412).json({ err: error.message });
@@ -24,7 +25,7 @@ module.exports = app => {
       } else if (req.user.rol == 3) {
         foro.destroy({
           where: {
-            FORO_ID: req.body.FORO_ID,
+            FORO_ID: req.query.FORO_ID,
             USUARIO_ID: req.user.id
           }
         })

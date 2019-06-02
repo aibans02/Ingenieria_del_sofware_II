@@ -28,7 +28,7 @@ export class ForumsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("INSIDE ONINIT")
+    this.foro = {}
     let params = new HttpParams();
     params = params.append("VIDEOJUEGO_ID", this.id_juego.toString())
 
