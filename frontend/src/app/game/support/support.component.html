@@ -1,3 +1,45 @@
 <div *ngIf="token">
-    Support page!!
+
+    <div class="p-5">
+        <div fxLayout="row" fxLayoutAlign="center">
+            <mat-form-field class="campo" appearance="outline" (keyup.enter)="logIn()">
+                <mat-label>Nuevo Ticket</mat-label>
+                <textarea id="campo2" matInput matTextareaAutosize placeholder="Nuevo Ticket" type="text"
+                    maxlength="800" [formControl]="descripcion"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="botonSend" fxLayout="row" fxLayoutAlign="center center">
+                <button id="sendB" mat-raised-button (click)="send()">Enviar</button>
+        </div>
+        <mat-card class="ventana" *ngFor="let ticket of tickets">
+            <mat-card-content class="contenidoVentana">
+                <p>{{ticket.DESCRIPCION_TEXTO}}</p>
+            </mat-card-content>
+            <mat-card-actions class="px-5">
+                <p class="font-italic text-right" style="color: rgba(255, 255, 255, 0.719);">
+                    {{ticket.USUARIO.NICK_USUARIO}} - {{formatearFecha(ticket.created_at)}}</p>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+
+</div>
+
+
+<div fxLayout="column" fxLayoutAlign="center center" fxFlex *ngIf="!token">
+
+    <div id="SepVer60"></div>
+    <div fxLayout="row" FxLayoutAlign="center center" fxFlex="100%">
+        <h2>UPS!! PARECE QUE ALGUIEN QUIERE PASARSE DE LISTO</h2>
+    </div>
+    <div fxLayout="row" FxLayoutAlign="center center" fxFlex="100%">
+        <h2><i id="face" class="material-icons">sentiment_very_dissatisfied</i></h2>
+    </div>
+    <div id="SepVer60"></div>
+    <div fxLayout="row" FxLayoutAlign="center center" fxFlex="100%">
+        <h2>¡ LOGUEATE PARA ACCEDER A ESTA VISTA !</h2>
+    </div>
+    <div fxLayout="row" FxLayoutAlign="center center" fxFlex="100%">
+        <h2><i id="face" class="material-icons">sentiment_very_satisfied</i></h2>
+    </div>
+
 </div>

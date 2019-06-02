@@ -11,7 +11,17 @@ export class SupportComponent implements OnInit {
 
   token = localStorage.getItem('token');
   id_juego: number;
-  soporte = {}
+  tickets = {}
+
+  formatearFecha(fecha){
+    fecha = fecha.substring(0,10)
+
+    return fecha;
+  }
+
+  send(){
+    
+  }
 
   constructor(private route: ActivatedRoute, private httpClient: HttpClient) {
     this.id_juego = parseInt(this.route.parent.snapshot.paramMap.get("id"));
@@ -30,8 +40,8 @@ export class SupportComponent implements OnInit {
     })
       .toPromise()
       .then(response => {
-        this.soporte = response.body;
-        console.log(this.soporte)
+        this.tickets = response.body;
+        console.log(this.tickets)
       })
       .catch(console.log);
   }
