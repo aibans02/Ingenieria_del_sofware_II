@@ -40,7 +40,6 @@
 
 .botonesVentana{
     padding: 0 50px 5px;
-    text-align: end;
 }
 
 .titulo{
@@ -57,4 +56,9 @@ h1{
 
 #add{
     padding-left: 10px;
+}
+
+#user{
+    margin: 0;
+    padding: 0;
 }

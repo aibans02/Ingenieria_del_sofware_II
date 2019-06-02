@@ -17,11 +17,21 @@
                 <p>{{entrada.DESCRIPCION_TEXTO}}</p>
             </mat-card-content>
             <mat-card-content class="botonesVentana">
-                <button mat-button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed"
-                    [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-                    <i class="material-icons" *ngIf="!isCollapsed">add</i>
-                    <i class="material-icons" *ngIf="isCollapsed">remove</i>
-                </button>
+                <div fxLayout="row">
+                    <div fxFlex="50%" fxLayoutAlign="start center">
+                        <p class="font-italic" id="user" style="color: rgba(255, 255, 255, 0.719);">
+                            <!--{{etrada.USUARIO.NICK_USUARIO}} - {{formatearFecha(entrada.created_at)}}-->Albin -
+                            02.06.2058</p>
+                    </div>
+                    <div fxFlex="50%" fxLayoutAlign="end">
+                        <button mat-button type="button" class="btn btn-outline-primary"
+                            (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+                            aria-controls="collapseExample">
+                            <i class="material-icons" *ngIf="!isCollapsed">add</i>
+                            <i class="material-icons" *ngIf="isCollapsed">remove</i>
+                        </button>
+                    </div>
+                </div>
             </mat-card-content>
         </mat-card>
         <div id="collapseExample" [ngbCollapse]="!isCollapsed">
@@ -33,6 +43,13 @@
                 </mat-card-header>
                 <mat-card-content class="contenidoVentana2">
                     <p>{{subentrada.DESCRIPCION_TEXTO}}</p>
+                </mat-card-content>
+                <mat-card-content class="botonesVentana">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                        <p class="font-italic" id="user" style="color: rgba(255, 255, 255, 0.719);">
+                            <!--{{etrada.USUARIO.NICK_USUARIO}} - {{formatearFecha(entrada.created_at)}}-->Albin -
+                            02.06.2058</p>
+                    </div>
                 </mat-card-content>
             </mat-card>
         </div>
