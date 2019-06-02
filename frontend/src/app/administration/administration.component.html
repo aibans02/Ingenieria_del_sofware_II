@@ -4,7 +4,7 @@
   </mat-card-content>
 </mat-card>
 
-<mat-card class="ventana2">
+<mat-card class="ventana2" *ngIf="isSuperAdmin()">
   <mat-card-content class="contenidoVentana2">
     <div fxFlex="5%" fxLayoutAlign="start center">
       <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="isCollapsed1 = !isCollapsed1"
@@ -34,27 +34,27 @@
     </mat-card-content>
   </mat-card>
   <!--HACER QUE ESTA CARD SE REPITA POR CADA SUPERUSUARIO-->
-  <mat-card class="ventana3">
+  <mat-card class="ventana3" *ngFor="let superAdmin of usuariosSuper">
     <mat-card-content class="contenidoVentana3">
       <div fxFlex="10%" fxLayoutAlign="start center">
-        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="superuserOptions()">
+        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="superuserOptions(superAdmin.USUARIO_ID)">
           <i class="material-icons">delete_forever</i>
         </button>
       </div>
       <div fxFlex="30%" fxLayoutAlign="start center">
-        <p><strong>Nick: </strong>Albin</p>
+        <p><strong>Nick: </strong>{{superAdmin.NICK_USUARIO}}</p>
       </div>
       <div fxFlex="30%" fxLayoutAlign="start center">
-        <p><strong>Email: </strong>albin@mela.pela</p>
+        <p><strong>Email: </strong>{{superAdmin.EMAIL}}</p>
       </div>
       <div fxFlex="30%" fxLayoutAlign="start center">
-        <p><strong>Fecha de alta: </strong>10-06-1678</p>
+        <p><strong>Fecha de alta: </strong>{{formatearFecha(superAdmin.created_at)}}</p>
       </div>
     </mat-card-content>
   </mat-card>
 </div>
 
-<mat-card class="ventana2">
+<mat-card class="ventana2"  *ngIf="isSuperAdmin()">
   <mat-card-content class="contenidoVentana2">
     <div fxFlex="5%" fxLayoutAlign="start center">
       <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="isCollapsed2 = !isCollapsed2"
@@ -84,21 +84,21 @@
     </mat-card-content>
   </mat-card>
   <!--HACER QUE ESTA CARD SE REPITA POR CADA ADMINISTRADOR-->
-  <mat-card class="ventana3">
+  <mat-card class="ventana3" *ngFor="let admin of usuariosAdmin">
     <mat-card-content class="contenidoVentana3">
       <div fxFlex="10%" fxLayoutAlign="start center">
-        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="adminOptions()">
+        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="adminOptions(admin.USUARIO_ID)">
           <i class="material-icons">delete_forever</i>
         </button>
       </div>
       <div fxFlex="30%" fxLayoutAlign="start center">
-        <p><strong>Nick: </strong>Albin</p>
+        <p><strong>Nick: </strong>{{admin.NICK_USUARIO}}</p>
       </div>
       <div fxFlex="30%" fxLayoutAlign="start center">
-        <p><strong>Email: </strong>albin@mela.pela</p>
+        <p><strong>Email: </strong>{{admin.EMAIL}}</p>
       </div>
       <div fxFlex="30%" fxLayoutAlign="start center">
-        <p><strong>Fecha de alta: </strong>10-06-1678</p>
+        <p><strong>Fecha de alta: </strong>{{formatearFecha(admin.created_at)}}</p>
       </div>
     </mat-card-content>
   </mat-card>
@@ -133,21 +133,21 @@
     </mat-card-content>
   </mat-card>
   <!--HACER QUE ESTA CARD SE REPITA POR CADA CLIENTE-->
-  <mat-card class="ventana3">
+  <mat-card class="ventana3" *ngFor="let user of usuariosNormal">
     <mat-card-content class="contenidoVentana3">
       <div fxFlex="10%" fxLayoutAlign="start center">
-        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="clientOptions()">
+        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="clientOptions(user.USUARIO_ID)">
           <i class="material-icons">delete_forever</i>
         </button>
       </div>
       <div fxFlex="30%" fxLayoutAlign="start center">
-        <p><strong>Nick: </strong>Albin</p>
+        <p><strong>Nick: </strong>{{user.NICK_USUARIO}}</p>
       </div>
       <div fxFlex="30%" fxLayoutAlign="start center">
-        <p><strong>Email: </strong>albin@mela.pela</p>
+        <p><strong>Email: </strong>{{user.EMAIL}}</p>
       </div>
       <div fxFlex="30%" fxLayoutAlign="start center">
-        <p><strong>Fecha de alta: </strong>10-06-1678</p>
+        <p><strong>Fecha de alta: </strong>{{formatearFecha(user.created_at)}}</p>
       </div>
     </mat-card-content>
   </mat-card>
@@ -172,7 +172,7 @@
   </mat-card-content>
 </mat-card>
 <!--HACER QUE ESTE DIV SE REPITA POR CADA JUEGO-->
-<div>
+<div *ngFor="let juego of juegos">
   <mat-card class="ventana2">
     <mat-card-content class="contenidoVentana2">
       <div fxFlex="5%" fxLayoutAlign="start center">
@@ -183,12 +183,12 @@
         </button>
       </div>
       <div fxFlex="5%" fxLayoutAlign="start center">
-        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="gameOptions()">
+        <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="gameOptions(juego.VIDEOJUEGO_ID)">
           <i class="material-icons">delete_forever</i>
         </button>
       </div>
       <div fxFlex fxLayoutAlign="start center">
-        <p>League of Legends</p>
+        <p>{{juego.NOMBRE_JUEGO}}</p>
       </div>
     </mat-card-content>
   </mat-card>
@@ -226,7 +226,7 @@
         </mat-card-content>
       </mat-card>
       <!--HACER QUE ESTE DIV SE REPITA POR CADA FORO-->
-      <div>
+      <div *ngFor="let foro of juego.FOROs">
         <mat-card class="ventana4">
           <mat-card-content class="contenidoVentana4">
             <div class="entrada4" fxLayout="row">
@@ -239,7 +239,7 @@
                 </button>
               </div>
               <div fxFlex="4%" fxLayoutAlign="start center">
-                <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="foroOptions()">
+                <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="foroOptions(foro.FORO_ID)">
                   <i class="material-icons">delete_forever</i>
                 </button>
               </div>
@@ -248,7 +248,7 @@
               </div>
               <div fxFlex="5%" fxLayoutAlign="end start"></div>
               <div fxFlex="80%" fxLayoutAlign="start start">
-                <p>Albin</p>
+                <p>{{foro.USUARIO.NICK_USUARIO}}</p>
               </div>
             </div>
             <div class="entrada4" fxLayout="row">
@@ -257,7 +257,7 @@
               </div>
               <div fxFlex="5%" fxLayoutAlign="end start"></div>
               <div fxFlex="80%" fxLayoutAlign="start start">
-                <p>15.12.1592</p>
+                <p>{{formatearFecha(foro.created_at)}}</p>
               </div>
             </div>
             <div class="entrada4" fxLayout="row">
@@ -266,7 +266,7 @@
               </div>
               <div fxFlex="5%" fxLayoutAlign="end start"></div>
               <div fxFlex="80%" fxLayoutAlign="start start">
-                <p>Siguen los fedeos</p>
+                <p>{{foro.TITULO_ENTRADA}}</p>
               </div>
             </div>
             <div class="entrada4" fxLayout="row">
@@ -275,9 +275,7 @@
               </div>
               <div fxFlex="5%" fxLayoutAlign="end start"></div>
               <div fxFlex="80%" fxLayoutAlign="start start">
-                <p>Yo no me lo explico, los servidores están amañados para meter todos los inutiles en mi equipo la
-                  mitad
-                  de las veces.</p>
+                <p>{{foro.DESCRIPCION_TEXTO}}</p>
               </div>
             </div>
           </mat-card-content>
@@ -299,11 +297,11 @@
             </mat-card-content>
           </mat-card>
           <!--HACER QUE ESTA CARD SE REPITA POR CADA SUBFORO-->
-          <mat-card class="ventana5">
+          <mat-card class="ventana5" *ngFor="let subforo of foro.FOROs">
             <mat-card-content class="contenidoVentana5">
               <div class="entrada4" fxLayout="row">
                 <div fxFlex="8%" fxLayoutAlign="start center">
-                  <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="subForoOptions()">
+                  <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="subForoOptions(subforo.FORO_ID)">
                     <i class="material-icons">delete_forever</i>
                   </button>
                 </div>
@@ -312,7 +310,7 @@
                 </div>
                 <div fxFlex="5%" fxLayoutAlign="end start"></div>
                 <div fxFlex="80%" fxLayoutAlign="start start">
-                  <p>Albin</p>
+                  <p>{{subforo.USUARIO.NICK_USUARIO}}</p>
                 </div>
               </div>
               <div class="entrada4" fxLayout="row">
@@ -321,7 +319,7 @@
                 </div>
                 <div fxFlex="5%" fxLayoutAlign="end start"></div>
                 <div fxFlex="80%" fxLayoutAlign="start start">
-                  <p>15.12.1592</p>
+                  <p>{{formatearFecha(subforo.created_at)}}</p>
                 </div>
               </div>
               <div class="entrada4" fxLayout="row">
@@ -330,7 +328,7 @@
                 </div>
                 <div fxFlex="5%" fxLayoutAlign="end start"></div>
                 <div fxFlex="80%" fxLayoutAlign="start start">
-                  <p>Trolls everywhere</p>
+                  <p>{{subforo.TITULO_ENTRADA}}</p>
                 </div>
               </div>
               <div class="entrada4" fxLayout="row">
@@ -339,7 +337,7 @@
                 </div>
                 <div fxFlex="5%" fxLayoutAlign="end start"></div>
                 <div fxFlex="80%" fxLayoutAlign="start start">
-                  <p>Todos los trolls a la hoguera!!!</p>
+                  <p>{{subforo.DESCRIPCION_TEXTO}}</p>
                 </div>
               </div>
             </mat-card-content>
@@ -379,11 +377,11 @@
         </mat-card-content>
       </mat-card>
       <!--HACER QUE ESTA CARD SE REPITA POR CADA GUIA-->
-      <mat-card class="ventana4">
+      <mat-card class="ventana4" *ngFor="let guia of juego.GUIA">
         <mat-card-content class="contenidoVentana4">
           <div class="entrada4" fxLayout="row">
             <div fxFlex="8%" fxLayoutAlign="start center">
-              <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="guidesOptions()">
+              <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="guidesOptions(guia.GUIA_ID)">
                 <i class="material-icons">delete_forever</i>
               </button>
             </div>
@@ -392,7 +390,7 @@
             </div>
             <div fxFlex="5%" fxLayoutAlign="end start"></div>
             <div fxFlex="80%" fxLayoutAlign="start start">
-              <p>Albin</p>
+              <p>{{guia.USUARIO.NICK_USUARIO}}</p>
             </div>
           </div>
           <div class="entrada4" fxLayout="row">
@@ -401,7 +399,7 @@
             </div>
             <div fxFlex="5%" fxLayoutAlign="end start"></div>
             <div fxFlex="80%" fxLayoutAlign="start start">
-              <p>15.12.1592</p>
+              <p>{{formatearFecha(guia.created_at)}}</p>
             </div>
           </div>
           <div class="entrada4" fxLayout="row">
@@ -410,7 +408,7 @@
             </div>
             <div fxFlex="5%" fxLayoutAlign="end start"></div>
             <div fxFlex="80%" fxLayoutAlign="start start">
-              <p>Como hacer pentakills</p>
+              <p>{{guia.TITULO_ENTRADA}}</p>
             </div>
           </div>
           <div class="entrada4" fxLayout="row">
@@ -419,7 +417,7 @@
             </div>
             <div fxFlex="5%" fxLayoutAlign="end start"></div>
             <div fxFlex="80%" fxLayoutAlign="start start">
-              <p>Paso 1: Elegir Maestro Yi. <br>Paso 2: click derecho.</p>
+              <p>{{guia.DESCRIPCION_TEXTO}}</p>
             </div>
           </div>
         </mat-card-content>
@@ -457,11 +455,11 @@
         </mat-card-content>
       </mat-card>
       <!--HACER QUE ESTA CARD SE REPITA POR CADA NOTICIA/ACTUALIZACION-->
-      <mat-card class="ventana4">
+      <mat-card class="ventana4" *ngFor="let noticia of juego.NOTICIA_ACTUALIZACIONs">
         <mat-card-content class="contenidoVentana4">
           <div class="entrada4" fxLayout="row">
             <div fxFlex="8%" fxLayoutAlign="start center">
-              <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="newsUpdatesOptions()">
+              <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="newsUpdatesOptions(noticia.NOTICIA_ACTUALIZACION_ID)">
                 <i class="material-icons">delete_forever</i>
               </button>
             </div>
@@ -470,7 +468,7 @@
             </div>
             <div fxFlex="5%" fxLayoutAlign="end start"></div>
             <div fxFlex="80%" fxLayoutAlign="start start">
-              <p>Empresario ryot</p>
+              <p>{{noticia.USUARIO.NICK_USUARIO}}</p>
             </div>
           </div>
           <div class="entrada4" fxLayout="row">
@@ -479,7 +477,7 @@
             </div>
             <div fxFlex="5%" fxLayoutAlign="end start"></div>
             <div fxFlex="80%" fxLayoutAlign="start start">
-              <p>01.08.2019</p>
+              <p>{{formatearFecha(noticia.created_at)}}</p>
             </div>
           </div>
           <div class="entrada4" fxLayout="row">
@@ -488,7 +486,7 @@
             </div>
             <div fxFlex="5%" fxLayoutAlign="end start"></div>
             <div fxFlex="80%" fxLayoutAlign="start start">
-              <p>Rework M.Yi y Trindamere</p>
+              <p>{{noticia.TITULO_ENTRADA}}</p>
             </div>
           </div>
           <div class="entrada4" fxLayout="row">
@@ -497,8 +495,7 @@
             </div>
             <div fxFlex="5%" fxLayoutAlign="end start"></div>
             <div fxFlex="80%" fxLayoutAlign="start start">
-              <p>Creemos que Maestro Yi y trindamere son personajes muy debiles así que hemos decidido quitar la mitad
-                de cooldown de todas sus habilidades.</p>
+              <p>{{noticia.DESCRIPCION_TEXTO}}</p>
             </div>
           </div>
         </mat-card-content>
@@ -522,11 +519,11 @@
 
     <div id="collapse7" [ngbCollapse]="!isCollapsed7">
       <!--HACER QUE ESTA CARD SE REPITA POR CADA HILO DE MENSAJES-->
-      <mat-card class="ventana4">
+      <mat-card class="ventana4" *ngFor="let soporte of juego.SOPORTEs">
         <mat-card-content class="contenidoVentana4">
           <div class="entrada4" fxLayout="row">
             <div fxFlex="8%" fxLayoutAlign="start center">
-              <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="supportOptions()">
+              <button mat-icon-button type="button" class="btn btn-outline-primary" (click)="supportOptions(soporte.SOPORTE_ID)">
                 <i class="material-icons">delete_forever</i>
               </button>
             </div>
@@ -535,7 +532,7 @@
             </div>
             <div fxFlex="5%" fxLayoutAlign="end start"></div>
             <div fxFlex="80%" fxLayoutAlign="start start">
-              <p>Albin</p>
+              <p>{{soporte.USUARIO.NICK_USUARIO}}</p>
             </div>
           </div>
           <div class="entrada4" fxLayout="row">
@@ -544,7 +541,7 @@
             </div>
             <div fxFlex="5%" fxLayoutAlign="end start"></div>
             <div fxFlex="80%" fxLayoutAlign="start start">
-              <p>15.12.1592</p>
+              <p>{{formatearFecha(soporte.created_at)}}</p>
             </div>
           </div>
           <div class="entrada4" fxLayout="row">
@@ -553,8 +550,7 @@
             </div>
             <div fxFlex="5%" fxLayoutAlign="end start"></div>
             <div fxFlex="80%" fxLayoutAlign="start start">
-              <p>Deberiais eliminar mas cuentas, a todos esos trolls de mierda teneis que ponerles 2 horas de baja
-                prioridad.</p>
+              <p>{{soporte.DESCRIPCION_TEXTO}}</p>
             </div>
           </div>
         </mat-card-content>

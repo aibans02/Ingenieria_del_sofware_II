@@ -27,6 +27,7 @@ export class GuidesComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.guias = {}
     let params = new HttpParams();
     params = params.append("VIDEOJUEGO_ID", this.id_juego.toString())
 
