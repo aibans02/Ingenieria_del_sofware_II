@@ -19,4 +19,20 @@ export class ConfigurationComponent implements OnInit {
   ngOnInit() {
   }
 
+  cambiarNombre(){
+
+  }
+
+  cambiarEmail(){
+
+  }
+
+  cambiarPassword(){
+
+  }
+
+  eliminar(){
+
+  }
+
 }
