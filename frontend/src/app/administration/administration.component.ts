@@ -12,4 +12,68 @@ export class AdministrationComponent implements OnInit {
   ngOnInit() {
   }
 
+  supportOptions(){
+
+  }
+
+  newsUpdatesOptions(){
+
+  }
+
+  guidesOptions(){
+
+  }
+
+  foroOptions(){
+
+  }
+
+  subForoOptions(){
+
+  }
+
+  superuserOptions(){
+
+  }
+
+  adminOptions(){
+
+  }
+
+  clientOptions(){
+
+  }
+
+  newSuperuser(){
+
+  }
+
+  newAdmin(){
+
+  }
+
+  newClient(){
+
+  }
+
+  newGame(){
+
+  }
+
+  newForo(){
+
+  }
+
+  newSubforo(){
+
+  }
+
+  newGuide(){
+
+  }
+
+  newNewsUpdates(){
+    
+  }
+
 }
