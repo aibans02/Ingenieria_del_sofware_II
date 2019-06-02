@@ -17,29 +17,29 @@
         <mat-card-content fxLayout="column" fxFlex="70%">
           <mat-form-field class="item" appearance="outline">
             <mat-label>Nombre de usuario</mat-label>
-            <input matInput placeholder="Nombre de usuario" maxlength="20">
+            <input matInput placeholder="Nombre de usuario" maxlength="20" [formControl]="nick">
           </mat-form-field>
           <div class="item"></div>
           <mat-form-field class="item" appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Email" maxlength="20">
+            <input matInput placeholder="Email" maxlength="20" [formControl]="email">
           </mat-form-field>
           <div class="item"></div>
           <mat-form-field class="item" appearance="outline">
             <mat-label>Contraseña</mat-label>
-            <input matInput placeholder="Contraseña" maxlength="20">
+            <input matInput placeholder="Contraseña" maxlength="20" [formControl]="password">
           </mat-form-field>
         </mat-card-content>
         <mat-card-content fxLayout="column" fxLayoutAlign="start" fxFlex="30%">
-          <button id="buttonLogReg" mat-raised-button (click)="cambiarNombre()" class="item">
+          <button id="buttonLogReg" mat-raised-button (click)="cambiarNombre()" class="item" [disabled]="nick.invalid">
             Cambiar nombre de usuario
           </button>
           <div class="item"></div>
-          <button id="buttonLogReg" mat-raised-button (click)="cambiarEmail()" class="item">
+          <button id="buttonLogReg" mat-raised-button (click)="cambiarEmail()" class="item" [disabled]="email.invalid">
             Cambiar email
           </button>
           <div class="item"></div>
-          <button id="buttonLogReg" mat-raised-button (click)="cambiarPassword()" class="item">
+          <button id="buttonLogReg" mat-raised-button (click)="cambiarPassword()" class="item" [disabled]="password.invalid">
             Cambiar contraseña
           </button>
         </mat-card-content>

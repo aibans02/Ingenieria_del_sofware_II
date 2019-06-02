@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog} from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { LogInDialog } from './log-in.component'
+import { FormControl, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-register',
@@ -9,7 +11,11 @@ import { LogInDialog } from './log-in.component'
 })
 export class RegisterDialog implements OnInit {
 
-    constructor(public dialog: MatDialog) { }
+    nick = new FormControl('', [Validators.required])
+    email = new FormControl('', [Validators.required, Validators.email]);
+    password = new FormControl('', [Validators.required])
+
+    constructor(public dialog: MatDialog, private httpClient: HttpClient) { }
 
     openLogIn(): void {
         const dialogClose = this.dialog.closeAll();
@@ -18,7 +24,7 @@ export class RegisterDialog implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
+            
         });
     }
 
@@ -27,5 +33,22 @@ export class RegisterDialog implements OnInit {
 
     register() {
         
+        
+        this.httpClient.post("http://localhost:3000/usuario",
+            {
+                "EMAIL": this.email.value,
+                "PASSWORD": this.password.value,
+                "NICK_USUARIO": this.nick.value,
+                "FECHA_NACIMIENTO": new Date(),
+                "ROL_ID": "3"
+            })
+            .subscribe(
+                data => {
+                    
+                },
+                error => {
+                    console.log("Error", error);
+                }
+            );
     }
 }

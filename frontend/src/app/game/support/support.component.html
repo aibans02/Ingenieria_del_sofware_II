@@ -9,7 +9,7 @@
             </mat-form-field>
         </div>
         <div class="botonSend" fxLayout="row" fxLayoutAlign="center center">
-                <button id="sendB" mat-raised-button (click)="send()">Enviar</button>
+                <button id="sendB" mat-raised-button (click)="send()" [disabled]="descripcion.invalid">Enviar</button>
         </div>
         <mat-card class="ventana" *ngFor="let ticket of tickets">
             <mat-card-content class="contenidoVentana">

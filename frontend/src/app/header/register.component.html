@@ -5,30 +5,24 @@
 <div class="container2" fxLayoutAlign="center">
   <mat-form-field class="campoLogin" appearance="outline" style="width: 85%">
     <mat-label>Introduzca su email</mat-label>
-    <input matInput placeholder="Introduzca su email" type="email" maxlength="80">
+    <input matInput placeholder="Introduzca su email" type="email" maxlength="80" [formControl]="email">
   </mat-form-field>
 </div>
 <div id="SepVer10"></div>
 <div class="container2" fxLayoutAlign="center">
   <mat-form-field class="campoLogin" appearance="outline" style="width: 85%">
     <mat-label>Introduzca un nombre de usuario</mat-label>
-    <input matInput placeholder="Introduzca un nombre de usuario" maxlength="20">
+    <input matInput placeholder="Introduzca un nombre de usuario" maxlength="20" [formControl]="nick">
   </mat-form-field>
 </div>
 <div id="SepVer10"></div>
 <div class="container2" fxLayoutAlign="center">
   <mat-form-field class="campoLogin" appearance="outline" style="width: 85%">
     <mat-label>Introduzca una contraseña</mat-label>
-    <input matInput placeholder="Introduzca una contraseña" type="password" maxlength="20">
+    <input matInput placeholder="Introduzca una contraseña" type="password" maxlength="20" [formControl]="password">
   </mat-form-field>
 </div>
 <div id="SepVer10"></div>
-<div class="container2" fxLayoutAlign="center">
-  <mat-form-field class="campoLogin" appearance="outline" style="width: 85%" (keyup.enter)="register()">
-    <mat-label>Repita la contraseña</mat-label>
-    <input matInput placeholder="Repita la contraseña" type="password" maxlength="20">
-  </mat-form-field>
-</div>
 <div id="SepVer10"></div>
 <div class="container2" fxLayoutGap="10px">
   <div fxFlex></div>
@@ -38,5 +32,5 @@
 </div>
 <div id="SepVer25"></div>
 <div class="container2" fxLayoutAlign="center">
-  <button id="buttonLogReg" mat-raised-button matDialogClose (click)="register()">Resitrarse</button>
+  <button id="buttonLogReg" mat-raised-button matDialogClose (click)="register()" [disabled]="email.invalid || password.invalid || nick.invalid">Registrarse</button>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-configuration',
@@ -14,24 +15,72 @@ export class ConfigurationComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required])
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
   }
 
-  cambiarNombre(){
+  cambiarNombre() {
+    let headers = new HttpHeaders();
+    if (localStorage.getItem('token') != null)
+      headers = headers.append("Authorization", localStorage.getItem('token'))
 
+    let params = new HttpParams();
+    params = params.append("NICK", this.nick.value.toString())
+
+    this.httpClient.put('http://localhost:3000/usuario/auth', {
+      headers: headers,
+      observe: 'response',
+      params: params
+    })
+      .toPromise()
+      .then(response => {
+
+      })
+      .catch(console.log);
   }
 
-  cambiarEmail(){
+  cambiarEmail() {
+    let headers = new HttpHeaders();
+    if (localStorage.getItem('token') != null)
+      headers = headers.append("Authorization", localStorage.getItem('token'))
 
+    let params = new HttpParams();
+    params = params.append("EMAIL", this.email.value.toString())
+
+    this.httpClient.put('http://localhost:3000/usuario/auth', {
+      headers: headers,
+      observe: 'response',
+      params: params
+    })
+      .toPromise()
+      .then(response => {
+
+      })
+      .catch(console.log);
   }
 
-  cambiarPassword(){
+  cambiarPassword() {
+    let headers = new HttpHeaders();
+    if (localStorage.getItem('token') != null)
+      headers = headers.append("Authorization", localStorage.getItem('token'))
 
+    let params = new HttpParams();
+    params = params.append("PASSWORD", this.password.value.toString())
+
+    this.httpClient.put('http://localhost:3000/usuario/auth', {
+      headers: headers,
+      observe: 'response',
+      params: params
+    })
+      .toPromise()
+      .then(response => {
+
+      })
+      .catch(console.log);
   }
 
-  eliminar(){
+  eliminar() {
 
   }
 

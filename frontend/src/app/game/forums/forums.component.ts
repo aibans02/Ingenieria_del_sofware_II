@@ -24,7 +24,7 @@ export class ForumsComponent implements OnInit {
 
     this.id_juego = parseInt(this.route.parent.snapshot.paramMap.get("id"));
 
-    
+
   }
 
   ngOnInit() {
@@ -46,7 +46,20 @@ export class ForumsComponent implements OnInit {
   enviar() {
     const dialogRef = this.dialog.open(InsertForoDialog, {
       width: '75%',
-      data: { id_juego:  this.id_juego }
+      data: { id_juego: this.id_juego }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.ngOnInit();
+    });
+  }
+
+  enviarSub(id_padre) {
+    const dialogRef = this.dialog.open(InsertForoDialog, {
+      width: '75%',
+      data: {
+        id_juego: this.id_juego,
+        id_padre: id_padre
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();

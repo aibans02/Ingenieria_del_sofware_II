@@ -33,13 +33,26 @@ export class InsertForoDialog implements OnInit {
 
             let idUsuario = JSON.parse(atob(localStorage.getItem('token').split(".")[1])).id
 
-            this.httpClient.post("http://localhost:3000/foro/auth",
-                {
+            let json = {}
+            if(this.data.id_padre) {
+                json = {
                     "TITULO_ENTRADA": this.titulo.value,
                     "DESCRIPCION_TEXTO": this.descripcion.value,
                     "USUARIO_ID": idUsuario,
                     "VIDEOJUEGO_ID": this.id_juego,
-                },
+                    "SUBFORO_ID": this.data.id_padre
+                }
+            } else {
+                json = {
+                    "TITULO_ENTRADA": this.titulo.value,
+                    "DESCRIPCION_TEXTO": this.descripcion.value,
+                    "USUARIO_ID": idUsuario,
+                    "VIDEOJUEGO_ID": this.id_juego,
+                }
+            }
+            console.log(this.data)
+            this.httpClient.post("http://localhost:3000/foro/auth",
+                json,
                 {
                     headers: headers
                 }

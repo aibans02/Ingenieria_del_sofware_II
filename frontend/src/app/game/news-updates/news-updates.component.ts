@@ -22,8 +22,9 @@ export class NewsUpdatesComponent implements OnInit {
 
   isAdmin() {
     let result = false;
-
-    let rol = parseInt(JSON.parse(atob(localStorage.getItem('token').split(".")[1])).rol)
+    let rol: number;
+    if(localStorage.getItem('token') != null)
+      rol = parseInt(JSON.parse(atob(localStorage.getItem('token').split(".")[1])).rol)
 
     if (rol == 1 || rol == 2)
       result = true

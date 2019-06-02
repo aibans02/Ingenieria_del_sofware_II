@@ -1,5 +1,8 @@
+import bcrypt from 'bcrypt';
+
 module.exports = app => {
   const Users = app.db.models.USUARIO;
+  
 
   app.route('/usuario/auth')
     .all(app.auth.authenticate())
@@ -66,6 +69,45 @@ module.exports = app => {
           });
       } else {
         res.status(401).json({ err: "No está autorizado" })
+      }
+    })
+
+
+    .put((req, res) => {
+      if (req.query.NICK) {
+        Users.update({
+          NICK_USUARIO: req.query.NICK,
+          where: {
+            USUARIO_ID: req.user.id
+          }
+        })
+          .then(result => res.json(result))
+          .catch(error => {
+            res.status(412).json(error.message);
+          });
+      } else if (req.query.EMAIL) {
+        Users.update({
+          EMAIL: req.query.EMAIL,
+          where: {
+            USUARIO_ID: req.user.id
+          }
+        })
+          .then(result => res.json(result))
+          .catch(error => {
+            res.status(412).json(error.message);
+          });
+      } else if (req.query.PASSWORD) {
+        var salt = bcrypt.genSaltSync(saltRounds);
+        Users.update({
+          PASSWORD: bcrypt.hashSync(req.query.PASSWORD, salt),
+          where: {
+            USUARIO_ID: req.user.id
+          }
+        })
+          .then(result => res.json(result))
+          .catch(error => {
+            res.status(412).json(error.message);
+          });
       }
     });
 
@@ -149,8 +191,8 @@ module.exports = app => {
       }
     });
 
-    app.route('/usuario/develop')
-    
+  app.route('/usuario/develop')
+
     .post((req, res) => {
       Users.create(req.body)
         .then(result => res.json(result))
